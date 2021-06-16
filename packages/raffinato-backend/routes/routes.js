@@ -1,7 +1,6 @@
 const express = require('express');
 
 const router = express.Router();
-// const base58 = require('../controllers/base58');
 const productController = require('../controllers/productController');
 
 // error handlers
