@@ -8,7 +8,13 @@
     "start:web": "lerna run start --scope=raffinato-frontend",
     "start:api": "lerna run start --scope=raffinato-backend"
   },
-  "dependencies": {
-    "lerna": "^4.0.0"
+  "dependencies": {},
+  "devDependencies": {
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "lerna": "^4.0.0",
+    "prettier": "^2.3.1"
   }
 }
