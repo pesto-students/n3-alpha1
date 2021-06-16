@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/packages/raffinato-frontend/node_modules
+/packages/raffinato-backend/node_modules
 /.pnp
 .pnp.js
 
