@@ -6,7 +6,8 @@
     "bootstrap": "lerna bootstrap --hoist",
     "start": "lerna run start",
     "start:web": "lerna run start --scope=raffinato-frontend",
-    "start:api": "lerna run start --scope=raffinato-backend"
+    "start:api": "lerna run start --scope=raffinato-backend",
+    "build:web": "lerna run build --scope=raffinato-frontend"
   },
   "dependencies": {},
   "devDependencies": {
