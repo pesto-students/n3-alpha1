@@ -3,7 +3,7 @@
     "extends": ["airbnb-typescript", "prettier"],
     "plugins": ["prettier"],
     "parserOptions": {
-        "project": "./packages/raffinato-frontend/tsconfig.json"
+        "project": "./tsconfig.json"
     },
     "rules": {
         "prettier/prettier": "error"
