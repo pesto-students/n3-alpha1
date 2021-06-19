@@ -13,7 +13,8 @@
 @import './helper-classes/layout.scss';
 
 // components
-@import './components/button.scss';
+@import './components/common/button.scss';
+@import './components/common/text-input.scss';
 
 //general
 @import './util/general.scss';

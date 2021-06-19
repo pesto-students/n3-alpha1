@@ -12,12 +12,14 @@ export default function Button(props: {
   const themeClassName = `rf-button-theme-${theme}`;
   const variantClassName = `rf-button-variant-${variant}`;
   const sizeClassName = `rf-button-size-${size}`;
+  const responsiveClassName = responsive ? 'rf-button-responsive' : '';
+
   const finalClassName = [
     'rf-button-base',
     themeClassName,
     variantClassName,
     sizeClassName,
-    responsive ? 'rf-button-responsive' : '',
+    responsiveClassName,
   ].join(' ');
 
   return (

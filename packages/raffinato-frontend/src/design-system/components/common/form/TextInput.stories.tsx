@@ -3,26 +3,27 @@
 
 import React from 'react';
 import { Meta } from '@storybook/react';
-import Button from './Button';
+import TextInput from './TextInput';
 
 export default {
-  title: 'Components/Button',
-  component: Button,
+  title: 'Components/common/TextInput',
+  component: TextInput,
   argTypes: {
-    variant: {
-      options: ['primary', 'secondary', 'tertiary'],
-      control: { type: 'radio' },
-    },
     theme: {
       options: ['dark', 'light'],
       control: { type: 'radio' },
     },
-    size: {
-      options: ['small', 'medium', 'large'],
-      control: { type: 'radio' },
-    },
-    label: {
+    placeholder: {
       control: { type: 'text' },
+      defaultValue: 'Enter your name',
+    },
+    helperText: {
+      control: { type: 'text' },
+      defaultValue: 'Please enter your full legal name',
+    },
+    hasError: {
+      control: { type: 'boolean' },
+      defaultValue: false,
     },
     responsive: {
       control: { type: 'boolean' },
@@ -31,11 +32,10 @@ export default {
 } as Meta;
 
 export const Primary: React.VFC<{
-  label: string;
-  size: string;
-  variant: string;
+  placeholder: string;
+  responsive: boolean;
   theme: string;
 }> = (args) => (
   // eslint-disable-next-line react/destructuring-assignment
-  <Button {...args}>{args.label || 'Create account'}</Button>
+  <TextInput {...args} />
 );

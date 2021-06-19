@@ -1,0 +1,23 @@
+// font size helper classes
+// eg. rf-text-md
+@each $size, $value in $font-sizes-desktop {
+  .rf-text-#{$size} {
+    font-size: $value;
+  }
+}
+@each $size, $value in $font-sizes-mobile {
+  @media (max-width: 768px) {
+    .rf-text-#{$size} {
+      font-size: $value;
+    }
+  }
+}
+
+
+// font weight helper classes
+// eg. rf-text-w-l
+@each $weight, $value in $font-weights-short {
+  .rf-text-w-#{$weight} {
+    font-weight: $value;
+  }
+}

@@ -1,2 +1,58 @@
+@use "sass:map";
+
+/* 
+  Colors 
+*/
 $brand-color: #2F1600;
+$brand-color-primary: $brand-color;
+$brand-color-secondary: #B55500;
+
 $bg-color: #FCFAF7;
+  // dark
+  $bg-color-dark-0: $brand-color;
+  $bg-color-dark-1: #562B04;
+  // light
+  $bg-color-light-0:#FCFAF7;
+  $bg-color-light-1 : rgba(#F0E4D2, 0.4);
+  $bg-color-light-2 : rgba($brand-color-secondary, 0.1);
+
+
+$danger-color : #FF0000;
+$success-color : #1CB90F;
+
+/* 
+  Typography
+*/
+
+//  Type scale - desktop
+$font-sizes-desktop: (
+  "xxs": 0.6rem,
+  "xs": 0.7rem, 
+  "sm": 0.8rem, 
+  "md": 1rem,
+  "lg": 1.2rem,
+  "xl": 1.6rem,
+  "xxl": 4rem,
+  "xxxl": 5rem
+);
+
+//  Type scale - mobile
+$font-sizes-mobile: (
+  "xxs": 0.7rem,
+  "xs": 0.75rem, 
+  "sm": 0.875rem, 
+  "md": 1rem,
+  "lg": 1.25rem,
+  "xl": 1.5rem,
+  "xxl": 2rem,
+  "xxxl": 3rem
+);
+
+//  font weights
+$font-weights: ("light": 300, "regular": 400, "medium": 500);
+$font-weights-short: ("l": 300, "r": 400, "m": 500);
+
+
+/* 
+  Spacings - multiples of 4px
+*/
