@@ -1,0 +1,24 @@
+name: Raffinato backend deployment to Heroku
+
+on:
+  push:
+    branches:
+      - integration
+    paths:
+      - "packages/raffinato-backend/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{secrets.HEROKU_API_KEY}}
+      - name: Install Heroku Cli for local tests
+        if: ${{env.ACT}}
+        run: curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          appdir: "packages/raffinato-backend"
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          heroku_email: ${{secrets.HEROKU_EMAIL}}

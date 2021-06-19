@@ -1,0 +1,15 @@
+{
+  "name": "a-basic-e-commerce-website-alpha-1",
+  "version": "0.0.1",
+  "scripts": {
+    "clean": "lerna clean -y",
+    "bootstrap": "lerna bootstrap --hoist",
+    "start": "lerna run start",
+    "start:web": "lerna run start --scope=raffinato-frontend",
+    "start:api": "lerna run start --scope=raffinato-backend",
+    "start:crawler": "lerna run start --scope=raffinato-scraper"
+  },
+  "dependencies": {
+    "lerna": "^4.0.0"
+  }
+}
