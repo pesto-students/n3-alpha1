@@ -1,0 +1,9 @@
+1. move stories out of src, preferrably to .storybook
+2. move src/design-system/css to .storybook
+3. merge app components, scss within pages; the structure would be like:
+     - pages
+        - Home
+          - components
+          - Home.tsx
+          - home.scss
+4. Point 3 for design system too
