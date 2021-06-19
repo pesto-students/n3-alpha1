@@ -3,7 +3,7 @@ name: Raffinato backend deployment to Heroku
 on:
   push:
     branches:
-      - feat/be/*
+      - integration
     paths:
       - "packages/raffinato-backend/**"
 
