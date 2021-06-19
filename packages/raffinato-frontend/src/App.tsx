@@ -1,11 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
+import './design-system/scss/index.scss';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit
           <code>src/App.tsx</code>
@@ -20,6 +19,7 @@ function App() {
           Learn React
         </a>
       </header>
+      base url: {process.env.REACT_APP_API_BASE_URL}
     </div>
   );
 }

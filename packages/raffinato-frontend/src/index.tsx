@@ -4,6 +4,8 @@ import './scss/index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+require('dotenv').config();
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
@@ -14,4 +16,5 @@ ReactDOM.render(
 // If you want to start measuring performance in your app, pass a
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// eslint-disable-next-line no-console
+reportWebVitals(console.log);
