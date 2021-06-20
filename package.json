@@ -7,7 +7,8 @@
     "start": "lerna run start",
     "start:web": "lerna run start --scope=raffinato-frontend --stream",
     "build:web": "lerna run build --scope=raffinato-frontend",
-    "start:api": "lerna run start --scope=raffinato-backend --stream"
+    "start:api": "lerna run start --scope=raffinato-backend --stream",
+    "start:crawler": "lerna run start --scope=raffinato-scraper"
   },
   "dependencies": {},
   "devDependencies": {
