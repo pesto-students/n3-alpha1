@@ -1,0 +1,144 @@
+@use "sass:map";
+
+/*********************
+* Colors 
+**********************/
+
+// brand
+$brand-color: #2F1600;
+$brand-color-primary: $brand-color;
+$brand-color-secondary: #B55500;
+
+// bg
+$bg-color: #FCFAF7;
+$bg-color-dark-0: $brand-color;
+$bg-color-dark-1: #562B04;
+$bg-color-light-0:#FCFAF7;
+$bg-color-light-1 : rgba(#F0E4D2, 0.4);
+$bg-color-light-2 : rgba($brand-color-secondary, 0.1);
+
+// feedback
+$danger-color : #FF0000;
+$success-color : #1CB90F;
+
+
+/*********************
+* Typography 
+**********************/
+
+// scale - desktop
+$font-sizes-desktop: (
+  "xxs": 0.6rem,
+  "xs": 0.7rem, 
+  "sm": 0.8rem, 
+  "md": 1rem,
+  "lg": 1.2rem,
+  "xl": 1.6rem,
+  "xxl": 4rem
+);
+
+// scale - mobile
+$font-sizes-mobile: (
+  "xxs": 0.75rem, 
+  "xs": 0.875rem, 
+  "sm": 1rem,
+  "md": 1.25rem,
+  "lg": 1.5rem,
+  "xl": 2rem,
+  "xxl": 3rem
+);
+
+// font weights
+$font-weights: ("light": 300, "regular": 400, "medium": 500);
+$font-weights-short: ("l": 300, "r": 400, "m": 500);
+
+// line heights
+
+/*********************
+* Spacing
+**********************/
+
+$spacings-desktop: (
+  "zr": 0rem,  
+  "xxxs": 0.2rem,
+  "xxs": 0.4rem,
+  "xs": 0.6rem,
+  "sm": 0.8rem,
+  "md": 1rem,
+  "lg": 1.2rem,
+  "xl": 1.6rem,
+  "xxl": 2.4rem,
+  "xxxl": 3.2rem,
+);
+$spacings-mobile: (
+  "zr": 0rem,  
+  "xxxs": 0.25rem,
+  "xxs": 0.25rem,
+  "xs": 0.5rem,
+  "sm": 0.75rem,
+  "md": 1rem,
+  "lg": 1.25rem,
+  "xl": 1.5rem,
+  "xxl": 2rem,
+  "xxxl": 3rem,
+);
+
+
+/*********************
+* Layout 
+**********************/
+
+// media aliases and breakpoints
+$screen-sm-min: 600px;
+$screen-md-min: 960px;
+$screen-lg-min: 1280px;
+$screen-xl-min: 1920px;
+$screen-xs-max: 599px;
+$screen-sm-max: 959px;
+$screen-md-max: 1279px;
+$screen-lg-max: 1919px;
+$screen-xl-max: 5000px;
+
+// precise targets
+@mixin xs {
+  @media screen and (max-width: #{$screen-xs-max}) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media screen and (min-width: #{$screen-sm-min}) and (max-width: #{$screen-sm-max}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media screen and (min-width: #{$screen-md-min}) and (max-width: #{$screen-md-max}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media screen and (min-width: #{$screen-lg-min}) and (max-width: #{$screen-lg-max}) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media screen and (min-width: #{$screen-xl-min}) and (max-width: #{$screen-xl-max}) {
+    @content;
+  }
+}
+
+// broad targets
+@mixin mobile {
+  @media screen and (max-width: #{$screen-sm-max}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}

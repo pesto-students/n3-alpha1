@@ -1,0 +1,22 @@
+// flexbox helper classes
+.rf-flex{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.rf-flex.rf-flex-h{ flex-direction: row; }
+.rf-flex.rf-flex-v{ flex-direction: column; }
+
+.rf-flex.rf-al-c{ align-items: center; }
+.rf-flex.rf-al-s{ align-items: flex-start; }
+.rf-flex.rf-al-e{ align-items: flex-end; }
+.rf-flex.rf-al-stretch{ align-items: stretch; }
+.rf-flex.rf-al-baseline{ align-items: baseline; }
+
+.rf-flex.rf-ju-c{ justify-content: center; }
+.rf-flex.rf-ju-s{ justify-content: flex-start; }
+.rf-flex.rf-ju-e{ justify-content: flex-end; }
+.rf-flex.rf-ju-sb{ justify-content: space-between; }
+.rf-flex.rf-ju-sa{ justify-content: space-around; }

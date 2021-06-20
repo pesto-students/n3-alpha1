@@ -1,0 +1,11 @@
+@use "sass:map";
+
+@each $size, $value in $spacings-desktop {
+  @each $side in top, right, bottom, left{
+    @each $spacing-type in margin, padding{
+      .rf-#{$spacing-type}-#{$side}-#{$size}{
+        #{$spacing-type}-#{$side}: map.get($spacings-desktop, $size);
+      }
+    }
+  }
+}
