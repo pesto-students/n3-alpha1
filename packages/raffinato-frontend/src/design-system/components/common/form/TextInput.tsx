@@ -10,8 +10,14 @@ export default function TextInput(props: {
   onChange: (e: any) => {};
 }) {
   const [focus, setFocus] = useState(false);
-  const { theme, responsive, placeholder, hasError, helperText, onChange } =
-    props;
+  const {
+    theme,
+    responsive,
+    placeholder,
+    hasError,
+    helperText,
+    onChange,
+  } = props;
   const themeClassName = `rf-text-input-theme-${theme}`;
   const responsiveClassName = responsive ? 'rf-text-input-responsive' : '';
   const errorClassName = hasError ? 'rf-input-errored' : '';
