@@ -1,0 +1,27 @@
+{
+  "name": "raffinato-crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "start": "node --experimental-specifier-resolution=node script.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sync": "cld sync --push pictures Assets"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cloudinary": "^1.26.0",
+    "dotenv": "^10.0.0",
+    "jsdom": "^16.6.0",
+    "puppeteer": "^10.0.0",
+    "tiny-async-pool": "^1.2.0"
+  },
+  "type": "module",
+  "devDependencies": {
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4"
+  }
+}
