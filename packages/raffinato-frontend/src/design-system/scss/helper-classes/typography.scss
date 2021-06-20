@@ -1,23 +1,42 @@
-// font size helper classes
-// eg. rf-text-md
-@each $size, $value in $font-sizes-desktop {
-  .rf-text-#{$size} {
-    font-size: $value;
-  }
-}
-@each $size, $value in $font-sizes-mobile {
-  @media (max-width: 768px) {
-    .rf-text-#{$size} {
-      font-size: $value;
-    }
-  }
-}
+@use "sass:map";
 
-
-// font weight helper classes
-// eg. rf-text-w-l
+// font weight helper classes | eg. rf-text-w-l
 @each $weight, $value in $font-weights-short {
   .rf-text-w-#{$weight} {
     font-weight: $value;
   }
+}
+
+// font weight helper classes | eg. rf-text-w-l
+@each $weight, $value in $font-weights-short {
+  .rf-text-w-#{$weight} {
+    font-weight: $value;
+  }
+}
+
+// tags - h1, h2 etc.
+@mixin generateTagFontSizeStyles ($tag, $desktopScale, $mobileScale) {
+  #{$tag} {
+    font-size: map.get($font-sizes-desktop, $desktopScale);
+    @include mobile {
+      font-size: map.get($font-sizes-mobile, $mobileScale);
+    }
+  }
+}
+
+@include generateTagFontSizeStyles("h1", "xxl", "xxl");
+@include generateTagFontSizeStyles("h2", "xl", "xl");
+@include generateTagFontSizeStyles("h3", "lg", "lg");
+@include generateTagFontSizeStyles("h4", "lg", "md");
+@include generateTagFontSizeStyles("p", "md", "sm");
+@include generateTagFontSizeStyles(".rf-text-sm", "sm", "xs");
+@include generateTagFontSizeStyles(".rf-text-xs", "xs", "xxs");
+@include generateTagFontSizeStyles(".rf-text-xxs", "xxs", "xxs");
+
+h1, h2, h3, h4{
+  font-weight: map.get($font-weights, "medium");
+}
+
+p{
+  font-weight: map.get($font-weights, "regular");
 }
