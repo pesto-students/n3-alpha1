@@ -1,0 +1,44 @@
+@import '../../../scss/util/config.scss';
+
+.rf-alert-container-base {
+  z-index: $z-index-alert;
+  position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 100vh;
+  padding: 10px;
+  font-size: 1em;
+}
+
+.rf-alert-container-pos-bottom-right {
+  right: 0;
+  bottom: 0;
+
+  .rf-alert-base {
+    margin-bottom: 5px;
+  }
+}
+
+.rf-alert-base {
+  border-radius: 0;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-weight: 300;
+  background-color: $brand-color;
+  color: white;
+  padding: 18px 30px;
+  width: 400px;
+}
+
+.rf-alert-type-success {
+  background-color: $success-color;
+}
+
+.rf-alert-type-failure {
+  background-color: $danger-color;
+}
+
+
