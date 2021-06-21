@@ -7,9 +7,18 @@ export default function Button(props: {
   size: string;
   theme: string;
   responsive: boolean;
-  onClick?: () => void;
+  onClick: () => void;
+  className: string;
 }) {
-  const { children, variant, size, theme, responsive, onClick } = props;
+  const {
+    children,
+    variant,
+    size,
+    theme,
+    responsive,
+    className,
+    onClick,
+  } = props;
   const themeClassName = `rf-button-theme-${theme}`;
   const variantClassName = `rf-button-variant-${variant}`;
   const sizeClassName = `rf-button-size-${size}`;
@@ -21,6 +30,7 @@ export default function Button(props: {
     variantClassName,
     sizeClassName,
     responsiveClassName,
+    className, // from props
   ].join(' ');
 
   return (
@@ -36,6 +46,8 @@ Button.propTypes = {
   size: PropTypes.string,
   theme: PropTypes.string,
   responsive: PropTypes.bool,
+  onClick: PropTypes.func.isRequired,
+  className: PropTypes.string,
 };
 
 Button.defaultProps = {
@@ -43,4 +55,5 @@ Button.defaultProps = {
   size: 'large',
   theme: 'dark',
   responsive: true,
+  className: '',
 };

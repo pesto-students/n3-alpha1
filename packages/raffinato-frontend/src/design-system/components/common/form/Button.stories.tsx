@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/no-extraneous-dependencies */
 
 import React from 'react';
@@ -35,6 +36,7 @@ export const Primary: React.VFC<{
   variant: string;
   theme: string;
 }> = (args) => (
-  // eslint-disable-next-line react/destructuring-assignment
-  <Button {...args}>{args.label || 'Create account'}</Button>
+  <Button {...args} onClick={() => {}}>
+    {args.label || 'Create account'}
+  </Button>
 );

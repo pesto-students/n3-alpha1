@@ -1,0 +1,138 @@
+.rf-navbar{
+  position: fixed;
+  z-index: 990;
+  padding: 48px;
+  top: 0;
+  left: 0;
+  height: auto;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: start;
+}
+
+.rf-navbar-logo{
+  height: 48px;
+  text-align: center;
+  svg{
+    height: 48px;
+  }
+}
+
+
+.rf-navbar-theme-light{
+  color: white;
+  background: transparent;
+
+  svg *{
+    fill: white;
+  }
+}
+
+.rf-navbar-theme-dark{
+  color: $brand-color;
+  background: $bg-color;
+
+  svg *{
+    fill: $brand-color;
+  }
+}
+
+
+.rf-navbar-upfront-menu{
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.rf-navbar-upfront-menu-button{
+  margin-left: 48px;
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+}
+
+.rf-navbar-menu-button{
+  width: 24px;
+  cursor: pointer;
+}
+
+
+// fullscreen menu
+.rf-fullscreen-menu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: scroll;
+  background: #562B04;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.rf-fullscreen-menu > h1{
+  text-align: center;
+  cursor: pointer;
+  color: white;
+}
+
+.rf-fullscreen-menu > h1:hover{
+  color: #B55500;
+}
+
+.rf-fullscreen-menu-close{
+  position: fixed;
+  top: 48px;
+  left: 48px;
+}
+
+// cart
+.rf-section-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: horizontal;
+  border-bottom: 1px solid #2F1600
+}
+
+.rf-sidebar-close{
+  position: absolute;
+  top: 0;
+  // left: -120px;
+  left: 0;
+}
+
+.rf-cta-placeholder{
+  height: 142px;
+}
+
+.rf-cta{
+  position: fixed;
+  bottom: 32px;
+  width: calc(100% - 2 * 64px);
+}
+
+.rf-backdrop{
+  z-index: 991;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(black, 0.4);
+}
+
+.rf-sidebar{
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 640px;
+  overflow-y: scroll;
+  background: $bg-color;
+  overflow-x: visible;
+  padding: 32px 64px;
+  color: $brand-color;
+}

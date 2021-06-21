@@ -14,9 +14,9 @@
   }
 }
 
-// tags - h1, h2 etc.
-@mixin generateTagFontSizeStyles ($tag, $desktopScale, $mobileScale) {
-  #{$tag} {
+// selectors - h1, h2 etc.
+@mixin generateFontSizeStyles ($selector, $desktopScale, $mobileScale) {
+  #{$selector} {
     font-size: map.get($font-sizes-desktop, $desktopScale);
     @include mobile {
       font-size: map.get($font-sizes-mobile, $mobileScale);
@@ -24,14 +24,29 @@
   }
 }
 
-@include generateTagFontSizeStyles("h1", "xxl", "xxl");
-@include generateTagFontSizeStyles("h2", "xl", "xl");
-@include generateTagFontSizeStyles("h3", "lg", "lg");
-@include generateTagFontSizeStyles("h4", "lg", "md");
-@include generateTagFontSizeStyles("p", "md", "sm");
-@include generateTagFontSizeStyles(".rf-text-sm", "sm", "xs");
-@include generateTagFontSizeStyles(".rf-text-xs", "xs", "xxs");
-@include generateTagFontSizeStyles(".rf-text-xxs", "xxs", "xxs");
+@mixin generateMarginBottomStyles ($selector, $desktopScale, $mobileScale) {
+  #{$selector} {
+    margin-bottom: map.get($spacings-desktop, $desktopScale);
+    @include mobile {
+      margin-bottom: map.get($spacings-mobile, $mobileScale);
+    }
+  }
+}
+
+@include generateFontSizeStyles("h1", "xxl", "xxl");
+@include generateFontSizeStyles("h2", "xl", "xl");
+@include generateFontSizeStyles("h3", "lg", "lg");
+@include generateFontSizeStyles("h4", "lg", "md");
+@include generateFontSizeStyles("p", "md", "sm");
+@include generateFontSizeStyles(".rf-text-sm", "sm", "xs");
+@include generateFontSizeStyles(".rf-text-xs", "xs", "xxs");
+@include generateFontSizeStyles(".rf-text-xxs", "xxs", "xxs");
+
+@include generateMarginBottomStyles("h1", "xl", "xl");
+@include generateMarginBottomStyles("h2", "lg", "lg");
+@include generateMarginBottomStyles("h3", "md", "md");
+@include generateMarginBottomStyles("h4", "md", "md");
+@include generateMarginBottomStyles("p", "md", "md");
 
 h1, h2, h3, h4{
   font-weight: map.get($font-weights, "medium");
@@ -39,4 +54,13 @@ h1, h2, h3, h4{
 
 p{
   font-weight: map.get($font-weights, "regular");
+  margin-bottom: map.get($font-weights, "regular");
+}
+
+h1{
+  line-height: 1.2;
+}
+
+.rf-text-white{
+  color: white;
 }

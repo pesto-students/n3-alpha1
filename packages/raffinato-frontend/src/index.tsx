@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider as ReduxProvider } from 'react-redux';
+import './index.scss';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
 import AlertContainer from 'design-system/components/common/alert/AlertContainer';
 import { Navbar } from 'design-system';
 import { Home, Product, Shop } from 'pages';
 import store from 'store/store';
-import 'design-system/scss/index.scss';
-import 'scss/index.scss';
 
 require('dotenv').config();
 
