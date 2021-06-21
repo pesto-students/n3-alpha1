@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './design-system/scss/index.scss';
-import './scss/index.scss';
+import './index.scss';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Navbar } from './design-system';
 import { Home, Product, Shop } from './pages';
