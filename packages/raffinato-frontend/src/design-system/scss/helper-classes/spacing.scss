@@ -1,10 +1,14 @@
 @use "sass:map";
 
+// eg. .rf-margin-bottom-md or .rf-padding-top-sm
 @each $size, $value in $spacings-desktop {
   @each $side in top, right, bottom, left{
     @each $spacing-type in margin, padding{
-      .rf-#{$spacing-type}-#{$side}-#{$size}{
+      .rf-#{$spacing-type}-#{str-slice($side,0,1)}-#{$size}{
         #{$spacing-type}-#{$side}: map.get($spacings-desktop, $size);
+        @include mobile{
+          #{$spacing-type}-#{$side}: map.get($spacings-mobile, $size);
+        }
       }
     }
   }

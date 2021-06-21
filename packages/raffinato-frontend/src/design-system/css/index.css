@@ -53,16 +53,16 @@ table {
 }
 
 /*********************
-* Colors 
+* Colors
 **********************/
 /*********************
-* Typography 
+* Typography
 **********************/
 /*********************
 * Spacing
 **********************/
 /*********************
-* Layout 
+* Layout
 **********************/
 /*
     Fonts
@@ -544,6 +544,14 @@ p {
   flex-direction: column;
 }
 
+.rf-flex.rf-flex-hr {
+  flex-direction: row-reverse;
+}
+
+.rf-flex.rf-flex-vr {
+  flex-direction: column-reverse;
+}
+
 .rf-flex.rf-al-c {
   align-items: center;
 }
@@ -757,6 +765,7 @@ html {
 body {
   min-height: 100%;
   background-color: #FCFAF7;
+  box-sizing: border-box;
 }
 
 html, body, input, textarea, button, select, label {

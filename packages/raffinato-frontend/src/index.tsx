@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider as ReduxProvider } from 'react-redux';
+import './index.scss';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { FirebaseAppProvider } from 'reactfire';
 
 import 'design-system/scss/index.scss';
 import 'scss/index.scss';
-import { Home, Product, Shop, Login } from 'pages';
+import { Home, Product, Shop } from 'pages';
 import { Navbar } from 'design-system';
 import AlertContainer from 'design-system/components/common/alert/AlertContainer';
 import firebaseConfig from 'auth/firebaseConfig';
@@ -35,9 +36,6 @@ ReactDOM.render(
             </Route>
             <Route path="/shop">
               <Shop />
-            </Route>
-            <Route path="/login">
-              <Login />
             </Route>
             <Route path="/product/:id">
               <Product />
