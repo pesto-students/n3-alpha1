@@ -1,5 +1,3 @@
-import Navbar from './components/common/navigation/Navbar';
-import Button from './components/common/form/Button';
-import TextInput from './components/common/form/TextInput';
-
-export { Navbar, Button, TextInput };
+export { default as Navbar } from './components/common/navigation/Navbar';
+export { default as TextInput } from './components/common/form/TextInput';
+export { default as Button } from './components/common/form/Button';

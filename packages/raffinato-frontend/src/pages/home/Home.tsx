@@ -26,7 +26,7 @@ const Home = () => {
             responsive={false}
             onClick={() => history.push('/shop')}
           >
-            Show now
+            Shop now
           </Button>
         </div>
         <div className="hero-scroll-indicator">

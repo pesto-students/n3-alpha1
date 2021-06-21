@@ -12,6 +12,13 @@
   transition-duration: 400ms;
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   transition-property: clip-path;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > * {
+    margin: 0px 10px;
+  }
 }
 
 // variants

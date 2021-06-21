@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react';
 import { Meta } from '@storybook/react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 import BaseModal from 'design-system/components/common/modal/BaseModal';
 import Button from 'design-system/components/common/form/Button';

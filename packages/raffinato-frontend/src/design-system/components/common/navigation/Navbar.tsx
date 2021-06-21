@@ -5,22 +5,32 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
-import { ReactComponent as Logo } from '../../../assets/images/logo.svg';
-import { ReactComponent as MenuIcon } from '../../../assets/icons/menu.svg';
-import { ReactComponent as SearchIcon } from '../../../assets/icons/search.svg';
-import { ReactComponent as BagIcon } from '../../../assets/icons/bag.svg';
-import { ReactComponent as AccountIcon } from '../../../assets/icons/account.svg';
+import { ReactComponent as Logo } from 'design-system/assets/images/logo.svg';
+import { ReactComponent as MenuIcon } from 'design-system/assets/icons/menu.svg';
+import { ReactComponent as SearchIcon } from 'design-system/assets/icons/search.svg';
+import { ReactComponent as BagIcon } from 'design-system/assets/icons/bag.svg';
+import { ReactComponent as AccountIcon } from 'design-system/assets/icons/account.svg';
 import Menu from './Menu';
 import Cart from './Cart';
 
-export default function Navbar(props: any) {
+type NavbarProps = {
+  theme?: string;
+  signInCallback?: () => void;
+};
+
+export default function Navbar(props: NavbarProps) {
   const history = useHistory();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const { theme } = props;
+
+  const { theme, signInCallback } = props;
   const baseClassName = 'rf-navbar';
   const themeClassName = `rf-navbar-theme-${theme}`;
   const finalClassName = [baseClassName, themeClassName].join(' ');
+
+  const handleAccountClick = () => {
+    signInCallback?.();
+  };
 
   return (
     <nav className={finalClassName}>
@@ -46,7 +56,7 @@ export default function Navbar(props: any) {
           <BagIcon />
         </div>
         <div className="rf-navbar-upfront-menu-button">
-          <AccountIcon />
+          <AccountIcon onClick={handleAccountClick} />
         </div>
       </div>
       <Menu

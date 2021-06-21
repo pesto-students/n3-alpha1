@@ -5,45 +5,6 @@ import type { ReactNode } from 'react';
 import Icon from 'design-system/components/Icon/Icon';
 import './modal.scss';
 
-// const StyledModalInnerWrapper = styled('div')`
-//   display: flex;
-//   justify-content: space-around;
-//   flex-direction: column;
-//   align-items: center;
-//   height: 100%;
-//   position: relative;
-
-//   & .row {
-//     width: 100%;
-//     display: flex;
-
-//     & .column {
-//       width: 50%;
-//       padding: 10px;
-//       color: #81878c;
-
-//       &:first-child {
-//         text-align: right;
-//         color: initial;
-//       }
-//     }
-//   }
-
-//   & .header {
-//     font-size: 18px;
-//   }
-
-//   & .modalCloseButton {
-//     background: none;
-//     border: none;
-//     outline: none;
-//     position: absolute;
-//     right: 10px;
-//     top: 8px;
-//     cursor: pointer;
-//   }
-// `;
-
 const modalStyles: Styles = {
   overlay: {
     position: 'absolute',
@@ -58,14 +19,15 @@ const modalStyles: Styles = {
     left: 'initial',
     bottom: 'initial',
     right: 'initial',
-    height: '400px',
+    minHeight: '400px',
     width: '650px',
     background: '#FCFAF7',
     padding: '40px 64px',
+    overflow: 'hidden',
   },
 };
 
-type ModalProps = Modal.Props & {
+type BaseModalProps = Modal.Props & {
   children: ReactNode;
   contentStyle?: Record<string, any>;
 };
@@ -76,7 +38,7 @@ function BaseModal({
   contentLabel,
   children,
   contentStyle,
-}: ModalProps) {
+}: BaseModalProps) {
   const modalCloseBbuttonClassName = [
     'rf-flex',
     'rf-al-c',
@@ -112,3 +74,5 @@ function BaseModal({
 }
 
 export default BaseModal;
+
+export type { BaseModalProps };

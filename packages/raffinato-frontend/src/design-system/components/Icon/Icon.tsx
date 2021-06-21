@@ -1,7 +1,11 @@
 import React from 'react';
 import SVG from 'react-inlinesvg';
 
-const reqIcons = require.context('assets/icons', true, /\.(svg|png)$/);
+const reqIcons = require.context(
+  'design-system/assets/icons',
+  true,
+  /\.(svg|png)$/
+);
 
 type IconType = 'svg' | 'png';
 
