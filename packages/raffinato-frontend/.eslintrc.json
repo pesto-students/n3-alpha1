@@ -1,11 +1,25 @@
 {
     "root": true,
-    "extends": ["airbnb-typescript", "prettier"],
+    "extends": ["airbnb-typescript", "airbnb/hooks", "plugin:prettier/recommended"],
     "plugins": ["prettier"],
     "parserOptions": {
         "project": "./tsconfig.json"
     },
     "rules": {
-        "prettier/prettier": "error"
+        "prettier/prettier": "error",
+        "react/jsx-props-no-spreading": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "warn", { "argsIgnorePattern": "^_"  }
+        ],
+        "react/require-default-props": "off"
+    },
+    "settings": {
+        "import/resolver": {
+          "node": {
+            "paths": [ "src" ],
+            "extensions": [".js", ".jsx", ".ts", ".tsx"]
+          },
+          "typescript": {}
+        }
     }
 }

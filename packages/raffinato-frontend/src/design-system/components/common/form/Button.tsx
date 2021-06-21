@@ -7,8 +7,9 @@ export default function Button(props: {
   size: string;
   theme: string;
   responsive: boolean;
+  onClick?: () => void;
 }) {
-  const { children, variant, size, theme, responsive } = props;
+  const { children, variant, size, theme, responsive, onClick } = props;
   const themeClassName = `rf-button-theme-${theme}`;
   const variantClassName = `rf-button-variant-${variant}`;
   const sizeClassName = `rf-button-size-${size}`;
@@ -23,7 +24,7 @@ export default function Button(props: {
   ].join(' ');
 
   return (
-    <button className={finalClassName} type="button">
+    <button className={finalClassName} type="button" onClick={onClick}>
       <div className="rf-button-inner-wrapper">{children}</div>
     </button>
   );
