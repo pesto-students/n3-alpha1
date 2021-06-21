@@ -1,31 +1,9 @@
 import React from 'react';
-import Modal, { Styles } from 'react-modal';
+import Modal from 'react-modal';
 import type { ReactNode } from 'react';
 
 import Icon from 'design-system/components/Icon/Icon';
 import './modal.scss';
-
-const modalStyles: Styles = {
-  overlay: {
-    position: 'absolute',
-    backgroundColor: 'transparent',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  content: {
-    position: 'absolute',
-    top: 'initial',
-    left: 'initial',
-    bottom: 'initial',
-    right: 'initial',
-    minHeight: '400px',
-    width: '650px',
-    background: '#FCFAF7',
-    padding: '40px 64px',
-    overflow: 'hidden',
-  },
-};
 
 type BaseModalProps = Modal.Props & {
   children: ReactNode;
@@ -53,9 +31,10 @@ function BaseModal({
       parentSelector={() => document.body}
       contentLabel={contentLabel}
       style={{
-        content: { ...modalStyles.content, ...contentStyle },
-        overlay: modalStyles.overlay,
+        content: { ...contentStyle },
       }}
+      overlayClassName="ReactModal__Overlay"
+      className="ReactModal__Content"
       closeTimeoutMS={500}
     >
       <div className="rf-basemodal-wrapper">
