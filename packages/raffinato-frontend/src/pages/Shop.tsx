@@ -1,7 +1,12 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import { useQuery } from 'react-query';
+import getProducts from 'api/getProducts';
 
-const Shop = () => <div>Shop page</div>;
+const Shop = () => {
+  const { data, isLoading } = useQuery('products', getProducts);
+
+  return <div>Shop page</div>;
+};
 
 Shop.propTypes = {};
 
