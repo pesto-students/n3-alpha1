@@ -23,6 +23,12 @@ function AuthModal(props: Omit<BaseModalProps, 'children'>) {
 
   const handleSignIn = async () => {
     await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+
+    const token = await auth?.currentUser?.getIdToken(true);
+
+    if (token) {
+      localStorage.setItem('@token', token);
+    }
   };
 
   return (
