@@ -1,5 +1,6 @@
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
+const cors = require('cors');
 const router = require('./routes/routes');
 const swaggerDocument = require('./docs/swagger.json');
 const middlewares = require('./middleware/index.js');
@@ -8,6 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(middlewares.checkAuth);
+app.use(cors());
 
 const options = {
     explorer: true,
