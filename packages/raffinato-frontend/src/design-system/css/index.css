@@ -1104,6 +1104,12 @@ h1 {
   transition-duration: 400ms;
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   transition-property: clip-path;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rf-button-inner-wrapper > * {
+  margin: 0px 10px;
 }
 
 .rf-button-variant-primary {
@@ -1409,6 +1415,9 @@ html, body, input, textarea, button, select, label {
   html, body, input, textarea, button, select, label {
     font-size: 16px;
   }
+}
+html *, body *, input *, textarea *, button *, select *, label * {
+  box-sizing: border-box;
 }
 
 img {
