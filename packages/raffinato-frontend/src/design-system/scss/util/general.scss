@@ -17,6 +17,10 @@ html, body, input, textarea, button, select, label{
   font-size: 20px;
   @include mobile{
     font-size: 16px;
+}
+
+* {
+    box-sizing: border-box;
   }
 }
 
@@ -25,5 +29,5 @@ img {
 }
 
 .rf-italiana{
-  font-family: Italiana; 
+  font-family: Italiana;
 }

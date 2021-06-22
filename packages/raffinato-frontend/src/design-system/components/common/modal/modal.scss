@@ -1,0 +1,77 @@
+@use "sass:map";
+@import '../../../scss/util/config.scss';
+
+// ReactModal Classes
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: all 500ms ease-in-out;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  position: fixed;
+  inset: 0px;
+}
+
+.ReactModal__Content {
+  position: absolute;
+  top: initial;
+  left: initial;
+  bottom: initial;
+  right: initial;
+  min-height: 400px;
+  width: 650px;
+  background: #FCFAF7;
+  padding: 40px 64px;
+  overflow: hidden;
+  transform: scale(0.75);
+  transition: all 500ms ease-in-out;
+
+  @include sm {
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    height: 100vh;
+    width: 100vw;
+  }
+}
+
+.ReactModal__Content--after-open {
+  transform: scale(1);
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.ReactModal__Content--before-close {
+  opacity: 0;
+  transform: scale(0.75);
+  transition: all 500ms ease-in-out;
+}
+
+// Component Classes
+
+.rf-basemodal-close-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 64px;
+  height: 64px;
+  background: #F6EFE5;
+  border: none;
+}
+
+.rf-basemodal-header {
+  font-family: Italiana;
+  color: rgba($brand-color, 0.4);
+  text-align: center;
+}
+
+.rf-basemodal-wrapper {
+  height: 100%;
+}
