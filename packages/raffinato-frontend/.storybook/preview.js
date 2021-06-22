@@ -1,7 +1,7 @@
 import { Provider as ReduxProvider } from 'react-redux';
 
 import store from 'store/store';
-import '../src/design-system/css/index.css';
+import 'design-system/scss/index.scss';
 // todo: make the sass loader work for storybook
 
 export const decorators = [

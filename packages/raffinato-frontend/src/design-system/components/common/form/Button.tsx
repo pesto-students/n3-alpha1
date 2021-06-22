@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import PropTypes from 'prop-types';
 
 export default function Button(props: {
@@ -7,8 +7,10 @@ export default function Button(props: {
   size: string;
   theme: string;
   responsive: boolean;
-  onClick: () => void;
+  onClick: (event: MouseEvent<any>) => void;
   className: string;
+  leftIcon?: any;
+  righticon?: any;
 }) {
   const {
     children,
@@ -18,6 +20,8 @@ export default function Button(props: {
     responsive,
     className,
     onClick,
+    leftIcon,
+    righticon,
   } = props;
   const themeClassName = `rf-button-theme-${theme}`;
   const variantClassName = `rf-button-variant-${variant}`;
@@ -35,7 +39,11 @@ export default function Button(props: {
 
   return (
     <button className={finalClassName} type="button" onClick={onClick}>
-      <div className="rf-button-inner-wrapper">{children}</div>
+      <div className="rf-button-inner-wrapper">
+        {leftIcon}
+        {children}
+        {righticon}
+      </div>
     </button>
   );
 }
