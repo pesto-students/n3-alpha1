@@ -8,12 +8,12 @@ const { REACT_APP_API_URL } = process.env;
 
 const getCompleteURL = (url: string) => `${REACT_APP_API_URL}/${url}`;
 
-export const objToQueryStr = (obj: Params) =>
+export const objToQueryString = (obj: Params) =>
   Object.keys(obj)
     .map((k) => `${encodeURIComponent(k)}=${encodeURIComponent(obj[k])}`)
     .join('&');
 
-const responseIsJSON = (res: Response) => {
+const isResJSON = (res: Response) => {
   const contentType = res.headers.get('content-type');
 
   if (!contentType) {
@@ -29,12 +29,15 @@ const get = async (
   headers = DEFAULT_HEADER,
   settings = {}
 ) => {
-  const res = await fetch(`${getCompleteURL(url)}?${objToQueryStr(params)}`, {
-    ...settings,
-    headers,
-  });
+  const res = await fetch(
+    `${getCompleteURL(url)}?${objToQueryString(params)}`,
+    {
+      ...settings,
+      headers,
+    }
+  );
 
-  if (!responseIsJSON(res)) {
+  if (!isResJSON(res)) {
     throw Error(
       JSON.stringify({
         status: null,
@@ -63,7 +66,7 @@ const post = async (
     ...settings,
   });
 
-  if (!responseIsJSON(res)) {
+  if (!isResJSON(res)) {
     return { status: res.status };
   }
 
