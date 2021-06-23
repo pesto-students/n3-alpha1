@@ -3,7 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 
 import Alert from 'design-system/components/common/alert/Alert';
 import Portal from 'design-system/components/common/portal/Portal';
-import { useAppSelector } from 'hooks/useRedux';
+import { useAppSelector } from 'util/hooks/useRedux';
 
 import './alert.scss';
 

@@ -1,4 +1,4 @@
-import { useAppDispatch } from 'hooks/useRedux';
+import { useAppDispatch } from 'util/hooks/useRedux';
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
