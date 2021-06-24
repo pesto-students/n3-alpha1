@@ -81,7 +81,12 @@ const Home = () => {
   }, [paginate]);
 
   return (
-    <div className="rf-homepage">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="rf-homepage"
+    >
       <section className="rf-hero rf-position-r rf-flex rf-al-c rf-ju-c">
         <AnimatePresence initial={false} custom={direction}>
           <motion.img
@@ -151,7 +156,7 @@ const Home = () => {
           <div />
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 };
 
