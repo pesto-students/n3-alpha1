@@ -1,9 +1,9 @@
 import React from 'react';
-import { useAppDispatch } from 'hooks/useRedux';
 import { useHistory, Route } from 'react-router-dom';
 import { useUser } from 'reactfire';
 
 import { createAlert } from 'store/alertSlice';
+import { useAppDispatch } from '../hooks/useRedux';
 
 enum Status {
   SIGNED_IN = 'signedIn',
