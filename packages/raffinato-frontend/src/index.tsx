@@ -12,10 +12,20 @@ import firebaseConfig from 'auth/firebaseConfig';
 import store from 'store/store';
 import './index.scss';
 import 'design-system/scss/index.scss';
+import ProtectedRoute, { Status } from 'routes/ProtectedRoute';
+import Address from 'pages/address/Address';
+import AddAddress from 'pages/address/AddAddress';
+import { SplashScreen } from 'design-system';
 
 require('dotenv').config();
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 ReactDOM.render(
   <React.StrictMode>
@@ -23,7 +33,7 @@ ReactDOM.render(
       <ReduxProvider store={store}>
         <QueryClientProvider client={queryClient}>
           <AlertContainer />
-          <Suspense fallback="loading">
+          <Suspense fallback={<SplashScreen />}>
             <Router>
               {/* Global navbar */}
               <CommonLayout />
@@ -39,6 +49,17 @@ ReactDOM.render(
                 <Route path="/product/:id">
                   <Product />
                 </Route>
+
+                <ProtectedRoute
+                  status={Status.SIGNED_IN}
+                  path="/checkout/address/add"
+                  component={AddAddress}
+                />
+                <ProtectedRoute
+                  status={Status.SIGNED_IN}
+                  path="/checkout/address"
+                  component={Address}
+                />
               </Switch>
             </Router>
           </Suspense>

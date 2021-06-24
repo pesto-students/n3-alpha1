@@ -7,7 +7,9 @@ export default function TextInput(props: {
   responsive: boolean;
   hasError: boolean;
   helperText: string;
-  onChange: (e: any) => {};
+  onChange?: (e: any) => void;
+  name: string;
+  value?: any;
 }) {
   const [focus, setFocus] = useState(false);
   const {
@@ -17,10 +19,14 @@ export default function TextInput(props: {
     hasError,
     helperText,
     onChange,
+    name,
+    value,
   } = props;
   const themeClassName = `rf-text-input-theme-${theme}`;
   const responsiveClassName = responsive ? 'rf-text-input-responsive' : '';
-  const errorClassName = hasError ? 'rf-input-errored' : '';
+  const errorClassName = hasError
+    ? 'rf-input-errored'
+    : 'rf-input-errored--false';
   const focusClassName = focus ? `rf-text-input-focussed` : null;
 
   const finalClassName = [
@@ -36,6 +42,8 @@ export default function TextInput(props: {
       <div className={finalClassName}>
         <input
           type="text"
+          name={name}
+          value={value}
           placeholder={placeholder}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}

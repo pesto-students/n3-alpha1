@@ -77,10 +77,16 @@
   font-size: 0.875rem;
 }
 .rf-input-errored{
+  width: 100%;
+
   .rf-input-helper-text{
     color: rgba(red, 0.8);
   }
   .rf-text-input-base{
     border-color: rgba(red, 1);
   }
+}
+
+.rf-input-errored--false {
+  width: 100%
 }

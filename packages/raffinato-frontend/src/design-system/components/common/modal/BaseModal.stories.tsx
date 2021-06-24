@@ -6,7 +6,7 @@ import BaseModal from 'design-system/components/common/modal/BaseModal';
 import Button from 'design-system/components/common/form/Button';
 
 export default {
-  title: 'Components/common/Alert',
+  title: 'Components/common/BaseModal',
   component: BaseModal,
 } as Meta;
 

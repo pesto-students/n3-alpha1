@@ -1,0 +1,26 @@
+@import '../../../scss/util/config.scss';
+
+.rf-skeleton-loader {
+  background-color: rgba($brand-color-secondary, 0.1);
+  background-image: linear-gradient(
+    90deg,
+    rgba($brand-color-secondary, 0.1),
+    rgba($brand-color, 0.1),
+    rgba($brand-color-secondary, 0.1)
+  );
+  background-size: 200px 100%;
+  background-repeat: no-repeat;
+  display: inline-block;
+  line-height: 1;
+  width: 100%;
+  animation: skeleton 1.2s ease-in-out infinite;
+}
+
+@keyframes skeleton {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
