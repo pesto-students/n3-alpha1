@@ -24,7 +24,7 @@ function CommonLayout() {
       <Route path="/" exact>
         <Navbar theme="light" signInCallback={signInCallback} />
       </Route>
-      <Route path="/:other" exact>
+      <Route path="/:other+" exact>
         <Navbar theme="dark" signInCallback={signInCallback} />
       </Route>
       <AuthModal

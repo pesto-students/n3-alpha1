@@ -34,4 +34,4 @@ export const Primary: React.VFC<{
   placeholder: string;
   responsive: boolean;
   theme: string;
-}> = (args) => <TextInput {...args} />;
+}> = (args) => <TextInput name="test" {...args} />;

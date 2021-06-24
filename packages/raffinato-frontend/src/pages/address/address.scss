@@ -1,0 +1,33 @@
+@import '../../design-system//scss/util/config.scss';
+
+.rf-address-page {
+  padding: 150px 0px;
+}
+
+.rf-address-page-inner-wrapper {
+  & > *:not(:last-child) {
+    margin-bottom: 32px;
+  }
+}
+
+.rf-address-page-action-buttons {
+  & > *:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+
+.rf-address-page-add-section {
+  & > *:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  .rf-text-sm {
+    color: rgba($brand-color, 0.4 )
+  }
+}
+
+.rf-address-page-form-sections {
+  & > *:not(:last-child) {
+    margin-bottom: 50px;
+  }
+}

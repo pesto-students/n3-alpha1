@@ -2,7 +2,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import Button from 'design-system/components/common/form/Button';
-import { useAppDispatch } from 'util/hooks/useRedux';
+import { useAppDispatch } from 'hooks/useRedux';
 import { createAlert } from 'store/alertSlice';
 import AlertContainer from './AlertContainer';
 
