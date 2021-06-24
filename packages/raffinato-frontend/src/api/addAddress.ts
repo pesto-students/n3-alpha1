@@ -1,5 +1,5 @@
 import { Address } from 'design-system/components/common/box/AddressBox';
-import { get, post } from 'lib/fetch';
+import { post } from 'lib/fetch';
 
 type AddressMutationResult = {
   status: string | number;

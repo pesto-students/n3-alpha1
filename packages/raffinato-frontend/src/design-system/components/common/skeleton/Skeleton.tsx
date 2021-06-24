@@ -1,8 +1,16 @@
+import clsx from 'clsx';
 import React from 'react';
 
 import './skeleton.scss';
 
-function Skeleton({ count = 1, width, height }: any) {
+type SkeletonProps = {
+  count?: number;
+  width?: number | string;
+  height?: number | string;
+  className?: string;
+};
+
+function Skeleton({ count = 1, width, height, className }: SkeletonProps) {
   return (
     <span>
       {Array(count)
@@ -12,7 +20,7 @@ function Skeleton({ count = 1, width, height }: any) {
             // Sketelons can't be modified, hence safe to use indexes as key
             // eslint-disable-next-line react/no-array-index-key
             key={i}
-            className="rf-skeleton-loader"
+            className={clsx('rf-skeleton-loader', className)}
             style={{ width, height }}
           >
             {/* Zero-width non-joiner */}
