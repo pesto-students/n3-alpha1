@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-console */
+import { motion } from 'framer-motion';
 import React from 'react';
 import { useHistory } from 'react-router';
 import { Button } from '../../design-system';
@@ -11,7 +12,12 @@ const Home = () => {
   const history = useHistory();
 
   return (
-    <div className="rf-homepage">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="rf-homepage"
+    >
       <section className="rf-hero rf-position-r rf-flex rf-al-c rf-ju-c">
         <img alt="" className="rf-hero-img" src={HeroImage} />
         <div className="rf-hero-message">
@@ -39,7 +45,7 @@ const Home = () => {
           <div />
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 };
 
