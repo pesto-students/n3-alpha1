@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
-import { useMutation, useQuery } from 'react-query';
-import getAddress from 'api/getAddress';
+import { useHistory } from 'react-router-dom';
+import { useMutation } from 'react-query';
+import clsx from 'clsx';
+import React from 'react';
 
 import { ContainerBox, TextInput, Button } from 'design-system/index';
-import './address.scss';
-import clsx from 'clsx';
-import type { Address } from 'design-system/components/common/box/AddressBox';
-import { useAppDispatch } from 'hooks/useRedux';
 import { createAlert } from 'store/alertSlice';
-import Icon from 'design-system/components/Icon/Icon';
-import useForm from 'hooks/useForm';
+import { useAppDispatch } from 'hooks/useRedux';
 import addAddress from 'api/addAddress';
-import { useHistory } from 'react-router-dom';
+import Icon from 'design-system/components/Icon/Icon';
+import type { Address } from 'design-system/components/common/box/AddressBox';
+import useForm from 'hooks/useForm';
+import './address.scss';
 
 const AddAddressPage = () => {
   const dispatch = useAppDispatch();

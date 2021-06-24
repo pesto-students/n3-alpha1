@@ -1,19 +1,19 @@
-/* eslint-disable @typescript-eslint/no-shadow */
-import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import { useInfiniteQuery, UseInfiniteQueryResult } from 'react-query';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import React, { useState } from 'react';
+import ScrollAnimation from 'react-animate-on-scroll';
+
+import { Skeleton } from 'design-system/index';
 import getProducts from 'api/getProducts';
 import './shop.scss';
-import ScrollAnimation from 'react-animate-on-scroll';
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 interface Page {
   products: any[];
 }
 
 const Shop = () => {
-  // const [filters, ]
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
   const count = 20;
   const res: UseInfiniteQueryResult<Page, unknown> = useInfiniteQuery(
     'products',
@@ -22,9 +22,11 @@ const Shop = () => {
     },
     {
       keepPreviousData: true,
-      getNextPageParam: (lastPage, pages) => pages.length,
+      getNextPageParam: (lastPage, pages) => pages.length + 1,
     }
   );
+
+  const handleImageLoaded = () => setIsImageLoaded(true);
 
   const { data, isLoading, fetchNextPage, hasNextPage } = res;
 
@@ -60,8 +62,12 @@ const Shop = () => {
                       delay={100 * (i % 4)}
                     >
                       <div className="rf-position-r">
+                        {!isImageLoaded && (
+                          <Skeleton className="rf-product-listing-skeleton" />
+                        )}
                         <img
                           className="rf-margin-b-md rf-model-img"
+                          onLoad={handleImageLoaded}
                           src={p?.images?.model}
                           alt=""
                         />
