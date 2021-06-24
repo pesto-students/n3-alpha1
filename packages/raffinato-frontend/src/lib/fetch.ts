@@ -1,10 +1,11 @@
 type Params = Record<string, string>;
 
 const DEFAULT_HEADER = {
-  Authorization: `Bearer ${localStorage.getItem('@token')}`,
+  authorization: `Bearer ${localStorage.getItem('@token')}`,
 };
 
-const { REACT_APP_API_URL } = process.env;
+// const { REACT_APP_API_URL } = process.env;
+const REACT_APP_API_URL = 'http://localhost:8080/api/v1';
 
 const getCompleteURL = (url: string) => `${REACT_APP_API_URL}/${url}`;
 
@@ -51,11 +52,11 @@ const get = async (
 
 const post = async (
   url: string,
-  body: Response['body'],
+  body: Record<string, any>,
   headers = DEFAULT_HEADER,
   settings = {}
 ) => {
-  const res = await fetch(url, {
+  const res = await fetch(`${getCompleteURL(url)}`, {
     method: 'post',
     body: JSON.stringify(body),
     headers: new Headers({

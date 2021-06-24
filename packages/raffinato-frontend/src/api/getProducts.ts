@@ -1,7 +1,7 @@
 import { get } from 'lib/fetch';
 
 const getProducts = () => {
-  get('products');
+  return get('products');
 };
 
 export default getProducts;

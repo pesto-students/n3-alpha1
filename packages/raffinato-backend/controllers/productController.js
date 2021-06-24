@@ -10,7 +10,6 @@ const DEFAULT_PAGE_LIMIT = 20;
 const DEFAULT_GENDER = GENDERMAP.MEN;
 
 exports.getProducts = async (req, res) => {
-  console.log('Here');
   const page = req.query.page || DEFAULT_PAGE;
   const limit = req.query.limit || DEFAULT_PAGE_LIMIT;
   const skip = (page * limit) - limit;
