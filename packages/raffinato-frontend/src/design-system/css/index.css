@@ -1428,4 +1428,15 @@ img {
   font-family: Italiana;
 }
 
+.rf-page {
+  padding-top: 160px;
+}
+
+.rf-container {
+  padding: 0 48px;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /*# sourceMappingURL=index.css.map */

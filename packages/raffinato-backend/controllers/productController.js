@@ -64,7 +64,7 @@ exports.getProducts = async (req, res) => {
   res.json({
     success: true,
     page,
-    count: paginatedProducts.length,
+    totalCounts: filteredProducts.length,
     products: paginatedProducts,
   });
 };
