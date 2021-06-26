@@ -5,3 +5,5 @@ export { default as ContainerBox } from './components/common/box/ContainerBox';
 export { default as AddressBox } from './components/common/box/AddressBox';
 export { default as Skeleton } from './components/common/skeleton/Skeleton';
 export { default as SplashScreen } from './components/common/splash/SplashScreen';
+export { default as Icon } from './components/common/icons/Icon';
+export { default as Chip } from './components/common/chip/Chip';

@@ -54,6 +54,12 @@
 
 }
 
+.rf-product-listing-skeleton-wrapper {
+  max-width: 480px;
+  max-height: 640px;
+  height: 400px;
+}
+
 .rf-product-listing-skeleton {
   position: absolute;
   background-color: $bg-color-light-1-hex;

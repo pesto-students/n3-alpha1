@@ -25,6 +25,11 @@
 .rf-flex.rf-ju-sb{ justify-content: space-between; }
 .rf-flex.rf-ju-sa{ justify-content: space-around; }
 
+.rf-flex.rf-flex-c {
+  justify-content: center;
+  align-items: center;
+}
+
 .rf-position-r{ position: relative; }
 
 @each $opacity in 10, 20, 30, 40, 50, 60, 70, 80, 90, 100{

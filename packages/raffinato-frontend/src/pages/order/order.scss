@@ -1,0 +1,24 @@
+@import '../../design-system//scss/util/config.scss';
+
+.rf-order-page-inner-wrapper {
+  & > *:not(:last-child) {
+    margin-bottom: 32px;
+  }
+}
+
+.rf-order-page-order {
+  padding: 25px 30px;
+  background: $bg-color-light-2-hex;
+}
+
+.rf-order-header-left {
+  .rf-order-header-order-id {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+  }
+
+  .rf-order-header-order-date {
+    font-size: 0.7rem;
+    color: rgba($brand-color, 0.4 )
+  }
+}

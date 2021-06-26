@@ -19,7 +19,7 @@ type Address = {
 
 type AddressBoxProps =
   | {
-      address: Address;
+      address: Partial<Address>;
       handleAddressClick?: (id?: Address['id']) => void;
       isSelected?: boolean;
       isLoading?: false;

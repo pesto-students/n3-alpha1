@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import firebase from 'firebase';
 import React from 'react';
 
-import Icon from 'design-system/components/Icon/Icon';
+import Icon from 'design-system/components/common/icons/Icon';
 import BaseModal, {
   BaseModalProps,
 } from 'design-system/components/common/modal/BaseModal';

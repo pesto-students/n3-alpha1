@@ -1,31 +1,41 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider as ReduxProvider } from 'react-redux';
-import './index.scss';
+import { FirebaseAppProvider } from 'reactfire';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { AnimatePresence } from 'framer-motion';
+
+import AlertContainer from 'design-system/components/common/alert/AlertContainer';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   useLocation,
 } from 'react-router-dom';
-import AlertContainer from 'design-system/components/common/alert/AlertContainer';
-import { FirebaseAppProvider } from 'reactfire';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { Home, Product, Shop } from 'pages';
+import {
+  Home,
+  Product,
+  Shop,
+  Address,
+  AddAddress,
+  Payment,
+  Order,
+} from 'pages';
+import { SplashScreen } from 'design-system';
 import CommonLayout from 'layout/CommonLayout';
 import firebaseConfig from 'auth/firebaseConfig';
+import ProtectedRoute, { Status } from 'routes/ProtectedRoute';
 import store from 'store/store';
 import 'design-system/scss/index.scss';
-import { AnimatePresence } from 'framer-motion';
-import ProtectedRoute, { Status } from 'routes/ProtectedRoute';
-import Address from 'pages/address/Address';
-import AddAddress from 'pages/address/AddAddress';
-import { SplashScreen } from 'design-system';
+import './index.scss';
+import useRefreshToken from 'hooks/useRefreshToken';
 
 require('dotenv').config();
 
 const App = () => {
   const location = useLocation();
+  useRefreshToken();
+
   return (
     <AnimatePresence exitBeforeEnter>
       <Switch location={location} key={location.pathname}>
@@ -40,14 +50,25 @@ const App = () => {
         </Route>
 
         <ProtectedRoute
+          exact
+          status={Status.SIGNED_IN}
+          path={['/user/address', '/checkout/address']}
+          component={Address}
+        />
+        <ProtectedRoute
           status={Status.SIGNED_IN}
           path="/checkout/address/add"
           component={AddAddress}
         />
         <ProtectedRoute
           status={Status.SIGNED_IN}
-          path="/checkout/address"
-          component={Address}
+          path="/checkout/payment"
+          component={Payment}
+        />
+        <ProtectedRoute
+          status={Status.SIGNED_IN}
+          path="/orders"
+          component={Order}
         />
       </Switch>
     </AnimatePresence>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory, Route } from 'react-router-dom';
+import { useHistory, Route, RouteProps } from 'react-router-dom';
 import { useUser } from 'reactfire';
 
 import { createAlert } from 'store/alertSlice';
@@ -10,10 +10,8 @@ enum Status {
   SIGNED_OUT = 'signedOut',
 }
 
-type ProtectedRouteProps = {
-  component: any;
+type ProtectedRouteProps = RouteProps & {
   status: Status;
-  path: string;
 };
 
 function ProtectedRoute({

@@ -63,7 +63,9 @@ const Shop = () => {
                     >
                       <div className="rf-position-r">
                         {!isImageLoaded && (
-                          <Skeleton className="rf-product-listing-skeleton" />
+                          <div className="rf-product-listing-skeleton-wrapper">
+                            <Skeleton className="rf-product-listing-skeleton" />
+                          </div>
                         )}
                         <img
                           className="rf-margin-b-md rf-model-img"

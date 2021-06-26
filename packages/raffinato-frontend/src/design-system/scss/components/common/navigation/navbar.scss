@@ -25,6 +25,10 @@
   color: white;
   background: transparent;
 
+  .rf-navbar-upfront-menu-button--signedin::before {
+    border: 1px solid $bg-color;
+  }
+
   svg *{
     fill: white;
   }
@@ -52,6 +56,31 @@
   height: 24px;
   width: 24px;
   cursor: pointer;
+
+  &--signedin {
+    width: 28px;
+    height: 28px;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      height: 120%;
+      width: 120%;
+      background: transparent;
+      z-index: -1;
+      border-radius: 50%;
+      top: -4px;
+      border: 1px solid $brand-color;
+      right: -4px;
+    }
+  }
+
+  img {
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+  }
 }
 
 .rf-navbar-menu-button{
