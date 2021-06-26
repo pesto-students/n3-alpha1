@@ -2,40 +2,52 @@
 const { db } = require('../models/products.json');
 
 const allProducts = [...db.men, ...db.women];
-const GENDERMAP = {
-  ALL: 'both',
-  MEN: 'men',
-  WOMEN: 'women',
-};
-const BRANDS_MAP = {
-  ALL: 'ALL BRANDS',
-}; allProducts.forEach((p) => {
-  if (p.brand?.name) BRANDS_MAP[p.brand?.name] = p.brand?.name;
-});
-const SIZES_MAP = {
-  ALL: 'ANY',
-  XXS: 'XXS',
-  XS: 'XS',
-  S: 'S',
-  M: 'M',
-  L: 'L',
-  XL: 'XXL',
-  XXL: 'XXXL',
-};
-const CLOTHING_CATEGORIES_MAP = {
-  ALL: 'ALL CLOTHING',
-}; allProducts.forEach((p) => {
-  if (p.clothingCategory) BRANDS_MAP[p.clothingCategory] = p.clothingCategory;
+const GENDERS = [
+  { value: 'ALL', label: 'both' },
+  { value: 'men', label: 'men' },
+  { value: 'women', label: 'women' },
+];
+const BRANDS = [
+  { value: 'ALL', label: 'all brands' },
+];
+const SIZES = [
+  { value: 'ALL', label: 'any' },
+  { value: 'XXS', label: 'xxs' },
+  { value: 'XS', label: 'xs' },
+  { value: 'S', label: 's' },
+  { value: 'M', label: 'm' },
+  { value: 'L', label: 'l' },
+  { value: 'XL', label: 'xl' },
+  { value: 'XXL', label: 'xxl' },
+];
+const CLOTHING_CATEGORIES = [
+  { value: 'ALL', label: 'all clothing' },
+];
+
+// populated brands & clothing categories dynamically
+allProducts.forEach((p) => {
+  if (p.brand?.name) {
+    BRANDS.push({
+      value: p.brand?.name,
+      label: p.brand?.name,
+    });
+  }
+  if (p.clothingCategory) {
+    BRANDS.push({
+      value: p.clothingCategory,
+      label: p.clothingCategory,
+    });
+  }
 });
 
 exports.getSettings = async (req, res) => {
   res.json({
     success: true,
     listData: {
-      gender: GENDERMAP,
-      clothingCategory: CLOTHING_CATEGORIES_MAP,
-      size: SIZES_MAP,
-      brand: BRANDS_MAP,
+      gender: GENDERS,
+      clothingCategory: CLOTHING_CATEGORIES,
+      size: SIZES,
+      brand: BRANDS,
       cities: ['Mumbai', 'Pune', 'Kolkata', 'Delhi'],
       states: [
         {

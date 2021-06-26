@@ -1,5 +1,4 @@
 const makeCheckAuth = ({ authAdmin }) => async (req, res, next) => {
-  console.log('Running auth check', req.originalUrl);
   try {
     const { originalUrl } = req;
 
@@ -24,8 +23,6 @@ const makeCheckAuth = ({ authAdmin }) => async (req, res, next) => {
     // decodedIdpToken contains a uid property that can be used to authorize users
     const decodedIdpToken = await authAdmin.verifyIdpToken({ idpToken: bearerToken });
     res.locals.auth = { ...decodedIdpToken };
-
-    console.log('Here');
 
     return next();
   } catch (e) {

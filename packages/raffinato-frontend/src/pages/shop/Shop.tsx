@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-shadow */
 // import PropTypes from 'prop-types';
@@ -9,6 +10,7 @@ import './shop.scss';
 import ScrollAnimation from 'react-animate-on-scroll';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import queryString from 'query-string';
+import { useHistory } from 'react-router-dom';
 import Filters from '../../design-system/components/shop/filters/Filters';
 
 interface Page {
@@ -20,6 +22,8 @@ const Shop = () => {
   // todo: fix jump-loading of images
   // todo: show a nice infinite scroll loader (placeholder loaders would be much better :))
   // tood: handle scroll end
+
+  const history = useHistory();
   const qs: {
     gender?: string;
   } = queryString.parse(window.location.search);
@@ -112,7 +116,12 @@ const Shop = () => {
                       initiallyVisible={i < numOfColumns}
                       delay={100 * (i % numOfColumns)}
                     >
-                      <div className="rf-position-r">
+                      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+                      <div
+                        role="button"
+                        className="rf-position-r"
+                        onClick={() => history.push(`/product/${p.id}`)}
+                      >
                         <img
                           className="rf-margin-b-md rf-model-img"
                           src={p?.images?.model}

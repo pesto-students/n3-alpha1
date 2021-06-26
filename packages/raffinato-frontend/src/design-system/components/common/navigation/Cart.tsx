@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
@@ -6,6 +7,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useHistory } from 'react-router';
 import Icon from 'design-system/components/Icon/Icon';
+import { useAppSelector } from 'hooks/useRedux';
 import Button from '../form/Button';
 
 const Cart = (props: { onCartClose: () => void; isCartOpen: boolean }) => {
@@ -13,6 +15,8 @@ const Cart = (props: { onCartClose: () => void; isCartOpen: boolean }) => {
   // todo: place the close button properly
   const history = useHistory();
   const { isCartOpen } = props;
+
+  const cart = useAppSelector((state) => state.cart);
 
   if (!isCartOpen) return null;
   return (
@@ -49,20 +53,63 @@ const Cart = (props: { onCartClose: () => void; isCartOpen: boolean }) => {
           <h3>Your Bag</h3>
           <h3>$ 756</h3>
         </div>
-        <div className="rf-cta-placeholder">
-          <Button
-            onClick={() => {
-              props.onCartClose();
-              history.push('/select-address');
-            }}
-            variant="primary"
-            theme="dark"
-            responsive
-            className="rf-cta"
-          >
-            Checkout
-          </Button>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gridColumnGap: '24px',
+            gridRowGap: '24px',
+          }}
+        >
+          {cart.map((p) => {
+            return (
+              <div className="rf-margin-t-sm">
+                <div
+                  role="button"
+                  className="rf-position-r"
+                  onClick={() => history.push(`/product/${p.id}`)}
+                >
+                  <img
+                    className="rf-margin-b-md rf-model-img"
+                    src={p?.images?.model}
+                    alt=""
+                  />
+                  {/* <img
+                    className="rf-margin-b-md rf-cutout-img"
+                    src={p?.images?.cutOut}
+                    alt=""
+                  /> */}
+                </div>
+                <p className="rf-margin-b-xxs rf-mobile-text-align-c">
+                  <span className="rf-text-w-m">{p?.brand?.name}</span>
+                  <span className="rf-diamond rf-opacity-20" />
+                  <span className="rf-opacity-60 rf-text-w-r">
+                    {p?.shortDescription}
+                  </span>
+                </p>
+                <p className="rf-opacity-40 rf-margin-b-zr rf-mobile-text-align-c">
+                  {p?.priceInfo?.formattedFinalPrice}
+                </p>
+              </div>
+            );
+          })}
         </div>
+        {cart.length > 0 ? (
+          <div className="rf-cta-placeholder">
+            <Button
+              onClick={() => {
+                props.onCartClose();
+                history.push('/select-address');
+              }}
+              variant="primary"
+              theme="dark"
+              responsive
+              className="rf-cta"
+            >
+              Checkout
+            </Button>
+          </div>
+        ) : null}
       </motion.div>
     </motion.div>
   );

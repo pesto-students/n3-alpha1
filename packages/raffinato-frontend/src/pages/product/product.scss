@@ -1,0 +1,9 @@
+@import '../../design-system/scss/util/config.scss';
+
+.rf-product-page-intro{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: $bg-color-light-1;
+  padding: 64px;
+
+}
