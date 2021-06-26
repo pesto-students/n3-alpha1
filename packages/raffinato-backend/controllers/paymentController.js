@@ -1,9 +1,9 @@
-const { v4: uuidv4 } = require('uuid');
-
-const stripe = require('stripe')('sk_test_51J5tnCSF8cSnjOXIxnmFgf83Qcjg0rDvg8p8fx8nXZoEqOAl8lLq40Np7fDs56Vi3xBkQrAWogZhaAY6gy8yzQhH00I6xNbN0O');
+const { STRIPE_PRIVATE_KEY } = process.env;
+const stripe = require('stripe')(STRIPE_PRIVATE_KEY);
 
 const calculateOrderAmount = (items, id) => {
   const order = 0;
+  // TODO: Logic
   return 1400;
 };
 
@@ -30,9 +30,8 @@ exports.createPayment = async (req, res) => {
 exports.paymentHook = (request, response) => {
   const event = request.body;
 
-  console.log('Event is ', event);
-
   if (event.type === PAYMENT_EVENT_MAP.SUCCESS) {
+    // TODO: Change order status & send email
     console.log(event);
   }
 
