@@ -4,8 +4,7 @@ const DEFAULT_HEADER = {
   authorization: `Bearer ${localStorage.getItem('@token')}`,
 };
 
-// const { REACT_APP_API_URL } = process.env;
-const REACT_APP_API_URL = 'http://localhost:8080/api/v1';
+const { REACT_APP_API_URL } = process.env;
 
 const getCompleteURL = (url: string) => `${REACT_APP_API_URL}/${url}`;
 
