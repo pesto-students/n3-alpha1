@@ -32,3 +32,15 @@
     opacity: #{math.div($opacity, 100)};
   }
 }
+
+.rf-hide-desktop{
+  @include desktop{
+    display: none;
+  }
+}
+
+.rf-hide-mobile{
+  @include mobile{
+    display: none;
+  }
+}

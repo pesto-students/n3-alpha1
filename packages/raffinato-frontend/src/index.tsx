@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 import './index.scss';
@@ -21,10 +21,18 @@ import ProtectedRoute, { Status } from 'routes/ProtectedRoute';
 import Address from 'pages/address/Address';
 import AddAddress from 'pages/address/AddAddress';
 import { SplashScreen } from 'design-system';
+import { fetchSettings } from 'store/settingsSlice';
+import { useAppDispatch } from 'hooks/useRedux';
 
 require('dotenv').config();
 
 const App = () => {
+  // todo: handle global loader
+  // todo: fix route animation
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchSettings());
+  });
   const location = useLocation();
   return (
     <AnimatePresence>
@@ -73,6 +81,7 @@ ReactDOM.render(
               {/* Global navbar */}
               <CommonLayout />
               <App />
+              {/* todo: add footer */}
             </Router>
           </Suspense>
         </QueryClientProvider>

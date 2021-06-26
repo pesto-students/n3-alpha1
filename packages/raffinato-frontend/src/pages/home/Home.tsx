@@ -9,6 +9,7 @@ import './home.scss';
 // import PropTypes from 'prop-types';
 
 const Home = () => {
+  // todo: proper positioning and darker background image on mobile(maybe import a different image for mobile)
   const history = useHistory();
 
   return (
@@ -25,7 +26,8 @@ const Home = () => {
             For those who live life on their own terms
           </h1>
           <p className="rf-text-white rf-margin-b-xxl">
-            ...AND LOOK DAMN GOOD IN IT • THE PROTAGONISTS
+            ...AND LOOK DAMN GOOD IN IT <br className="rf-hide-desktop" />• THE
+            PROTAGONISTS <span className="rf-hide-desktop">•</span>
           </p>
           <Button
             theme="light"
@@ -35,6 +37,7 @@ const Home = () => {
             Shop now
           </Button>
         </div>
+        {/* todo: decide whether to remove base on whether grid is ready */}
         <div className="hero-scroll-indicator">
           <div className="hero-scroll-indicator-line" />
           <span>scroll for more</span>

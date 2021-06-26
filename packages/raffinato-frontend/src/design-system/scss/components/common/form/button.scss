@@ -48,17 +48,26 @@
       background-color: $themeColor;
       color: $themeInvertColor;
     }
+    svg *{
+      fill: $themeInvertColor !important;
+    }
   }
   .rf-button-theme-#{$themeName}.rf-button-variant-secondary{
     .rf-button-inner-wrapper{
       background-color: rgba($themeColor, 0.1);
       color: $themeColor;
     }
+    svg *{
+      fill: $themeColor !important;
+    }
   }
   .rf-button-theme-#{$themeName}.rf-button-variant-tertiary{
     .rf-button-inner-wrapper{
       background-color: transparent;
       color: $themeColor;
+    }
+    svg *{
+      fill: $themeColor !important;
     }
   }
 }

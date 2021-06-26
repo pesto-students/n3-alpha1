@@ -5,9 +5,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useHistory } from 'react-router';
+import Icon from 'design-system/components/Icon/Icon';
 import Button from '../form/Button';
 
 const Cart = (props: { onCartClose: () => void; isCartOpen: boolean }) => {
+  // todo: fix onClose animation
+  // todo: place the close button properly
   const history = useHistory();
   const { isCartOpen } = props;
 
@@ -34,7 +37,13 @@ const Cart = (props: { onCartClose: () => void; isCartOpen: boolean }) => {
           responsive={false}
           className="rf-sidebar-close"
         >
-          X
+          <Icon
+            style={{ marginLeft: 0, marginRight: 0 }}
+            size={16}
+            name="close"
+            // strokeColor="#fff"
+            fillColor="#fff"
+          />
         </Button>
         <div className="rf-section-header">
           <h3>Your Bag</h3>
