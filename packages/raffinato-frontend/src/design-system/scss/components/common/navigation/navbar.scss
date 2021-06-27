@@ -9,6 +9,11 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: start;
+
+  @include mobile {
+    align-items: center;
+    padding: 24px;
+  }
 }
 
 .rf-navbar-logo{
@@ -17,6 +22,12 @@
   cursor: pointer;
   svg{
     height: 48px;
+    @include mobile {
+      height: 32px;
+    }
+  }
+  @include mobile {
+    height: 32px;
   }
 }
 
@@ -100,6 +111,11 @@
   background: #562B04;
   padding-top: 64px;
   padding-bottom: 64px;
+
+  @include mobile{
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
 }
 
 .rf-fullscreen-menu > h1{
@@ -116,6 +132,11 @@
   position: fixed;
   top: 48px;
   left: 48px;
+
+  @include mobile{
+    top: 24px;
+    left: 24px;
+  }
 }
 
 // cart
@@ -142,6 +163,9 @@
   position: fixed;
   bottom: 32px;
   width: calc(100% - 2 * 64px);
+  @include mobile{
+    width: calc(100% - 2 * 24px);
+  }
 }
 
 .rf-backdrop{
@@ -165,4 +189,10 @@
   overflow-x: visible;
   padding: 32px 64px;
   color: $brand-color;
+  @include mobile{
+    width: 100vw;
+    padding: 24px 24px;
+    padding-top: 88px;
+  }
+  // todo: prevent body scroll when sidebar is open
 }

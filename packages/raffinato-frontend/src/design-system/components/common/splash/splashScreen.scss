@@ -18,8 +18,11 @@
 
 .rf-splash-screen-loading-background, .rf-splash-screen-loading-foreground {
   height: 4px;
-  margin-top: -35px;
+  margin-top: -32px;
   position: relative;
+  // @include mobile{
+  //   margin-top: -16px;
+  // }
 }
 
 .rf-splash-screen-loading-background {

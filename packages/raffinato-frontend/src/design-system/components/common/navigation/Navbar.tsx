@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
 
 import { ReactComponent as AccountIcon } from 'design-system/assets/icons/account.svg';
 import { ReactComponent as BagIcon } from 'design-system/assets/icons/bag.svg';
 import { ReactComponent as Logo } from 'design-system/assets/images/logo.svg';
+import { ReactComponent as LogoMobile } from 'design-system/assets/images/logo-mobile.svg';
 import { ReactComponent as MenuIcon } from 'design-system/assets/icons/menu.svg';
 import { ReactComponent as SearchIcon } from 'design-system/assets/icons/search.svg';
 import AccountMenu from 'design-system/components/common/navigation/AccountMenu';
@@ -24,6 +23,8 @@ type NavbarProps = {
 };
 
 export default function Navbar(props: NavbarProps) {
+  // todo: on scroll shrink navbar
+  // todo: search
   const history = useHistory();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -55,11 +56,15 @@ export default function Navbar(props: NavbarProps) {
         </div>
       </div>
       <div className="rf-navbar-logo">
-        <Logo onClick={() => history.push('/')} />
+        <Logo className="rf-hide-mobile" onClick={() => history.push('/')} />
+        <LogoMobile
+          className="rf-hide-desktop"
+          onClick={() => history.push('/')}
+        />
       </div>
       <div className="rf-navbar-upfront-menu">
-        <div className="rf-navbar-upfront-menu-button">
-          <SearchIcon onClick={() => setIsAccountMenuOpen(false)} />
+        <div className="rf-navbar-upfront-menu-button rf-hide-mobile">
+          <SearchIcon />
         </div>
         <div
           className="rf-navbar-upfront-menu-button"

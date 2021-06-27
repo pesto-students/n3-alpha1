@@ -35,6 +35,11 @@ img {
 .rf-page{
   padding-top: 160px;
   padding-bottom: 160px;
+  overflow: auto;
+  overflow-x: hidden;
+  @include mobile{
+    padding-top: 80px;
+  }
 }
 
 .rf-container{
@@ -42,6 +47,9 @@ img {
   max-width: 1920px;
   margin-left: auto;
   margin-right: auto;
+  @include mobile{
+    padding: 0 24px;
+  }
 }
 
 .rf-diamond{

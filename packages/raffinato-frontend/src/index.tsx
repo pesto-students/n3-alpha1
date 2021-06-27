@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 import { FirebaseAppProvider } from 'reactfire';
@@ -29,10 +29,18 @@ import store from 'store/store';
 import 'design-system/scss/index.scss';
 import './index.scss';
 import useRefreshToken from 'hooks/useRefreshToken';
+import { fetchSettings } from 'store/settingsSlice';
+import { useAppDispatch } from 'hooks/useRedux';
 
 require('dotenv').config();
 
 const App = () => {
+  // todo: handle global loader
+  // todo: fix route animation
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchSettings());
+  });
   const location = useLocation();
   useRefreshToken();
 
@@ -94,6 +102,7 @@ ReactDOM.render(
               {/* Global navbar */}
               <CommonLayout />
               <App />
+              {/* todo: add footer */}
             </Router>
           </Suspense>
         </QueryClientProvider>

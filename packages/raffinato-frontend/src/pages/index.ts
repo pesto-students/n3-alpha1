@@ -1,5 +1,5 @@
 import Home from './home/Home';
-import Product from './Product';
+import Product from './product/Product';
 import Shop from './shop/Shop';
 import Address from './address/Address';
 import AddAddress from './address/AddAddress';
