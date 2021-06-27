@@ -24,6 +24,8 @@ const initialState: {
     }[];
   };
   availablePincodes: string[];
+  minQuantity?: number;
+  maxQuantity?: number;
 } = {
   listData: {
     gender: [],

@@ -3,8 +3,8 @@
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 // import { Button } from 'design-system';
 import React, { useEffect, useState } from 'react';
-import Select from 'react-select';
 import { useAppSelector } from 'hooks/useRedux';
+import Select from '../../common/form/select/Select';
 import FiltersBG from '../../../assets/images/filters-bg@2x.png';
 import './filters.scss';
 
@@ -60,9 +60,9 @@ const Filters = (props: {
           <div className="rf-filter-item">
             <span className="rf-opacity-40">Show me</span>
             <Select
+              variant="tertiary"
+              theme="light"
               menuPortalTarget={document.body}
-              className="rf-select"
-              classNamePrefix="rf-select"
               defaultValue={clothingOptions[0]}
               value={filters.clothing}
               onChange={onselectionchange}
@@ -73,9 +73,9 @@ const Filters = (props: {
           <div className="rf-filter-item">
             <span className="rf-opacity-40">For</span>
             <Select
+              variant="tertiary"
+              theme="light"
               menuPortalTarget={document.body}
-              className="rf-select"
-              classNamePrefix="rf-select"
               defaultValue={genderOptions[1]}
               value={filters.gender}
               onChange={onselectionchange}
@@ -86,9 +86,9 @@ const Filters = (props: {
           <div className="rf-filter-item">
             <span className="rf-opacity-40">From</span>
             <Select
+              variant="tertiary"
+              theme="light"
               menuPortalTarget={document.body}
-              className="rf-select"
-              classNamePrefix="rf-select"
               defaultValue={brandOptions[0]}
               value={filters.brand}
               onChange={onselectionchange}
@@ -99,9 +99,9 @@ const Filters = (props: {
           <div className="rf-filter-item">
             <span className="rf-opacity-40">Of size</span>
             <Select
+              variant="tertiary"
+              theme="light"
               menuPortalTarget={document.body}
-              className="rf-select"
-              classNamePrefix="rf-select"
               defaultValue={sizeOptions[0]}
               value={filters.size}
               onChange={onselectionchange}

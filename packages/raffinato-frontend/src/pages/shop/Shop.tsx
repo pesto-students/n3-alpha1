@@ -10,7 +10,7 @@ import './shop.scss';
 import ScrollAnimation from 'react-animate-on-scroll';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import queryString from 'query-string';
-import { useHistory } from 'react-router-dom';
+import { ProductListing } from '../../design-system';
 import Filters from '../../design-system/components/shop/filters/Filters';
 
 interface Page {
@@ -23,7 +23,6 @@ const Shop = () => {
   // todo: show a nice infinite scroll loader (placeholder loaders would be much better :))
   // tood: handle scroll end
 
-  const history = useHistory();
   const qs: {
     gender?: string;
   } = queryString.parse(window.location.search);
@@ -117,32 +116,7 @@ const Shop = () => {
                       delay={100 * (i % numOfColumns)}
                     >
                       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
-                      <div
-                        role="button"
-                        className="rf-position-r"
-                        onClick={() => history.push(`/product/${p.id}`)}
-                      >
-                        <img
-                          className="rf-margin-b-md rf-model-img"
-                          src={p?.images?.model}
-                          alt=""
-                        />
-                        <img
-                          className="rf-margin-b-md rf-cutout-img"
-                          src={p?.images?.cutOut}
-                          alt=""
-                        />
-                      </div>
-                      <p className="rf-margin-b-xxs rf-mobile-text-align-c">
-                        <span className="rf-text-w-m">{p?.brand?.name}</span>
-                        <span className="rf-diamond rf-opacity-20" />
-                        <span className="rf-opacity-60 rf-text-w-r">
-                          {p?.shortDescription}
-                        </span>
-                      </p>
-                      <p className="rf-opacity-40 rf-margin-b-zr rf-mobile-text-align-c">
-                        {p?.priceInfo?.formattedFinalPrice}
-                      </p>
+                      <ProductListing product={p} theme="dark" />
                     </ScrollAnimation>
                   );
                 });

@@ -15,6 +15,7 @@ const Menu = (props: {
 }) => {
   // todo: a simple about page
   // todo: a simple contact page
+  // todo: vertically center menu (it should scroll if screen is small)
   const history = useHistory();
   const { isMenuOpen } = props;
   const navigateTo = (pathname: string) => {
