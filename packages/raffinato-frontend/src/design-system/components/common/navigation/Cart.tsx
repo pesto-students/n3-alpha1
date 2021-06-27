@@ -6,7 +6,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useHistory } from 'react-router';
-import Icon from 'design-system/components/Icon/Icon';
+import { Icon } from 'design-system/index';
 import { useAppSelector } from 'hooks/useRedux';
 import Button from '../form/Button';
 

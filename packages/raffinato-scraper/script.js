@@ -1,8 +1,10 @@
+import dotenv from 'dotenv';
+
 import axios from 'axios';
 import scrapeImageByCategory from './lib/scrapeImage';
 import writeTofile from './lib/writeToFile';
 
-require('dotenv').config();
+dotenv.config();
 
 const productsData = {
   db: {
@@ -11,7 +13,7 @@ const productsData = {
   },
 };
 
-const { PRODUCTS_BASE_URL } = process.env;
+const { PRODUCTS_BASE_URL = 'https://www.farfetch.com/in/plpslice/listing-api/products-facets' } = process.env;
 
 // gender: Men | Women
 const clothesAPI = (pageNum, gender) => `${PRODUCTS_BASE_URL}?page=${pageNum}&view=100&gender=${gender}&pricetype=FullPrice&c-category=136330`;
@@ -37,7 +39,7 @@ const getData = (pageNum, gender) => new Promise((resolve, reject) => {
 
 const scrapeImages = async () => {
   const sanitizedProductsMen = await scrapeImageByCategory(productsData, 'men');
-  const sanitizedProductsWomen = await scrapeImageByCategory(productsData, 'men');
+  const sanitizedProductsWomen = await scrapeImageByCategory(productsData, 'women');
 
   return {
     db: {

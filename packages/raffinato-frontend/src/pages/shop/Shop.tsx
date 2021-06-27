@@ -53,7 +53,8 @@ const Shop = () => {
     },
     {
       keepPreviousData: true,
-      getNextPageParam: (lastPage, pages) => pages.length + 1,
+      getNextPageParam: (lastPage, pages) =>
+        lastPage.products.length && pages.length + 1,
     }
   );
 

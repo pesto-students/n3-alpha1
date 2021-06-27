@@ -31,6 +31,7 @@ import './index.scss';
 import useRefreshToken from 'hooks/useRefreshToken';
 import { fetchSettings } from 'store/settingsSlice';
 import { useAppDispatch } from 'hooks/useRedux';
+import useScrollToTop from 'hooks/useScrollToTop';
 
 require('dotenv').config();
 
@@ -43,6 +44,7 @@ const App = () => {
   });
   const location = useLocation();
   useRefreshToken();
+  useScrollToTop();
 
   return (
     <AnimatePresence exitBeforeEnter>

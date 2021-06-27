@@ -5,7 +5,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useHistory } from 'react-router';
-import Icon from 'design-system/components/Icon/Icon';
+import { Icon } from 'design-system/index';
 import Button from '../form/Button';
 
 const Menu = (props: {
