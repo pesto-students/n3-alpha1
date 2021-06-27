@@ -1,4 +1,5 @@
 const { STRIPE_PRIVATE_KEY } = process.env;
+
 const stripe = require('stripe')(STRIPE_PRIVATE_KEY);
 
 const calculateOrderAmount = (items, id) => {

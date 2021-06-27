@@ -1,5 +1,6 @@
 /* eslint-disable no-plusplus */
 const { v4: uuidv4 } = require('uuid');
+const upperFirst = require('lodash/upperFirst');
 
 // const calculateOrderAmount = (items, id) => {
 //   global.orderCollection.push({
@@ -39,18 +40,21 @@ exports.createOrder = async (req, res) => {
   for (let i = 0; i < items.length; i++) {
     const { productId, quantity } = items[i];
 
-    const { brand, shortDescription, priceInfo } = global.productCollection.find(
+    const {
+      brand, shortDescription, priceInfo, images,
+    } = global.productCollection.find(
       (product) => product.id === productId,
     ) || {};
 
     order.items.push({
       brand: brand.name,
-      shortDescription,
+      shortDescription: upperFirst(shortDescription.split(' ').pop()),
       quantity,
       price: priceInfo.finalPrice,
+      thumbnail: images.cutOut,
     });
 
-    order.totalPrice += priceInfo.finalPrice;
+    order.totalPrice += priceInfo.finalPrice * quantity;
   }
 
   global.orderCollection.push(order);

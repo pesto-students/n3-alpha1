@@ -15,8 +15,6 @@ function Order() {
   const { data, isLoading } = useQuery('orders', getOrders);
   const orders = data?.orders;
 
-  console.log(data);
-
   return (
     <div className={clsx('rf-address-page', 'rf-flex', 'rf-flex-h', 'rf-ju-c')}>
       <ContainerBox title="Your orders">
@@ -39,7 +37,47 @@ function Order() {
                 </div>
                 <div className="rf-order-header-right">${order.totalPrice}</div>
               </div>
-              <div className="rf-order-details-table" />
+              <div className="rf-order-details-table">
+                {order.items.map((item: any) => (
+                  <div
+                    className={clsx(
+                      'rf-order-table-row',
+                      'rf-flex',
+                      'rf-flex-h',
+                      'rf-al-c'
+                    )}
+                  >
+                    <div
+                      className={clsx(
+                        'rf-order-table-row-left',
+                        'rf-flex',
+                        'rf-flex-h',
+                        'rf-al-c'
+                      )}
+                    >
+                      <img src={item.thumbnail} alt="item" />
+                      <div>
+                        <p>{item.brand}</p>
+                        <p className="rf-order-table-row-left-desc">
+                          {item.shortDescription}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="rf-order-row-column">
+                      <p>{item.quantity}</p>
+                      <p>Quantity</p>
+                    </div>
+
+                    <div className="rf-order-row-column">
+                      <p>${item.price * item.quantity}</p>
+                      <p>
+                        ${item.price} * {item.quantity}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>

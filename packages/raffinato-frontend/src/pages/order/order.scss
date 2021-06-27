@@ -19,6 +19,55 @@
 
   .rf-order-header-order-date {
     font-size: 0.7rem;
-    color: rgba($brand-color, 0.4 )
+    color: rgba($brand-color, 0.4)
+  }
+}
+
+.rf-order-table-row {
+  border-top: 1px solid rgba($brand-color, 0.4);
+  padding: 20px 0px;
+
+  p {
+    font-size: 0.7rem;
+    margin-bottom: 2px;
+  }
+
+  & > div {
+    flex: 0.6;
+  }
+
+  & > div:first-child {
+    flex: 1.8;
+  }
+
+  & > div:last-child {
+    text-align: right;
+  }
+}
+
+.rf-order-table-row-left {
+  img {
+    width: 95px;
+    opacity: 0.7;
+  }
+
+  p {
+    max-width: 100px;
+  }
+
+  & > *:not(:last-child) {
+    margin-right: 40px;
+  }
+
+  .rf-order-table-row-left-desc {
+    font-size: 0.6rem;
+    max-width: 200px;
+    color: rgba($brand-color, 0.4)
+  }
+}
+
+.rf-order-row-column {
+  & > p:last-child {
+    color: rgba($brand-color, 0.4)
   }
 }

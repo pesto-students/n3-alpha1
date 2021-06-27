@@ -10,8 +10,6 @@ const paymentController = require('../controllers/paymentController');
 // error handlers
 const { catchErrors } = require('../handlers/errorHandlers');
 
-// router.get('/', catchErrors(productController.landing));
-
 // GET Requests
 router.get('/api/v1/products', catchErrors(productController.getProducts));
 router.get('/api/v1/product', catchErrors(productController.getProduct));
