@@ -67,6 +67,7 @@
   height: 24px;
   width: 24px;
   cursor: pointer;
+  position: relative;
 
   &--signedin {
     width: 28px;
@@ -150,12 +151,12 @@
 
 .rf-sidebar-close{
   position: absolute;
-  top: 0;
-  left: auto;
-  right: 670px;
-
+  top: 32px;
+  left: -96px;
   @include mobile{
-    right: 50px;
+    top: -88px;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -169,8 +170,15 @@
 
 .rf-cta-placeholder{
   height: 142px;
-  position: sticky;
-  bottom: 0px;
+}
+
+.rf-cta{
+  position: fixed;
+  bottom: 32px;
+  width: calc(100% - 2 * 64px);
+  @include mobile{
+    width: calc(100% - 2 * 24px);
+  }
 }
 
 .rf-backdrop{
@@ -180,7 +188,7 @@
   left: 0;
   height: 100vh;
   width: 100vw;
-  background: rgba(black, 0.4);
+  background: rgba(black, 0.6);
 }
 
 .rf-sidebar{
@@ -189,15 +197,39 @@
   right: 0;
   height: 100vh;
   width: 640px;
-  overflow-y: scroll;
+  overflow: visible;
   background: $bg-color;
-  overflow-x: visible;
-  padding: 32px 64px;
   color: $brand-color;
   @include mobile{
     width: 100vw;
-    padding: 24px 24px;
-    padding-top: 88px;
+    height: calc(100vh - 88px);
+    margin-top: 88px;
   }
   // todo: prevent body scroll when sidebar is open
+}
+
+.rf-sidebar-inner{
+  overflow-y: scroll;
+  height: 100%;
+  padding: 32px 64px;
+  @include mobile{
+    padding: 24px 24px;
+  }
+}
+
+.rf-cart-badge{
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  height: 24px;
+  width: 24px;
+  border: 3px solid $bg-color;
+  color: white;
+  background: $brand-color;
+  font-weight: 500;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 18px;
+  transform: scale3d(0,0,0);
 }

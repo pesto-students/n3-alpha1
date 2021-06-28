@@ -10,7 +10,7 @@ type ID = string | number;
 
 const initialState: CartItem[] = [];
 
-const getItemIndex = (state: CartItem[], idToFind: ID): number => {
+export const getItemIndex = (state: CartItem[], idToFind: ID): number => {
   const ids = state.map((item) => item.id);
 
   return ids.indexOf(idToFind);
@@ -53,16 +53,20 @@ const cartSlice = createSlice({
 
     incrementQuantity(state, action: PayloadAction<{ id: ID }>) {
       const itemIndex = getItemIndex(state, action.payload.id);
+      // todo use minQuantity/maxQuantity from settings
+      if (state[itemIndex].quantity >= 5) return;
       state[itemIndex].quantity += 1;
     },
 
     decrementQuantity(state, action: PayloadAction<{ id: ID }>) {
       const itemIndex = getItemIndex(state, action.payload.id);
 
+      // todo use minQuantity/maxQuantity from settings
       if (state[itemIndex].quantity > 1) {
         state[itemIndex].quantity -= 1;
       } else {
-        state.filter((item) => item.id !== action.payload.id);
+        // state.filter((item) => item.id !== action.payload.id);
+        state.splice(itemIndex, 1);
       }
     },
   },

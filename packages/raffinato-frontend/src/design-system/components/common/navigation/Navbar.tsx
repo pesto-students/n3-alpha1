@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
-
 import { ReactComponent as AccountIcon } from 'design-system/assets/icons/account.svg';
 import { ReactComponent as BagIcon } from 'design-system/assets/icons/bag.svg';
+import { useAppSelector } from 'hooks/useRedux';
+import { motion } from 'framer-motion';
 import { ReactComponent as Logo } from 'design-system/assets/images/logo.svg';
 import { ReactComponent as LogoMobile } from 'design-system/assets/images/logo-mobile.svg';
 import { ReactComponent as MenuIcon } from 'design-system/assets/icons/menu.svg';
@@ -25,9 +26,16 @@ type NavbarProps = {
 export default function Navbar(props: NavbarProps) {
   // todo: on scroll shrink navbar
   // todo: search
+  // todo: animate cart badge on each increment/decrement (currently only animates for 1st item(s) added or last item(s) removed)
   const history = useHistory();
+  const cart = useAppSelector((state) => state.cart);
+  const numOfItemsInCart = cart
+    .map((i) => i.quantity)
+    .reduce((total, quantity) => total + quantity, 0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  console.log({ numOfItemsInCart, cart });
 
   const { isSignedIn, username, userPhoto } = useIsSignedIn();
 
@@ -73,6 +81,13 @@ export default function Navbar(props: NavbarProps) {
           role="button"
           tabIndex={0}
         >
+          <motion.div
+            animate={{ scale: numOfItemsInCart > 0 ? 1 : 0 }}
+            transition={{ duration: 0.35 }}
+            className="rf-cart-badge"
+          >
+            {numOfItemsInCart}
+          </motion.div>
           <BagIcon />
         </div>
         <div
