@@ -28,6 +28,12 @@ img {
   max-width: 100%;
 }
 
+hr{
+  border: 0;
+  height: 1px;
+  background: $brand-color;
+}
+
 .rf-italiana{
   font-family: Italiana;
 }
@@ -35,6 +41,11 @@ img {
 .rf-page{
   padding-top: 160px;
   padding-bottom: 160px;
+  overflow: auto;
+  overflow-x: hidden;
+  @include mobile{
+    padding-top: 80px;
+  }
 }
 
 .rf-container{
@@ -42,6 +53,9 @@ img {
   max-width: 1920px;
   margin-left: auto;
   margin-right: auto;
+  @include mobile{
+    padding: 0 24px;
+  }
 }
 
 .rf-diamond{
@@ -53,4 +67,10 @@ img {
   vertical-align: middle;
   margin-left: 12px;
   margin-right: 12px;
+}
+
+.rf-danger-link{
+  cursor: pointer;
+  color: $danger-color;
+  border-bottom: 2px solid $danger-color;
 }

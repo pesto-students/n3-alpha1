@@ -1,5 +1,6 @@
 import React, { MouseEvent } from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 export default function Button(props: {
   children: React.ReactChild;
@@ -7,10 +8,13 @@ export default function Button(props: {
   size: string;
   theme: string;
   responsive: boolean;
-  onClick: (event: MouseEvent<any>) => void;
+  onClick?: (event: MouseEvent<any>) => void;
   className: string;
   leftIcon?: any;
   righticon?: any;
+  disabled?: boolean;
+  loading?: boolean;
+  type?: 'submit' | 'button';
 }) {
   const {
     children,
@@ -22,23 +26,32 @@ export default function Button(props: {
     onClick,
     leftIcon,
     righticon,
+    disabled,
+    loading = false,
+    type = 'button',
   } = props;
   const themeClassName = `rf-button-theme-${theme}`;
   const variantClassName = `rf-button-variant-${variant}`;
   const sizeClassName = `rf-button-size-${size}`;
+  const loadingClassName = `rf-button-loading`;
+  const disabledClassName = `rf-button--disabled`;
+
   const responsiveClassName = responsive ? 'rf-button-responsive' : '';
 
-  const finalClassName = [
+  const finalClassName = clsx(
     'rf-button-base',
     themeClassName,
     variantClassName,
     sizeClassName,
     responsiveClassName,
-    className, // from props
-  ].join(' ');
+    { [disabledClassName]: disabled },
+    { [loadingClassName]: loading },
+
+    className // from props
+  );
 
   return (
-    <button className={finalClassName} type="button" onClick={onClick}>
+    <button className={finalClassName} type={type} onClick={onClick}>
       <div className="rf-button-inner-wrapper">
         {leftIcon}
         {children}

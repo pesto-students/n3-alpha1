@@ -5,6 +5,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useHistory } from 'react-router';
+import { Icon } from 'design-system/index';
 import Button from '../form/Button';
 
 const Menu = (props: {
@@ -12,12 +13,13 @@ const Menu = (props: {
   onMenuClose: () => void;
   isMenuOpen: boolean;
 }) => {
+  // todo: a simple about page
+  // todo: a simple contact page
+  // todo: vertically center menu (it should scroll if screen is small)
   const history = useHistory();
   const { isMenuOpen } = props;
   const navigateTo = (pathname: string) => {
-    history.push({
-      pathname,
-    });
+    history.push(pathname);
     props.onNavigate();
   };
 
@@ -41,7 +43,13 @@ const Menu = (props: {
         theme="light"
         responsive={false}
       >
-        X
+        <Icon
+          style={{ marginLeft: 0, marginRight: 0 }}
+          size={16}
+          name="close"
+          // strokeColor="#fff"
+          fillColor="#fff"
+        />
       </Button>
     </motion.div>
   );

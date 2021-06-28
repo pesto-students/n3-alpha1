@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import type { ReactNode } from 'react';
 
-import Icon from 'design-system/components/Icon/Icon';
+import Icon from 'design-system/components/common/icons/Icon';
 import './modal.scss';
 
 type BaseModalProps = Modal.Props & {

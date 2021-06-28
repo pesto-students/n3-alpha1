@@ -16,6 +16,7 @@ type IconProps = {
   fillColor?: string;
   type?: IconType;
   isInteractive?: boolean;
+  style?: object;
 };
 
 function Icon({
@@ -25,6 +26,7 @@ function Icon({
   fillColor,
   type = 'svg',
   isInteractive = false,
+  style = {},
   ...other
 }: IconProps) {
   if (type === 'png') {
@@ -50,6 +52,7 @@ function Icon({
         height: size,
         width: size,
         cursor: isInteractive ? 'pointer' : 'initial',
+        ...style,
       }}
       {...other}
     >

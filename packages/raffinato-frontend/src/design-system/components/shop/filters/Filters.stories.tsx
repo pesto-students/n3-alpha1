@@ -27,7 +27,22 @@ export default {
     // responsive: {
     //   control: { type: 'boolean' },
     // },
+    onFiltersChange: {
+      control: { type: 'function' },
+    },
   },
 } as Meta;
 
-export const Primary: React.VFC<{}> = (args) => <Filters {...args} />;
+export const Primary: React.VFC<{}> = (args) => (
+  <Filters
+    {...args}
+    onFiltersChange={(filters: {
+      gender: { value: string };
+      clothing: { value: string };
+      size: { value: string };
+      brand: { value: string };
+    }) => {
+      console.log(filters);
+    }}
+  />
+);

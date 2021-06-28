@@ -5,7 +5,7 @@ const writeTofile = async (data) => {
 
   const json = JSON.stringify(data);
 
-  await fs.writeFile('data.json', json, () => {
+  await fs.writeFile('final.json', json, () => {
     console.log('\n successfully written...');
   });
 };

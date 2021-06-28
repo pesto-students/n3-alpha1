@@ -77,3 +77,26 @@ h1{
 .rf-text-align-r{
   text-align: right;
 }
+
+@include mobile{
+  .rf-mobile-text-align-c{
+    text-align: center;
+  }
+  .rf-mobile-text-align-j{
+    text-align: justify;
+  }
+  .rf-mobile-text-align-l{
+    text-align: left;
+  }
+  .rf-mobile-text-align-r{
+    text-align: right;
+  }
+}
+
+.rf-line-height-1_75{
+  line-height: 1.75;
+}
+
+.rf-line-height-2{
+  line-height: 2;
+}
