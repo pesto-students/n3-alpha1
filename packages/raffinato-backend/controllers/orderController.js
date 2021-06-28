@@ -38,7 +38,7 @@ exports.createOrder = async (req, res) => {
   };
 
   for (let i = 0; i < items.length; i++) {
-    const { productId, quantity } = items[i];
+    const { id: productId, quantity } = items[i];
 
     const {
       brand, shortDescription, priceInfo, images,

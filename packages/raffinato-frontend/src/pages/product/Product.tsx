@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import { useAppDispatch } from 'hooks/useRedux';
 import getProduct from '../../api/getProduct';
 import { Button } from '../../design-system';
-import { addToCart } from '../../store/cartSlice';
+import { addToCart, addToCartThunk } from '../../store/cartSlice';
 
 // import PropTypes from 'prop-types';
 
@@ -20,6 +20,8 @@ const Product = () => {
   });
   const { data, isLoading } = res;
   const dispatch = useAppDispatch();
+
+  console.log(data);
 
   return (
     <motion.div
@@ -53,11 +55,12 @@ const Product = () => {
               className="rf-margin-t-lg"
               onClick={() => {
                 dispatch(
-                  addToCart({
+                  addToCartThunk({
                     id: data?.product?.id,
                     images: data?.product?.images,
                     shortDescription: data?.product?.shortDescription,
                     brand: data?.product?.brand,
+                    quantity: 1,
                   })
                 );
               }}

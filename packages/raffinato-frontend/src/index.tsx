@@ -4,6 +4,8 @@ import { Provider as ReduxProvider } from 'react-redux';
 import { FirebaseAppProvider } from 'reactfire';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { AnimatePresence } from 'framer-motion';
+import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import AlertContainer from 'design-system/components/common/alert/AlertContainer';
 import {
@@ -34,6 +36,8 @@ import { useAppDispatch } from 'hooks/useRedux';
 import useScrollToTop from 'hooks/useScrollToTop';
 
 require('dotenv').config();
+
+const persistor = persistStore(store);
 
 const App = () => {
   // todo: handle global loader
@@ -97,17 +101,19 @@ ReactDOM.render(
   <React.StrictMode>
     <FirebaseAppProvider firebaseConfig={firebaseConfig} suspense>
       <ReduxProvider store={store}>
-        <QueryClientProvider client={queryClient}>
-          <AlertContainer />
-          <Suspense fallback={<SplashScreen />}>
-            <Router>
-              {/* Global navbar */}
-              <CommonLayout />
-              <App />
-              {/* todo: add footer */}
-            </Router>
-          </Suspense>
-        </QueryClientProvider>
+        <PersistGate loading={<SplashScreen />} persistor={persistor}>
+          <QueryClientProvider client={queryClient}>
+            <AlertContainer />
+            <Suspense fallback={<SplashScreen />}>
+              <Router>
+                {/* Global navbar */}
+                <CommonLayout />
+                <App />
+                {/* todo: add footer */}
+              </Router>
+            </Suspense>
+          </QueryClientProvider>
+        </PersistGate>
       </ReduxProvider>
     </FirebaseAppProvider>
   </React.StrictMode>,

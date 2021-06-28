@@ -6,6 +6,7 @@ const commonController = require('../controllers/commonController');
 const userController = require('../controllers/userController');
 const orderController = require('../controllers/orderController');
 const paymentController = require('../controllers/paymentController');
+const cartController = require('../controllers/cartController');
 
 // error handlers
 const { catchErrors } = require('../handlers/errorHandlers');
@@ -20,6 +21,7 @@ router.get('/api/v1/getOrders', catchErrors(orderController.getOrders));
 // POST Requests
 router.post('/api/v1/addAddress', catchErrors(userController.addAddress));
 router.post('/api/v1/createOrder', catchErrors(orderController.createOrder));
+router.post('/api/v1/addToCart', catchErrors(cartController.addToCart));
 
 // Third party POST Requests
 router.post('/api/v1/create-payment', catchErrors(paymentController.createPayment));

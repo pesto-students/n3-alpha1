@@ -36,6 +36,7 @@
     "react-scripts": "4.0.3",
     "react-select": "^4.3.1",
     "reactfire": "^3.0.0-rc.0",
+    "redux-persist": "^6.0.0",
     "typescript": "^4.3.2",
     "web-vitals": "^1.1.2"
   },
@@ -89,6 +90,7 @@
     "@types/react-modal": "^3.12.0",
     "@types/react-router-dom": "^5.1.7",
     "@types/react-select": "^4.0.16",
+    "@types/redux-persist": "^4.3.1",
     "@typescript-eslint/eslint-plugin": "^4.27.0",
     "css-loader": "^5.2.6",
     "eslint": "^7.28.0",

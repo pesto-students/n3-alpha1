@@ -34,36 +34,14 @@ const Cart = (props: { onCartClose: () => void; isCartOpen: boolean }) => {
         className="rf-sidebar"
         onClick={(e) => e.stopPropagation()}
       >
-        <Button
-          onClick={() => props.onCartClose()}
-          variant="primary"
-          theme="dark"
-          responsive={false}
-          className="rf-sidebar-close"
-        >
-          <Icon
-            style={{ marginLeft: 0, marginRight: 0 }}
-            size={16}
-            name="close"
-            // strokeColor="#fff"
-            fillColor="#fff"
-          />
-        </Button>
         <div className="rf-section-header">
           <h3>Your Bag</h3>
           <h3>$ 756</h3>
         </div>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gridColumnGap: '24px',
-            gridRowGap: '24px',
-          }}
-        >
+        <div className="rf-cart-wrapper">
           {cart.map((p) => {
             return (
-              <div className="rf-margin-t-sm">
+              <div key={p.id} className="rf-margin-t-sm">
                 <div
                   role="button"
                   className="rf-position-r"
@@ -99,7 +77,7 @@ const Cart = (props: { onCartClose: () => void; isCartOpen: boolean }) => {
             <Button
               onClick={() => {
                 props.onCartClose();
-                history.push('/select-address');
+                history.push('/checkout/address');
               }}
               variant="primary"
               theme="dark"
@@ -111,6 +89,21 @@ const Cart = (props: { onCartClose: () => void; isCartOpen: boolean }) => {
           </div>
         ) : null}
       </motion.div>
+      <Button
+        onClick={() => props.onCartClose()}
+        variant="primary"
+        theme="dark"
+        responsive={false}
+        className="rf-sidebar-close"
+      >
+        <Icon
+          style={{ marginLeft: 0, marginRight: 0 }}
+          size={16}
+          name="close"
+          // strokeColor="#fff"
+          fillColor="#fff"
+        />
+      </Button>
     </motion.div>
   );
 };

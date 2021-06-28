@@ -19,6 +19,7 @@ import { createAlert } from 'store/alertSlice';
 import createPayment from 'api/createPayment';
 import { useMutation } from 'react-query';
 import createOrder, { Order } from 'api/createOrder';
+import { clearCart } from 'store/cartSlice';
 
 const CARD_OPTIONS: StripeCardElementOptions = {
   iconStyle: 'solid',
@@ -73,6 +74,8 @@ const PaymentForm = () => {
   const elements = useElements();
   const dispatch = useAppDispatch();
   const history = useHistory();
+
+  const cart = useAppSelector((state) => state.cart);
 
   const createOrderMutation = useMutation(
     (orderItems: Partial<Order>) => createOrder(orderItems),
@@ -130,11 +133,13 @@ const PaymentForm = () => {
       setError(`Payment failed ${stripeError.message}`);
       setIsProcessing(false);
     } else {
-      await createOrderMutation.mutate({ items });
+      await createOrderMutation.mutate({ items: cart });
 
       setError(null);
       setIsProcessing(false);
       setSuccess(true);
+
+      dispatch(clearCart());
     }
   };
 

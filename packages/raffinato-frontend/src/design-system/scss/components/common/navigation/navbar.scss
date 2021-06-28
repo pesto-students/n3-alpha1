@@ -151,21 +151,26 @@
 .rf-sidebar-close{
   position: absolute;
   top: 0;
-  // left: -120px;
-  left: 0;
+  left: auto;
+  right: 670px;
+
+  @include mobile{
+    right: 50px;
+  }
+}
+
+.rf-cart-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
+  min-height: calc(100% - 160px);
 }
 
 .rf-cta-placeholder{
   height: 142px;
-}
-
-.rf-cta{
-  position: fixed;
-  bottom: 32px;
-  width: calc(100% - 2 * 64px);
-  @include mobile{
-    width: calc(100% - 2 * 24px);
-  }
+  position: sticky;
+  bottom: 0px;
 }
 
 .rf-backdrop{
