@@ -119,6 +119,7 @@ const PaymentForm = () => {
     }
 
     setIsProcessing(true);
+    setError(null);
 
     const {
       error: stripeError,
@@ -130,7 +131,7 @@ const PaymentForm = () => {
     });
 
     if (stripeError) {
-      setError(`Payment failed ${stripeError.message}`);
+      setError(stripeError.message!);
       setIsProcessing(false);
     } else {
       await createOrderMutation.mutate({ items: cart });
@@ -199,6 +200,7 @@ const PaymentForm = () => {
           <div className="rf-payment-form-card">
             <CardElement options={CARD_OPTIONS} />
           </div>
+          {error && <p className="rf-payment-failure-message">{error}</p>}
           <Button
             type="submit"
             loading={isProcessing}
@@ -208,16 +210,6 @@ const PaymentForm = () => {
             {isProcessing ? 'Processing' : 'Pay'}
           </Button>
           {/* Show a success message upon completion */}
-          {success && (
-            <p>
-              Payment succeeded, see the result in your
-              <a href="https://dashboard.stripe.com/test/payments">
-                {' '}
-                Stripe dashboard.
-              </a>{' '}
-              Refresh the page to pay again.
-            </p>
-          )}
         </form>
       </ContainerBox>
     </div>

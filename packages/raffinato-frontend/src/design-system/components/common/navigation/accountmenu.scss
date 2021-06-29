@@ -32,13 +32,19 @@
 
   .rf-account-menu-links-section {
     margin-top: 20px;
-
-    p {
-      font-size: 0.9rem;
-    }
+    font-size: 0.9rem;
 
     & >:last-child {
       color: $danger-color
+    }
+
+    button {
+      outline: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      background: inherit;
+      font-size: inherit;
     }
   }
 }

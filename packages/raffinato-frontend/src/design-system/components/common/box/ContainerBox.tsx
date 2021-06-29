@@ -6,17 +6,24 @@ type ContainerBoxProps = {
   children: ReactNode;
   title: string;
   icon?: ReactNode;
+  headerItem?: ReactNode;
 };
 
-function ContainerBox({ children, title, icon }: ContainerBoxProps) {
+function ContainerBox({
+  children,
+  title,
+  icon,
+  headerItem,
+}: ContainerBoxProps) {
   return (
     <div className="rf-container-box-wrapper">
       <div
         className={clsx('rf-container-box-header', 'rf-flex', 'rf-flex-h', {
-          'rf-ju-sb': Boolean(icon),
+          'rf-ju-sb': Boolean(icon || headerItem),
         })}
       >
         <h3>{title}</h3>
+        {headerItem}
         {icon}
       </div>
       {children}

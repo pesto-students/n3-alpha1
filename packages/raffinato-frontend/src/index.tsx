@@ -20,6 +20,7 @@ import {
   Shop,
   Address,
   AddAddress,
+  ConfirmOrder,
   Payment,
   Order,
 } from 'pages';
@@ -73,6 +74,11 @@ const App = () => {
           status={Status.SIGNED_IN}
           path="/checkout/address/add"
           component={AddAddress}
+        />
+        <ProtectedRoute
+          status={Status.SIGNED_IN}
+          path="/checkout/confirm"
+          component={ConfirmOrder}
         />
         <ProtectedRoute
           status={Status.SIGNED_IN}

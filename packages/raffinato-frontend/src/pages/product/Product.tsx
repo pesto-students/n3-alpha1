@@ -51,10 +51,11 @@ const Product = () => {
 
   // check if product already in cart
   useEffect(() => {
+    console.log('Chnaged');
     const itemIndex = getItemIndex(cart, parseInt(id, 10));
     if (itemIndex >= 0) setInCartProduct(cart[itemIndex]);
     else setInCartProduct(null);
-  }, [cart.length]);
+  }, [cart]);
 
   // set default size on fresh page load
   // (i.e. when settings is not available in first go)

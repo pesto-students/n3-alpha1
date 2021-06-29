@@ -5,6 +5,7 @@
   grid-template-columns: 1fr 1fr;
   background: $bg-color-light-1;
   padding: 64px;
+  gap: 2rem;
   max-width: 1680px;
 
   img {
@@ -34,9 +35,9 @@
   justify-self: center;
   background-blend-mode: multiply;
   width: 100%;
-  min-width: 0;
+  max-height: 640px;
   max-width: 427px;
-  padding-bottom: 133.4%;
+  padding-bottom: 30rem;
   background-repeat: no-repeat, repeat;
   background-size: cover;
   background-color: $bg-color-light-0;

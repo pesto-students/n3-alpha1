@@ -35,8 +35,6 @@ export default function Navbar(props: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  console.log({ numOfItemsInCart, cart });
-
   const { isSignedIn, username, userPhoto } = useIsSignedIn();
 
   const { theme, signInCallback } = props;

@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { useQuery } from 'react-query';
 import getOrders from 'api/getOrders';
 
+import OrderTable from 'pages/order/OrderTable';
 import './order.scss';
 
 const formatter = new Intl.DateTimeFormat('en', {
@@ -38,45 +39,7 @@ function Order() {
                 <div className="rf-order-header-right">${order.totalPrice}</div>
               </div>
               <div className="rf-order-details-table">
-                {order.items.map((item: any) => (
-                  <div
-                    className={clsx(
-                      'rf-order-table-row',
-                      'rf-flex',
-                      'rf-flex-h',
-                      'rf-al-c'
-                    )}
-                  >
-                    <div
-                      className={clsx(
-                        'rf-order-table-row-left',
-                        'rf-flex',
-                        'rf-flex-h',
-                        'rf-al-c'
-                      )}
-                    >
-                      <img src={item.thumbnail} alt="item" />
-                      <div>
-                        <p>{item.brand}</p>
-                        <p className="rf-order-table-row-left-desc">
-                          {item.shortDescription}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="rf-order-row-column">
-                      <p>{item.quantity}</p>
-                      <p>Quantity</p>
-                    </div>
-
-                    <div className="rf-order-row-column">
-                      <p>${item.price * item.quantity}</p>
-                      <p>
-                        ${item.price} * {item.quantity}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                <OrderTable borderTop items={order.items} />
               </div>
             </div>
           ))}
