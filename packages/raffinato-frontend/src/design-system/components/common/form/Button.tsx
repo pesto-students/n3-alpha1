@@ -35,6 +35,7 @@ export default function Button(props: {
   const sizeClassName = `rf-button-size-${size}`;
   const loadingClassName = `rf-button-loading`;
   const disabledClassName = `rf-button--disabled`;
+  const hasIconClassName = `rf-button--has-icon`;
 
   const responsiveClassName = responsive ? 'rf-button-responsive' : '';
 
@@ -44,6 +45,7 @@ export default function Button(props: {
     variantClassName,
     sizeClassName,
     responsiveClassName,
+    { [hasIconClassName]: leftIcon || righticon },
     { [disabledClassName]: disabled },
     { [loadingClassName]: loading },
 
@@ -52,7 +54,11 @@ export default function Button(props: {
 
   return (
     <button className={finalClassName} type={type} onClick={onClick}>
-      <div className="rf-button-inner-wrapper">
+      <div
+        className={clsx('rf-button-inner-wrapper', {
+          'rf-button-inner-wrapper--has-icon': leftIcon || righticon,
+        })}
+      >
         {leftIcon}
         {children}
         {righticon}

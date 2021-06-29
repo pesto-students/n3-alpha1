@@ -28,7 +28,7 @@ const Counter = (props: any) => {
         onClick={onDecrement}
       >
         {isDeletable
-          ? value === minValue && <Icon name="delete" />
+          ? value === minValue && <Icon isInteractive name="delete" />
           : value === minValue && '–'}
         {value !== minValue && '–'}
       </div>

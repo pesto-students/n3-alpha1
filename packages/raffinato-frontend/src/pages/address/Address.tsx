@@ -42,7 +42,7 @@ const AddressPage = () => {
 
     dispatch(selectAddress(selectedFullAddress as Partial<Address>));
 
-    return history.push('/checkout/payment');
+    return history.push('/checkout/confirm');
   };
 
   return (

@@ -5,6 +5,8 @@ import clsx from 'clsx';
 
 import './accountmenu.scss';
 import useOutsideClick from 'hooks/useOutsideClick';
+import { useAuth } from 'reactfire';
+import { useQueryClient } from 'react-query';
 
 const DEFAULT_ICON = require('design-system/assets/icons/account.svg');
 
@@ -22,8 +24,18 @@ function AccountMenu({
   username,
 }: AccountMenuProps) {
   const accountMenuRef = useRef<HTMLDivElement | null>(null);
+  const auth = useAuth();
+
+  const queryClient = useQueryClient();
 
   useOutsideClick(accountMenuRef, closeMenu);
+
+  const handleSignOut = () => {
+    localStorage.removeItem('@token');
+    queryClient.clear();
+    auth.signOut();
+    closeMenu();
+  };
 
   return (
     <AnimatePresence>
@@ -48,11 +60,13 @@ function AccountMenu({
           </div>
 
           <div className={clsx('rf-account-menu-links-section', 'rf-flex')}>
-            <p>View your orders</p>
+            <Link to="/orders">
+              <p>View your orders</p>
+            </Link>
             <Link to="/user/address">
               <p>View your addresses</p>
             </Link>
-            <p>Log out</p>
+            <button onClick={handleSignOut}>Log out</button>
           </div>
         </motion.div>
       )}

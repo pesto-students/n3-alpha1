@@ -1,8 +1,8 @@
 type Params = Record<string, string>;
 
-const DEFAULT_HEADER = {
+const GET_DEFAULT_HEADER = () => ({
   authorization: `Bearer ${localStorage.getItem('@token')}`,
-};
+});
 
 const { REACT_APP_API_URL } = process.env;
 
@@ -26,7 +26,7 @@ const isResJSON = (res: Response) => {
 const get = async (
   url: string,
   params: Params = {},
-  headers = DEFAULT_HEADER,
+  headers = GET_DEFAULT_HEADER(),
   settings = {}
 ) => {
   const res = await fetch(
@@ -52,7 +52,7 @@ const get = async (
 const post = async (
   url: string,
   body: Record<string, any>,
-  headers = DEFAULT_HEADER,
+  headers = GET_DEFAULT_HEADER(),
   settings = {}
 ) => {
   const res = await fetch(`${getCompleteURL(url)}`, {

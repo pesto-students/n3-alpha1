@@ -7,6 +7,8 @@ function useRefreshToken() {
   const setToken = async () => {
     const token = await user?.data?.getIdToken();
 
+    console.log(token);
+
     if (token) {
       localStorage.setItem('@token', token);
     }
