@@ -28,33 +28,40 @@
 .rf-product-page-main-image{
   justify-self: center;
   background-blend-mode: multiply;
-  width: 100%;
+  width: 427px;
   min-width: 0;
-  max-width: 427px;
-  padding-bottom: 133.4%;
+  height: 570px;
   background-repeat: no-repeat, repeat;
   background-size: cover;
   background-color: $bg-color-light-0;
 
+  @include mobile {
+    padding-bottom: 133.4%;
+  }
+
   @include xs{
+    width: 100%;
+    max-width: 427px;
     max-width: 180px;
   }
 }
 
-.rf-product-description{
-  margin-left: -56px;
-  margin-right: -56px;
-  text-align: center;
-
-  .rf-section-header{
-    flex-direction: column;
-    align-items: center !important;
-  }
-
-  .rf-tabs-container{
-    justify-content: center;
-    .rf-tab:last-child{
-      margin-right: 0;
+@include mobile{
+  .rf-product-description{
+    margin-left: -56px;
+    margin-right: -56px;
+    text-align: center;
+  
+    .rf-section-header{
+      flex-direction: column;
+      align-items: center !important;
+    }
+  
+    .rf-tabs-container{
+      justify-content: center;
+      .rf-tab:last-child{
+        margin-right: 0;
+      }
     }
   }
 }
