@@ -6,12 +6,21 @@ import { motion } from 'framer-motion';
 import { useQuery, UseQueryResult } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
-import Icon from 'design-system/components/Icon/Icon';
-import getProduct from '../../api/getProduct';
-import { Button, TextInput, Tabs, Counter, Select } from '../../design-system';
-import { addToCart, getItemIndex, removeFromCart } from '../../store/cartSlice';
-import Rect from '../../design-system/assets/images/rect.png';
+import {
+  Icon,
+  Button,
+  TextInput,
+  Tabs,
+  Counter,
+  Select,
+} from 'design-system/index';
+import getProduct from 'api/getProduct';
+import { getItemIndex, removeFromCart, addToCartThunk } from 'store/cartSlice';
+import Rect from 'design-system/assets/images/rect.png';
 import './product.scss';
+
+const CDN_BASE_URL =
+  'https://res.cloudinary.com/pesto-alpha/image/upload/Assets';
 
 const Product = () => {
   // todo: add proper content for info and size
@@ -42,10 +51,11 @@ const Product = () => {
 
   // check if product already in cart
   useEffect(() => {
+    console.log('Chnaged');
     const itemIndex = getItemIndex(cart, parseInt(id, 10));
     if (itemIndex >= 0) setInCartProduct(cart[itemIndex]);
     else setInCartProduct(null);
-  }, [cart.length]);
+  }, [cart]);
 
   // set default size on fresh page load
   // (i.e. when settings is not available in first go)
@@ -89,7 +99,7 @@ const Product = () => {
           <div
             className="rf-product-page-main-image"
             style={{
-              backgroundImage: `url(${data?.product?.images?.cutOut}), url(${Rect})`,
+              backgroundImage: `url(${CDN_BASE_URL}/${data?.product.id}-0-hq.jpg), url(${Rect})`,
             }}
           />
           <div className="rf-product-description rf-padding-l-xxl rf-padding-r-xxl">
@@ -238,7 +248,7 @@ const Product = () => {
                     className="rf-margin-t-lg"
                     onClick={() => {
                       dispatch(
-                        addToCart({
+                        addToCartThunk({
                           id: data?.product?.id,
                           images: data?.product?.images,
                           shortDescription: data?.product?.shortDescription,
@@ -259,6 +269,7 @@ const Product = () => {
             </div>
           </div>
         </div>
+        <div className="rf-product-page-gallery">p</div>
       </div>
     </motion.div>
   );

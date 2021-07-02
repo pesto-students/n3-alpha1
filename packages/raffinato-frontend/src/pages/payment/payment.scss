@@ -1,0 +1,29 @@
+@import '../../design-system//scss/util/config.scss';
+
+.rf-payment-form-card {
+  .StripeElement {
+    padding: 30px 20px;
+    background-color: rgba(#B55500, 0.1);
+  }
+}
+
+.rf-payment-form-inner-wrapper {
+  & > *:not(:last-child) {
+    margin-bottom: 32px;
+  }
+
+  .rf-payment-options-wrapper {
+    margin-bottom: 40px;
+  }
+}
+
+
+.rf-payment-form-options {
+  & > *:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+
+.rf-payment-failure-message {
+  color: $danger-color;
+}

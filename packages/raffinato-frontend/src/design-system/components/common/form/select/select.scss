@@ -11,9 +11,11 @@
     border-radius: 0;
     border: 0;
     border-bottom: 2px solid white;
+    outline: none !important;
 
-    &is--focused{
-      outline: none !important
+    &--is-focused{
+      outline: none !important;
+      box-shadow: none;
     }
 
     @include mobile{
@@ -47,7 +49,7 @@
     border-radius: 0;
     border: 0;
     height: 100%;
-    &is--focused{
+    &--is-focused{
       outline: none !important
     }
   }
@@ -71,6 +73,10 @@
   }
 }
 
+.rf-select__input {
+  color: #ffffff;
+}
+
 .rf-select.rf-select-variant-primary.rf-select-theme-dark{
   border: 1px solid rgba(181, 85, 0, 0.2);
   padding: 4px;
@@ -81,7 +87,7 @@
     border-radius: 0;
     border: 0;
     height: 100%;
-    &is--focused{
+    &--is-focused{
       outline: none !important
     }
   }
@@ -111,6 +117,7 @@
   border: 1px solid $brand-color;
   color: $brand-color;
   padding: 0;
+  font-size: 0.8rem;
   text-transform: uppercase;
 }
 .rf-select__menu-list{
@@ -122,10 +129,14 @@
 
 .rf-select__option{
   color: $brand-color;
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .rf-select__option--is-selected{
   color: white;
-  background: $brand-color;
+  background-color: rgba($brand-color, 0.5) !important;
+}
+
+.rf-select__option--is-focused{
+  background-color: rgba($brand-color, 0.2);
 }

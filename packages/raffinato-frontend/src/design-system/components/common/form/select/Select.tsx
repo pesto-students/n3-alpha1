@@ -1,13 +1,23 @@
 import React from 'react';
-import Select from 'react-select';
+import Select, { Props as SelectProps } from 'react-select';
 import './select.scss';
 
-const RFSelect = (props: any) => {
-  // eslint-disable-next-line prefer-const
-  let { variant, className, theme } = props;
-  className = `rf-select rf-select-variant-${variant} rf-select-theme-${theme} ${className}`;
+type RFSelectProps = Omit<SelectProps, 'theme'> & {
+  variant?: 'primary' | 'secondary' | 'tertiary';
+  className?: string;
+  theme: 'light' | 'dark';
+};
+
+const RFSelect = (props: RFSelectProps) => {
+  const { variant, className, theme, ...restProps } = props;
+  const finaClassName = `rf-select rf-select-variant-${variant} rf-select-theme-${theme} ${className}`;
+
   return (
-    <Select {...props} className={className} classNamePrefix="rf-select" />
+    <Select
+      {...restProps}
+      className={finaClassName}
+      classNamePrefix="rf-select"
+    />
   );
 };
 

@@ -7,6 +7,7 @@ const makeCheckAuth = ({ authAdmin }) => async (req, res, next) => {
       originalUrl.includes('product')
         || originalUrl.includes('settings')
         || originalUrl.includes('api-docs')
+        || originalUrl.includes('hook')
     ) {
       return next();
     }

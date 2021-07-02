@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const cors = require('cors');
@@ -5,9 +7,17 @@ const router = require('./routes/routes');
 const swaggerDocument = require('./docs/swagger.json');
 const middlewares = require('./middleware/index');
 const addressCollection = require('./models/address');
+const cartCollection = require('./models/cart');
+const orderCollection = require('./models/orders');
+const { db: productDB } = require('./models/products.json');
+
+const allProducts = [...productDB.men, ...productDB.women];
 
 // TODO: Use Mongo for storage
 global.addressCollection = addressCollection;
+global.orderCollection = orderCollection;
+global.cartCollection = cartCollection;
+global.productCollection = allProducts;
 
 const app = express();
 app.use(express.json());

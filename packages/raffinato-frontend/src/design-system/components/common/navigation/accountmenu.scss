@@ -1,0 +1,50 @@
+@import '../../../scss/util/config.scss';
+
+.rf-account-menu{
+  height: 300px;
+  cursor: initial;
+  width: 270px;
+  color: $brand-color;
+  position: absolute;
+  top: 50px;
+  right: -2px;
+  padding: 30px 0px;
+  background: $bg-color;
+  border: 1px solid $brand-color;
+
+  .rf-account-menu-links-section,.rf-account-menu-profile-section  {
+    padding: 0px 24px;
+  }
+
+  .rf-account-menu-profile-section {
+    border-bottom: 1px solid $brand-color;
+
+    p {
+      color: rgba($brand-color, 0.3)
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 6px;
+    }
+  }
+
+  .rf-account-menu-links-section {
+    margin-top: 20px;
+    font-size: 0.9rem;
+
+    & >:last-child {
+      color: $danger-color
+    }
+
+    button {
+      outline: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      background: inherit;
+      font-size: inherit;
+    }
+  }
+}

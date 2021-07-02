@@ -3,7 +3,7 @@ import asyncPool from 'tiny-async-pool';
 
 import download from './downloadFile';
 
-const { PRODUCTS_BASE_URL } = process.env;
+const { PRODUCTS_BASE_URL = 'https://www.farfetch.com' } = process.env;
 
 const scrapeImageByCategory = async (data, gender) => {
   const productsArray = [];

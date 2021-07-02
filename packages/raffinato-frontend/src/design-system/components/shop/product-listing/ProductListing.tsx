@@ -21,9 +21,9 @@ const ProductListing = (props: any) => {
   const history = useHistory();
   return (
     <>
-      <div
-        role="button"
-        className={`rf-margin-b-md rf-position-r rf-product-listing-theme-${theme}`}
+      <button
+        type="button"
+        className={`rf-margin-b-md rf-position-r rf-product-listing-button rf-product-listing-theme-${theme}`}
         id="product-listing-img"
         onClick={(e) => {
           // eslint-disable-next-line prefer-destructuring
@@ -33,7 +33,7 @@ const ProductListing = (props: any) => {
             target.classList.contains('rf-model-img')
           ) {
             history.push(`/product/${p.id}`);
-            if (typeof onRedirect === 'function') onRedirect();
+            onRedirect?.();
           }
         }}
       >
@@ -42,7 +42,7 @@ const ProductListing = (props: any) => {
           <img className="rf-cutout-img" src={p?.images?.cutOut} alt="" />
         ) : null}
         <div className="rf-product-listing-counter-slot">{counterSlot}</div>
-      </div>
+      </button>
       {isInCart ? (
         <div className="rf-flex rf-flex-h rf-ju-sb rf-text-sm">
           <div className="rf-margin-r-sm">

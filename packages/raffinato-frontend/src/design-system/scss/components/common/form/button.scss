@@ -6,6 +6,22 @@
   box-sizing: border-box;
   cursor: pointer;
   font-weight: 300;
+
+  &--has-icon {
+    & > * {
+      margin: 0px 10px;
+    }
+
+    & * {
+      transition: margin 0.2s ease;
+    }
+
+    &:hover .rf-button-inner-wrapper{
+      & * {
+        margin: 0px 11px;
+      }
+    }
+  }
 }
 
 .rf-button-inner-wrapper {
@@ -19,6 +35,11 @@
   & > * {
     margin: 0px 10px;
   }
+
+
+  &--has-icon * {
+    transition: margin 0.2s ease;
+  }
 }
 
 // variants
@@ -29,6 +50,10 @@
   }
   &:hover .rf-button-inner-wrapper{
     clip-path: inset(0px 0px 0px 0px);
+
+    &--has-icon * {
+      margin: 0px 11px;
+    }
   }
 }
 .rf-button-variant-secondary{
@@ -74,6 +99,7 @@
 
 @include buttonTheme(dark, $brand-color, white);
 @include buttonTheme(light, white, $brand-color);
+@include buttonTheme(danger, $danger-color, white);
 
 // sizes
 .rf-button-size-large{
@@ -95,4 +121,48 @@
 // responsive
 .rf-button-responsive{
   width: 100%;
+}
+
+
+// loading
+.rf-button-theme-dark.rf-button-loading {
+  cursor: not-allowed;
+  pointer-events: none;
+
+  .rf-button-inner-wrapper {
+    background-color: rgba($brand-color-secondary, 0.1);
+    background-image: linear-gradient(
+      90deg,
+      rgba($brand-color-secondary, 0.1),
+      rgba($brand-color-secondary, 0.3),
+      rgba($brand-color-secondary, 0.1)
+    );
+    animation: skeleton 1.1s ease-in-out infinite;
+  }
+}
+
+// loading
+.rf-button-theme-dark.rf-button-loading {
+  cursor: not-allowed;
+  pointer-events: none;
+
+  .rf-button-inner-wrapper {
+    background-color: rgba($brand-color-secondary, 0.1);
+    background-image: linear-gradient(
+      90deg,
+      rgba($brand-color-secondary, 0.1),
+      rgba($brand-color-secondary, 0.3),
+      rgba($brand-color-secondary, 0.1)
+    );
+    animation: skeleton 1.1s ease-in-out infinite;
+  }
+}
+
+@keyframes skeleton {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: calc(1000px + 100%) 0;
+  }
 }

@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import './counter.scss';
-import Icon from '../../Icon/Icon';
+import { Icon } from 'design-system/index';
 
 const Counter = (props: any) => {
   const {
@@ -28,7 +28,7 @@ const Counter = (props: any) => {
         onClick={onDecrement}
       >
         {isDeletable
-          ? value === minValue && <Icon name="delete" />
+          ? value === minValue && <Icon isInteractive name="delete" />
           : value === minValue && '–'}
         {value !== minValue && '–'}
       </div>

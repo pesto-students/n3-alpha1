@@ -1,14 +1,12 @@
-/* eslint-disable jsx-a11y/interactive-supports-focus */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/no-shadow */
-// import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInfiniteQuery, UseInfiniteQueryResult } from 'react-query';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import React, { useState, useEffect } from 'react';
+import ScrollAnimation from 'react-animate-on-scroll';
+
+import { Skeleton } from 'design-system/index';
 import getProducts from 'api/getProducts';
 import './shop.scss';
-import ScrollAnimation from 'react-animate-on-scroll';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import queryString from 'query-string';
 import { ProductListing } from '../../design-system';
 import Filters from '../../design-system/components/shop/filters/Filters';
@@ -18,6 +16,7 @@ interface Page {
 }
 
 const Shop = () => {
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
   // todo: add placeholder loaders
   // todo: fix jump-loading of images
   // todo: show a nice infinite scroll loader (placeholder loaders would be much better :))
@@ -43,7 +42,7 @@ const Shop = () => {
         gender: qs.gender,
       });
     }
-  }, [qs.gender]);
+  }, [filters, qs.gender]);
 
   const count = 20;
   const res: UseInfiniteQueryResult<Page, unknown> = useInfiniteQuery(
@@ -53,9 +52,13 @@ const Shop = () => {
     },
     {
       keepPreviousData: true,
-      getNextPageParam: (lastPage, pages) => pages.length,
+      getNextPageParam: (lastPage, pages) =>
+        lastPage.products.length && pages.length + 1,
     }
   );
+
+  const handleImageLoaded = () => setIsImageLoaded(true);
+
   const { data, isLoading, fetchNextPage, hasNextPage } = res;
 
   // todo: opacity animation trigger issue on mobile
@@ -77,7 +80,7 @@ const Shop = () => {
     >
       <div className="rf-container">
         <Filters
-          onFiltersChange={(filters: {
+          onFiltersChange={(currentFilters: {
             gender: { value: string };
             clothing: { value: string };
             size: { value: string };
@@ -85,10 +88,10 @@ const Shop = () => {
           }) => {
             // console.log(filters);
             setFilters({
-              gender: filters.gender.value,
-              clothing: filters.clothing.value,
-              size: filters.size.value,
-              brand: filters.brand.value,
+              gender: currentFilters.gender.value,
+              clothing: currentFilters.clothing.value,
+              size: currentFilters.size.value,
+              brand: currentFilters.brand.value,
             });
           }}
         />
