@@ -78,7 +78,7 @@ const Search = (props: {
           >
             <motion.div
               className="rf-searchbar-container"
-              animate={{ translateY: searchQuery ? '0' : '40vh' }}
+              animate={{ translateY: searchQuery ? '0px' : '40vh' }}
               initial={{ translateY: '40vh' }}
               transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
             >
