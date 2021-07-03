@@ -12,6 +12,40 @@ import type { Address } from 'design-system/components/common/box/AddressBox';
 import useForm from 'hooks/useForm';
 import './address.scss';
 
+const validate = (values: Partial<Address>) => {
+  const errorObject: Partial<Address> = {};
+
+  if (!values.fullName) {
+    errorObject.fullName = 'Please add full name.';
+  }
+
+  if (!values.email) {
+    errorObject.email = 'Please add email.';
+  }
+
+  if (!values.phone) {
+    errorObject.phone = 'Please add phone no.';
+  }
+
+  if (!values.addressLine1) {
+    errorObject.addressLine1 = 'Please add address line 1.';
+  }
+
+  if (!values.city) {
+    errorObject.city = 'Please add city.';
+  }
+
+  if (!values.state) {
+    errorObject.state = 'Please add state.';
+  }
+
+  if (!values.pinCode) {
+    errorObject.pinCode = 'Please add pincode.';
+  }
+
+  return errorObject;
+};
+
 const AddAddressPage = () => {
   const dispatch = useAppDispatch();
   const history = useHistory();
@@ -38,10 +72,9 @@ const AddAddressPage = () => {
     await addAddressMutation.mutate(values);
   };
 
-  const { values, handleChange, handleSubmit } = useForm<Partial<Address>>(
-    {},
-    { onSubmit: handleFormSubmit }
-  );
+  const { errors, values, handleChange, handleSubmit } = useForm<
+    Partial<Address>
+  >({}, { onSubmit: handleFormSubmit, validate });
 
   return (
     <div className={clsx('rf-address-page', 'rf-flex', 'rf-flex-h', 'rf-ju-c')}>
@@ -60,18 +93,21 @@ const AddAddressPage = () => {
                 name="fullName"
                 onChange={handleChange}
                 value={values.fullName}
+                error={errors?.fullName}
                 placeholder="Enter your full name"
               />
               <TextInput
                 name="email"
                 onChange={handleChange}
                 value={values.email}
+                error={errors?.email}
                 placeholder="Enter email"
               />
               <TextInput
                 name="phone"
                 onChange={handleChange}
                 value={values.phone}
+                error={errors?.phone}
                 placeholder="Enter phone number"
               />
             </div>
@@ -87,6 +123,7 @@ const AddAddressPage = () => {
                 name="addressLine1"
                 onChange={handleChange}
                 value={values.addressLine1}
+                error={errors?.addressLine1}
                 placeholder="Enter address line 1"
               />
               <TextInput
@@ -99,18 +136,21 @@ const AddAddressPage = () => {
                 name="city"
                 onChange={handleChange}
                 value={values.city}
+                error={errors?.city}
                 placeholder="Enter city"
               />
               <TextInput
                 name="state"
                 onChange={handleChange}
                 value={values.state}
+                error={errors?.state}
                 placeholder="Enter state"
               />
               <TextInput
                 name="pinCode"
                 onChange={handleChange}
                 value={values.pinCode}
+                error={errors?.pinCode}
                 placeholder="Enter pincode"
               />
             </div>
