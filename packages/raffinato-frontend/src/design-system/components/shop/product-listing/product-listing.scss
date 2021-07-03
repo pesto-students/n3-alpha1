@@ -59,6 +59,12 @@
 
 .rf-product-listing .rf-product-listing-theme-light{
   color:white;
+  .rf-diamond{
+    background: white;
+  }
+}
+.rf-product-listing .rf-product-listing-theme-dark{
+  color:$brand-color;
 }
 
 .rf-product-listing-counter-slot{

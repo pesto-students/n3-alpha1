@@ -1,0 +1,21 @@
+@import '../../../scss/util/config.scss';
+
+.rf-search-container{
+  height: 100vh;
+  overflow-y: scroll;
+  padding-top: 48px !important;
+  padding-bottom: 48px !important;
+}
+
+.rf-searchbar-container{
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 48px;
+}
+
+.rf-search-close{
+  top: 32px;
+  right: 32px;
+  position: fixed;
+}
