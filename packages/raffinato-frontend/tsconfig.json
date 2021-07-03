@@ -25,5 +25,5 @@
     "src",
     "src/**/*.d.ts",
     "src/**/*.ts"
-  ]
+, "src/setupTests.ts"  ]
 }

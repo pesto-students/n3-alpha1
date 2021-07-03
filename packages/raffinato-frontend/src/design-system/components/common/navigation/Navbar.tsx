@@ -97,20 +97,26 @@ export default function Navbar(props: NavbarProps) {
           <BagIcon />
         </div>
         <div
-          className={clsx('rf-navbar-upfront-menu-button', {
-            'rf-navbar-upfront-menu-button--signedin': isSignedIn,
-          })}
-          {...(isSignedIn && {
-            role: 'button',
-            tabIndex: 0,
-            onKeyDown: () => setIsAccountMenuOpen(true),
-            onClick: () => setIsAccountMenuOpen(true),
-          })}
+          className={clsx(
+            'rf-navbar-upfront-menu-button',
+            'rf-account-menu-icon',
+            {
+              'rf-navbar-upfront-menu-button--signedin': isSignedIn,
+            }
+          )}
+          role="button"
+          tabIndex={0}
+          onKeyDown={
+            isSignedIn ? () => setIsAccountMenuOpen(true) : handleAccountClick
+          }
+          onClick={
+            isSignedIn ? () => setIsAccountMenuOpen(true) : handleAccountClick
+          }
         >
           {isSignedIn ? (
             <img src={userPhoto || DEFAULT_ICON} alt="profile avatar" />
           ) : (
-            <AccountIcon onClick={handleAccountClick} />
+            <AccountIcon />
           )}
 
           <AccountMenu

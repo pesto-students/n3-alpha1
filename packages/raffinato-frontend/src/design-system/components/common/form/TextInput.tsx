@@ -5,7 +5,7 @@ export default function TextInput(props: {
   placeholder: string;
   theme: string;
   responsive: boolean;
-  hasError: boolean;
+  error: boolean;
   helperText: string;
   onChange?: (e: any) => void;
   name: string;
@@ -16,7 +16,7 @@ export default function TextInput(props: {
     theme,
     responsive,
     placeholder,
-    hasError,
+    error,
     helperText,
     onChange,
     name,
@@ -24,9 +24,7 @@ export default function TextInput(props: {
   } = props;
   const themeClassName = `rf-text-input-theme-${theme}`;
   const responsiveClassName = responsive ? 'rf-text-input-responsive' : '';
-  const errorClassName = hasError
-    ? 'rf-input-errored'
-    : 'rf-input-errored--false';
+  const errorClassName = error ? 'rf-input-errored' : 'rf-input-errored--false';
   const focusClassName = focus ? `rf-text-input-focussed` : null;
 
   const finalClassName = [
@@ -40,16 +38,19 @@ export default function TextInput(props: {
   return (
     <div className={errorClassName}>
       <div className={finalClassName}>
-        <input
-          type="text"
-          name={name}
-          value={value}
-          placeholder={placeholder}
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
-          onChange={onChange}
-        />
+        <label htmlFor={name}>
+          <input
+            type="text"
+            name={name}
+            value={value || ''}
+            placeholder={placeholder}
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+            onChange={onChange}
+          />
+        </label>
       </div>
+      {error ? <p className="rf-input-error-text">{error}</p> : null}
       {helperText ? <p className="rf-input-helper-text">{helperText}</p> : null}
     </div>
   );
@@ -60,7 +61,7 @@ TextInput.propTypes = {
   placeholder: PropTypes.string,
   responsive: PropTypes.bool,
   onChange: PropTypes.func,
-  hasError: PropTypes.bool,
+  error: PropTypes.string,
   helperText: PropTypes.string,
 };
 
@@ -68,7 +69,7 @@ TextInput.defaultProps = {
   placeholder: '',
   theme: 'dark',
   responsive: true,
-  hasError: false,
+  error: null,
   helperText: '',
   onChange: () => null,
 };
