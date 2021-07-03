@@ -5,6 +5,7 @@ const makeCheckAuth = ({ authAdmin }) => async (req, res, next) => {
     // Do not check auth headers for these routes
     if (
       originalUrl.includes('product')
+        || originalUrl.includes('search')
         || originalUrl.includes('settings')
         || originalUrl.includes('api-docs')
         || originalUrl.includes('hook')

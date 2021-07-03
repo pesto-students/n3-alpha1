@@ -14,6 +14,7 @@ const { catchErrors } = require('../handlers/errorHandlers');
 // GET Requests
 router.get('/api/v1/products', catchErrors(productController.getProducts));
 router.get('/api/v1/product', catchErrors(productController.getProduct));
+router.get('/api/v1/searchProducts', catchErrors(productController.getProductsBySearchQuery));
 router.get('/api/v1/settings', catchErrors(commonController.getSettings));
 router.get('/api/v1/getAddress', catchErrors(userController.getAddress));
 router.get('/api/v1/getOrders', catchErrors(orderController.getOrders));

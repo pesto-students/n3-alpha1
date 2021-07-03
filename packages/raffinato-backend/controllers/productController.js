@@ -69,3 +69,34 @@ exports.getProduct = async (req, res) => {
     });
   }
 };
+
+exports.getProductsBySearchQuery = async (req, res) => {
+  // pagination params
+  const page = req.query.page || DEFAULT_PAGE;
+  const limit = req.query.limit || DEFAULT_PAGE_LIMIT;
+  const skip = (page * limit) - limit;
+
+  // search params
+  const { query } = req.query;
+
+  // search
+  const results = [];
+  allProducts.forEach((p) => {
+    try {
+      if (
+        p.brand?.name.toLowerCase().includes(query.toLowerCase())
+        || p.shortDescription?.toLowerCase().includes(query.toLowerCase())
+      ) {
+        results.push(p);
+      }
+    } catch (e) {
+      // continue
+    }
+  });
+
+  const paginatedProducts = results.slice(skip, (page * limit));
+  res.json({
+    success: true,
+    products: paginatedProducts,
+  });
+};
