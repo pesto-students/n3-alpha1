@@ -20,10 +20,10 @@ const ProductListing = (props: any) => {
   const p = product;
   const history = useHistory();
   return (
-    <>
+    <div className={`rf-product-listing-theme-${theme}`}>
       <button
         type="button"
-        className={`rf-margin-b-md rf-position-r rf-product-listing-button rf-product-listing-theme-${theme}`}
+        className="rf-margin-b-md rf-position-r rf-product-listing-button"
         id="product-listing-img"
         onClick={(e) => {
           // eslint-disable-next-line prefer-destructuring
@@ -77,7 +77,7 @@ const ProductListing = (props: any) => {
           </p>
         </>
       )}
-    </>
+    </div>
   );
 };
 

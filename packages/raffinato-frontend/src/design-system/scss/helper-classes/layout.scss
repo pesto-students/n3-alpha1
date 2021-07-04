@@ -50,6 +50,12 @@
   }
 }
 
+.rf-hide-xs{
+  @include xs{
+    display: none;
+  }
+}
+
 .rf-grid{
   display: grid;
   &.rf-grid-2-col{

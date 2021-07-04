@@ -52,6 +52,7 @@ const Cart = (props: { onCartClose: () => void; isCartOpen: boolean }) => {
           animate={{ opacity: isCartOpen ? 1 : 0 }}
           transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
           initial={{ opacity: 0 }}
+          exit={{ opacity: 0 }}
           className="rf-backdrop"
         >
           <motion.div

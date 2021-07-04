@@ -12,6 +12,7 @@ import { ReactComponent as SearchIcon } from 'design-system/assets/icons/search.
 import AccountMenu from 'design-system/components/common/navigation/AccountMenu';
 import clsx from 'clsx';
 import useIsSignedIn from 'hooks/useIsSignedIn';
+import Search from './Search';
 import Cart from './Cart';
 import Menu from './Menu';
 import './accountmenu.scss';
@@ -34,6 +35,7 @@ export default function Navbar(props: NavbarProps) {
     .reduce((total, quantity) => total + quantity, 0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const { isSignedIn, username, userPhoto } = useIsSignedIn();
 
@@ -69,7 +71,13 @@ export default function Navbar(props: NavbarProps) {
         />
       </div>
       <div className="rf-navbar-upfront-menu">
-        <div className="rf-navbar-upfront-menu-button rf-hide-mobile">
+        <div
+          className="rf-navbar-upfront-menu-button rf-hide-mobile"
+          onClick={() => setIsSearchOpen(true)}
+          onKeyDown={() => setIsSearchOpen(true)}
+          role="button"
+          tabIndex={0}
+        >
           <SearchIcon />
         </div>
         <div
@@ -132,6 +140,12 @@ export default function Navbar(props: NavbarProps) {
         isCartOpen={isCartOpen}
         onCartClose={() => {
           setIsCartOpen(false);
+        }}
+      />
+      <Search
+        isSearchOpen={isSearchOpen}
+        onSearchClose={() => {
+          setIsSearchOpen(false);
         }}
       />
     </nav>

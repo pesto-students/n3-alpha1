@@ -3,7 +3,6 @@ import { useInfiniteQuery, UseInfiniteQueryResult } from 'react-query';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import React, { useState, useEffect } from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
-
 import { Skeleton } from 'design-system/index';
 import getProducts from 'api/getProducts';
 import './shop.scss';
@@ -20,7 +19,10 @@ const Shop = () => {
   // todo: add placeholder loaders
   // todo: fix jump-loading of images
   // todo: show a nice infinite scroll loader (placeholder loaders would be much better :))
-  // tood: handle scroll end
+  // todo: handle scroll end
+  // todo: handle browser resize
+  // todo: make filters stick to top
+  // todo: add loop animation to educate users that filters are scrollable on mobile
 
   const qs: {
     gender?: string;
@@ -63,9 +65,9 @@ const Shop = () => {
 
   // todo: opacity animation trigger issue on mobile
   let numOfColumns: number;
-  if (window.innerWidth < 1680 && window.innerWidth > 400) {
+  if (window.innerWidth < 1919 && window.innerWidth > 600) {
     numOfColumns = parseInt(`${window.innerWidth / 400}`, 10);
-  } else if (window.innerWidth < 400) {
+  } else if (window.innerWidth < 600) {
     numOfColumns = 1;
   } else {
     numOfColumns = 5;
@@ -106,7 +108,7 @@ const Shop = () => {
         >
           {isLoading
             ? 'Loading...'
-            : data?.pages.map((pg) => {
+            : data?.pages.map((pg, j) => {
                 return pg.products.map((p: any, i: number) => {
                   return (
                     <ScrollAnimation
@@ -115,7 +117,7 @@ const Shop = () => {
                       animateOnce
                       // eslint-disable-next-line react/no-array-index-key
                       key={i}
-                      initiallyVisible={i < numOfColumns}
+                      initiallyVisible={j === 0 && i < numOfColumns}
                       delay={100 * (i % numOfColumns)}
                     >
                       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}

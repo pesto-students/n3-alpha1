@@ -34,7 +34,7 @@
 }
 
 @include generateFontSizeStyles("h1", "xxl", "xxl");
-@include generateFontSizeStyles("h2", "xl", "xl");
+@include generateFontSizeStyles("h2", "xl", "lg");
 @include generateFontSizeStyles("h3", "lg", "lg");
 @include generateFontSizeStyles("h4", "lg", "md");
 @include generateFontSizeStyles("p", "md", "sm");
