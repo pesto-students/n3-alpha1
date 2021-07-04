@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
 import getAddress from 'api/getAddress';
 
@@ -9,6 +9,7 @@ import type { Address } from 'design-system/components/common/box/AddressBox';
 import { useAppDispatch } from 'hooks/useRedux';
 import { createAlert } from 'store/alertSlice';
 import { useHistory } from 'react-router-dom';
+import { selectAddress } from 'store/addressSlice';
 
 const AddressPage = () => {
   const { data, isLoading, isFetching } = useQuery('addresses', getAddress);
@@ -22,18 +23,26 @@ const AddressPage = () => {
     null
   );
 
+  const selectedFullAddress = useMemo(() => {
+    return addresses?.find((address) => address.id === selectedAddress);
+  }, [addresses, selectedAddress]);
+
   const handleAddressClick = (id?: Address['id']) =>
     setSelectedAddress(id || null);
 
   const handleContinue = () => {
     if (!selectedAddress) {
-      dispatch(
+      return dispatch(
         createAlert({
           message: 'Please select an address',
           type: 'failure',
         })
       );
     }
+
+    dispatch(selectAddress(selectedFullAddress as Partial<Address>));
+
+    return history.push('/checkout/confirm');
   };
 
   return (

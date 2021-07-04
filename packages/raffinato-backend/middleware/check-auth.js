@@ -1,13 +1,14 @@
 const makeCheckAuth = ({ authAdmin }) => async (req, res, next) => {
-  console.log('Running auth check', req.originalUrl);
   try {
     const { originalUrl } = req;
 
     // Do not check auth headers for these routes
     if (
       originalUrl.includes('product')
+        || originalUrl.includes('search')
         || originalUrl.includes('settings')
         || originalUrl.includes('api-docs')
+        || originalUrl.includes('hook')
     ) {
       return next();
     }
@@ -24,8 +25,6 @@ const makeCheckAuth = ({ authAdmin }) => async (req, res, next) => {
     // decodedIdpToken contains a uid property that can be used to authorize users
     const decodedIdpToken = await authAdmin.verifyIdpToken({ idpToken: bearerToken });
     res.locals.auth = { ...decodedIdpToken };
-
-    console.log('Here');
 
     return next();
   } catch (e) {

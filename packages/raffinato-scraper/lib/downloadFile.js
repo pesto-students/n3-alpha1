@@ -1,7 +1,7 @@
 import fs from 'fs';
 import https from 'https';
 
-const download = (url, destination) => new Promise((resolve, reject) => {
+const download = (url, destination) => new Promise((resolve) => {
   if (!url || !destination) {
     return;
   }
@@ -17,8 +17,8 @@ const download = (url, destination) => new Promise((resolve, reject) => {
     });
   }).on('error', (error) => {
     fs.unlinkSync(`pictures/${destination}`);
-
-    reject(error.message);
+    console.log(error.message);
+    resolve(true);
   });
 });
 

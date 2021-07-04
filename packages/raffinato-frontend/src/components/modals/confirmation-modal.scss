@@ -1,0 +1,16 @@
+.rf-confirm-modal-wrapper {
+  // position: absolute;
+  // width: calc(100% - 126px);
+  // bottom: 100px;
+}
+
+.rf-confirm-modal-action {
+  width: 100%;
+  position: absolute;
+  width: calc(100% - 126px);
+  bottom: 100px;
+
+  & > *:not(:last-child) {
+    margin-right: 1rem;
+  }
+}

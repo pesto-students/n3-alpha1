@@ -1,0 +1,105 @@
+@import '../../design-system//scss/util/config.scss';
+
+.rf-order-page-inner-wrapper {
+  & > *:not(:last-child) {
+    margin-bottom: 32px;
+  }
+}
+
+.rf-order-page-order {
+  padding: 25px 30px;
+  background: $bg-color-light-2-hex;
+}
+
+.rf-order-header-left {
+  .rf-order-header-order-id {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+  }
+
+  .rf-order-header-order-date {
+    font-size: 0.7rem;
+    color: rgba($brand-color, 0.4)
+  }
+}
+
+.rf-order-table-row {
+  padding: 20px 0px;
+
+  p {
+    font-size: 0.7rem;
+    margin-bottom: 2px;
+  }
+
+  & > div {
+    flex: 0.6;
+  }
+
+  & > div:first-child {
+    flex: 1.8;
+  }
+
+  & > div:last-child {
+    text-align: right;
+  }
+
+  &--border-top {
+    border-top: 1px solid rgba($brand-color, 0.4);
+  }
+
+  &--border-bottom {
+    border-bottom: 1px solid rgba($brand-color, 0.4);
+  }
+}
+
+.rf-order-table-row-left {
+  img {
+    width: 95px;
+    opacity: 0.7;
+  }
+
+  p {
+    max-width: 100px;
+  }
+
+  & > *:not(:last-child) {
+    margin-right: 40px;
+  }
+
+  .rf-order-table-row-left-desc {
+    font-size: 0.6rem;
+    max-width: 200px;
+    color: rgba($brand-color, 0.4)
+  }
+}
+
+.rf-order-row-column {
+  & > p:last-child {
+    color: rgba($brand-color, 0.4)
+  }
+}
+
+.rf-confirm-page-order {
+  padding: 0px;
+  background: transparent;
+
+  .rf-order-details-table {
+    max-height: 90%;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.rf-order-confirm-thumbnail {
+  background-blend-mode: multiply;
+  min-width: 0;
+  height: 128px;
+  width: 100px;
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+  background-color: #FFEED5;
+  box-shadow: inset -15px -15px 30px -10px rgb(50 50 50 / 14%);
+}

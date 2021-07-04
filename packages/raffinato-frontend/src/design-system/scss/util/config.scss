@@ -15,11 +15,14 @@ $bg-color-dark-0: $brand-color;
 $bg-color-dark-1: #562B04;
 $bg-color-light-0:#FCFAF7;
 $bg-color-light-1 : rgba(#F0E4D2, 0.4);
+$bg-color-light-1-hex: #EFE6DD;
 $bg-color-light-2 : rgba($brand-color-secondary, 0.1);
+$bg-color-light-2-hex: #EFE0CE;
 
 // feedback
-$danger-color : #FF0000;
+$danger-color : #D04F4F;
 $success-color : #1CB90F;
+$disabled-color: #eae7e3;
 
 
 /*********************
@@ -92,12 +95,17 @@ $spacings-mobile: (
 $screen-sm-min: 600px;
 $screen-md-min: 960px;
 $screen-lg-min: 1280px;
-$screen-xl-min: 1920px;
+$screen-xl-min: 1440px;
+$screen-xxl-min: 1680px;
+$screen-xxxl-min: 1920px;
+
 $screen-xs-max: 599px;
 $screen-sm-max: 959px;
 $screen-md-max: 1279px;
-$screen-lg-max: 1919px;
-$screen-xl-max: 5000px;
+$screen-lg-max: 1439px;
+$screen-xl-max: 1679px;
+$screen-xxl-max: 1919px;
+$screen-xxxl-max: 5000px;
 
 // precise targets
 @mixin xs {
@@ -107,7 +115,7 @@ $screen-xl-max: 5000px;
 }
 
 @mixin sm {
-  @media screen and (max-width: #{$screen-sm-max}) {
+  @media screen and (min-width: #{$screen-sm-min}) and (max-width: #{$screen-sm-max}) {
     @content;
   }
 }
@@ -126,6 +134,18 @@ $screen-xl-max: 5000px;
 
 @mixin xl {
   @media screen and (min-width: #{$screen-xl-min}) and (max-width: #{$screen-xl-max}) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media screen and (min-width: #{$screen-xxl-min}) and (max-width: #{$screen-xxl-max}) {
+    @content;
+  }
+}
+
+@mixin xxxl {
+  @media screen and (min-width: #{$screen-xxxl-min}) and (max-width: #{$screen-xxxl-max}) {
     @content;
   }
 }

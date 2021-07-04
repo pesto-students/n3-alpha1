@@ -2,52 +2,13 @@
 
 .rf-shop-products-grid{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-row-gap: 64px;
   grid-column-gap: 48px;
-}
+  overflow: visible !important;
 
-.rf-product-listing{
-  cursor: pointer;
-  color: $brand-color;
-  position: relative;
-  transform: translateY(10%);
-  opacity: 0;
-  transition-property: opacity, transform;
-  transition-timing-function: ease-out;
-  transition-duration: 0.5s;
-
-  .rf-cutout-img, .rf-model-img{
-    transition-property: opacity;
-    transition-timing-function: ease-out;
-    transition-duration: 0.3s;
-  } 
-  .rf-cutout-img{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0;
-  }
-
-  
-  &:hover{
-    .rf-cutout-img{
-      opacity: 1;
-    }
-    .rf-model-img{
-      opacity: 0;
-    }
-  }
-
-  &-fade-in{
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  &-fade-out{
-    opacity: 1;
-    transform: translateY(0);
-  }
-
+  @include xs{ grid-template-columns: repeat(1, 1fr); }
+  @include sm{ grid-template-columns: repeat(2, 1fr); }
+  @include xxl{ grid-template-columns: repeat(4, 1fr); }
+  @include xxxl{ grid-template-columns: repeat(5, 1fr); }
 }

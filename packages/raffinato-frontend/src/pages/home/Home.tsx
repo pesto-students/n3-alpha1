@@ -61,6 +61,7 @@ const wrap = (min: number, max: number, v: number) => {
 const Home = () => {
   const [[page, direction], setPage] = useState([0, 0]);
 
+  // todo: proper positioning and darker background image on mobile(maybe import a different image for mobile)
   const history = useHistory();
 
   const imageIndex = wrap(0, heroData.length, page);
@@ -136,7 +137,8 @@ const Home = () => {
             ))}
           </motion.h1>
           <p className="rf-text-white rf-margin-b-xxl">
-            {heroData[imageIndex].subtitle}
+            ...AND LOOK DAMN GOOD IN IT <br className="rf-hide-desktop" />• THE
+            PROTAGONISTS <span className="rf-hide-desktop">•</span>
           </p>
           <Button
             theme="light"
@@ -146,6 +148,7 @@ const Home = () => {
             Shop now
           </Button>
         </div>
+        {/* todo: decide whether to remove base on whether grid is ready */}
         <div className="hero-scroll-indicator">
           <div className="hero-scroll-indicator-line" />
           <span>scroll for more</span>

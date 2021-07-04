@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import type { ReactNode } from 'react';
 
-import Icon from 'design-system/components/Icon/Icon';
+import Icon from 'design-system/components/common/icons/Icon';
 import './modal.scss';
 
 type BaseModalProps = Modal.Props & {
@@ -16,6 +16,7 @@ function BaseModal({
   contentLabel,
   children,
   contentStyle,
+  ...others
 }: BaseModalProps) {
   const modalCloseBbuttonClassName = [
     'rf-flex',
@@ -36,6 +37,7 @@ function BaseModal({
       overlayClassName="ReactModal__Overlay"
       className="ReactModal__Content"
       closeTimeoutMS={500}
+      {...others}
     >
       <div className="rf-basemodal-wrapper">
         <h2 className="rf-basemodal-header">{contentLabel}</h2>

@@ -5,30 +5,13 @@ const { db } = require('../models/products.json');
 
 const allProducts = [...db.men, ...db.women];
 const GENDERMAP = {
-  ALL: 'both',
+  ALL: 'ALL',
   MEN: 'men',
   WOMEN: 'women',
 };
-const BRANDS_MAP = {
-  ALL: 'ALL BRANDS',
-}; allProducts.forEach((p) => {
-  if (p.brand?.name) BRANDS_MAP[p.brand?.name] = p.brand?.name;
-});
-const SIZES_MAP = {
-  ALL: 'ANY',
-  XXS: 'XXS',
-  XS: 'XS',
-  S: 'S',
-  M: 'M',
-  L: 'L',
-  XL: 'XXL',
-  XXL: 'XXXL',
-};
-const CLOTHING_CATEGORIES_MAP = {
-  ALL: 'ALL CLOTHING',
-}; allProducts.forEach((p) => {
-  if (p.clothingCategory) BRANDS_MAP[p.clothingCategory] = p.clothingCategory;
-});
+const BRANDS_MAP = { ALL: 'ALL' };
+const SIZES_MAP = { ALL: 'ALL' };
+const CLOTHING_CATEGORIES_MAP = { ALL: 'ALL' };
 
 const DEFAULT_PAGE = 1;
 const DEFAULT_PAGE_LIMIT = 20;
@@ -55,7 +38,7 @@ exports.getProducts = async (req, res) => {
     const genderMatch = gender === GENDERMAP.ALL || p.gender === gender;
     const sizeMatch = size === SIZES_MAP.ALL || (_.findIndex(p.availableSizes, (s) => s.size === size) >= 0);
     const clothingCategoryMatch = clothingCategory === CLOTHING_CATEGORIES_MAP.ALL || p.clothingCategory === clothingCategory;
-    const brandMatch = brand === BRANDS_MAP.ALL || p.brand.name === brand;
+    const brandMatch = brand === BRANDS_MAP.ALL || (p.brand && p.brand.name === brand);
     if (genderMatch && sizeMatch && clothingCategoryMatch && brandMatch) filteredProducts.push(p);
   });
 
@@ -85,4 +68,35 @@ exports.getProduct = async (req, res) => {
       message: 'Product not found',
     });
   }
+};
+
+exports.getProductsBySearchQuery = async (req, res) => {
+  // pagination params
+  const page = req.query.page || DEFAULT_PAGE;
+  const limit = req.query.limit || DEFAULT_PAGE_LIMIT;
+  const skip = (page * limit) - limit;
+
+  // search params
+  const { query } = req.query;
+
+  // search
+  const results = [];
+  allProducts.forEach((p) => {
+    try {
+      if (
+        p.brand?.name.toLowerCase().includes(query.toLowerCase())
+        || p.shortDescription?.toLowerCase().includes(query.toLowerCase())
+      ) {
+        results.push(p);
+      }
+    } catch (e) {
+      // continue
+    }
+  });
+
+  const paginatedProducts = results.slice(skip, (page * limit));
+  res.json({
+    success: true,
+    products: paginatedProducts,
+  });
 };
