@@ -1,12 +1,13 @@
-import React, { useRef } from 'react';
+import React, { MouseEvent, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 
 import './accountmenu.scss';
-import useOutsideClick from 'hooks/useOutsideClick';
 import { useAuth } from 'reactfire';
 import { useQueryClient } from 'react-query';
+
+import useOutsideClick from 'hooks/useOutsideClick';
 
 const DEFAULT_ICON = require('design-system/assets/icons/account.svg');
 
@@ -30,11 +31,13 @@ function AccountMenu({
 
   useOutsideClick(accountMenuRef, closeMenu);
 
-  const handleSignOut = () => {
+  const handleSignOut = (e: MouseEvent) => {
+    e.stopPropagation();
+    closeMenu();
+
     localStorage.removeItem('@token');
     queryClient.clear();
     auth.signOut();
-    closeMenu();
   };
 
   return (
@@ -63,7 +66,7 @@ function AccountMenu({
             <Link to="/orders">
               <p>View your orders</p>
             </Link>
-            <Link to="/user/address">
+            <Link to="/user/address" onClick={closeMenu}>
               <p>View your addresses</p>
             </Link>
             <button onClick={handleSignOut}>Log out</button>

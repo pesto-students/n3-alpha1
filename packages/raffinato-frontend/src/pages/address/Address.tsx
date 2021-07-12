@@ -1,15 +1,15 @@
 import React, { useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
-import getAddress from 'api/getAddress';
-
-import { ContainerBox, AddressBox, Button } from 'design-system/index';
-import './address.scss';
 import clsx from 'clsx';
+import { useHistory } from 'react-router-dom';
+
+import getAddress from 'api/getAddress';
+import { ContainerBox, AddressBox, Button } from 'design-system/index';
+import { selectAddress } from 'store/addressSlice';
 import type { Address } from 'design-system/components/common/box/AddressBox';
 import { useAppDispatch } from 'hooks/useRedux';
 import { createAlert } from 'store/alertSlice';
-import { useHistory } from 'react-router-dom';
-import { selectAddress } from 'store/addressSlice';
+import './address.scss';
 
 const AddressPage = () => {
   const { data, isLoading, isFetching } = useQuery('addresses', getAddress);

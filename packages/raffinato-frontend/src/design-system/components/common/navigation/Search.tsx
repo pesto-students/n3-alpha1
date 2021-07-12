@@ -1,11 +1,12 @@
-import { Button, Icon, ProductListing, TextInput } from 'design-system';
 import { useInfiniteQuery, UseInfiniteQueryResult } from 'react-query';
 import { AnimatePresence, motion } from 'framer-motion';
-import useOutsideClick from 'hooks/useOutsideClick';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import React, { useState, useRef } from 'react';
-import getProductsBySearchQuery from 'api/getProductsBySearchQuery';
 import ScrollAnimation from 'react-animate-on-scroll';
+
+import getProductsBySearchQuery from 'api/getProductsBySearchQuery';
+import useOutsideClick from 'hooks/useOutsideClick';
+import { Button, Icon, ProductListing, TextInput } from 'design-system';
 import './search.scss';
 
 interface Page {

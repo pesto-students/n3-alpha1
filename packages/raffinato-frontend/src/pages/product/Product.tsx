@@ -5,6 +5,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useQuery, UseQueryResult } from 'react-query';
 import { useParams } from 'react-router-dom';
+
 import getProduct from 'api/getProduct';
 import BlendableBackground from 'design-system/assets/images/rect.png';
 import './product.scss';

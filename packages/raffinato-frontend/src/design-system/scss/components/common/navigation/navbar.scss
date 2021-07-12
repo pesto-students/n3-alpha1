@@ -119,13 +119,17 @@
   }
 }
 
-.rf-fullscreen-menu > h1{
+.rf-fullscreen-menu > a, h1{
   text-align: center;
   cursor: pointer;
   color: white;
 }
 
-.rf-fullscreen-menu > h1:hover{
+.rf-fullscreen-menu > a{
+  cursor: pointer;
+}
+
+.rf-fullscreen-menu > a:hover{
   color: #B55500;
 }
 

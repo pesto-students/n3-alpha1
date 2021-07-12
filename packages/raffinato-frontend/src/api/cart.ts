@@ -1,4 +1,4 @@
-import { post } from 'lib/fetch';
+import { post, get } from 'lib/fetch';
 
 type CartItem = any;
 
@@ -7,16 +7,28 @@ type AddToCartMutationResult = {
   item: CartItem;
 };
 
-type RemoveFromCartMutationResult = any;
+type RemoveFromCartMutationResult = AddToCartMutationResult;
 
-const addToCart = (item: Partial<CartItem>) => {
-  return post('addToCart', item) as Promise<AddToCartMutationResult>;
+type CartQueryResult = {
+  items: CartItem[];
 };
 
-const removeFromCart = (id: string) => {
+const addToCart = (item: Partial<CartItem>) => {
+  return post('addToCart', { item }) as Promise<AddToCartMutationResult>;
+};
+
+const removeFromCart = (id: string | number) => {
   return post('removeFromCart', {
     id,
   }) as Promise<RemoveFromCartMutationResult>;
 };
 
-export { addToCart, removeFromCart };
+const getCart = () => {
+  return get('getCart') as Promise<CartQueryResult>;
+};
+
+const syncCart = (items: CartItem[]) => {
+  return post('syncCart', { items }) as Promise<AddToCartMutationResult>;
+};
+
+export { addToCart, removeFromCart, getCart, syncCart };

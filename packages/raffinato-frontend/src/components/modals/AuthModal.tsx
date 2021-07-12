@@ -10,6 +10,8 @@ import BaseModal, {
   BaseModalProps,
 } from 'design-system/components/common/modal/BaseModal';
 import { Button } from 'design-system';
+import { useAppDispatch } from 'hooks/useRedux';
+import { getCartThunk } from 'store/cartSlice';
 
 function AuthModal(props: Omit<BaseModalProps, 'children'>) {
   const auth = useAuth();
@@ -17,6 +19,8 @@ function AuthModal(props: Omit<BaseModalProps, 'children'>) {
   const { displayName, photoURL } = user || {};
   const firstName = displayName?.split(' ')?.[0];
   const isSignedOut = !user;
+
+  const dispatch = useAppDispatch();
 
   const { isOpen, onRequestClose, ...restProps } = props;
   const icon = <Icon name="arrow-right" size={24} />;
@@ -28,6 +32,7 @@ function AuthModal(props: Omit<BaseModalProps, 'children'>) {
 
     if (token) {
       localStorage.setItem('@token', token);
+      dispatch(getCartThunk());
     }
   };
 

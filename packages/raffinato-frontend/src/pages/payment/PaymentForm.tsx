@@ -1,8 +1,11 @@
 import clsx from 'clsx';
 import React, { FormEvent, useState, useEffect } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { ReactComponent as StripeIcon } from 'design-system/assets/icons/stripe.svg';
+import { Redirect, useHistory } from 'react-router-dom';
+import { StripeCardElementOptions } from '@stripe/stripe-js';
+import { useMutation } from 'react-query';
 
+import { ReactComponent as StripeIcon } from 'design-system/assets/icons/stripe.svg';
 import {
   ContainerBox,
   Chip,
@@ -11,13 +14,10 @@ import {
   Icon,
   AddressBox,
 } from 'design-system/index';
-import { StripeCardElementOptions } from '@stripe/stripe-js';
 import './payment.scss';
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
-import { Redirect, useHistory } from 'react-router-dom';
 import { createAlert } from 'store/alertSlice';
 import createPayment from 'api/createPayment';
-import { useMutation } from 'react-query';
 import createOrder, { Order } from 'api/createOrder';
 import { clearCart } from 'store/cartSlice';
 

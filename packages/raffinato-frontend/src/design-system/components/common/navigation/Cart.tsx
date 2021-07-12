@@ -6,16 +6,20 @@
 import React, { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useHistory } from 'react-router';
+
 import { Icon, Counter, ProductListing } from 'design-system/index';
 import { useAppSelector, useAppDispatch } from 'hooks/useRedux';
 import {
   incrementQuantity,
   decrementQuantity,
   CartItem,
+  removeFromCart,
+  removeFromCartThunk,
 } from 'store/cartSlice';
 import ConfirmationModal from 'components/modals/ConfirmationModal';
 import useOutsideClick from 'hooks/useOutsideClick';
 import Button from '../form/Button';
+import useIsSignedIn from 'hooks/useIsSignedIn';
 
 const Cart = (props: { onCartClose: () => void; isCartOpen: boolean }) => {
   // todo: if user directly comes to address then show cart in a new page with items or empty
@@ -24,6 +28,8 @@ const Cart = (props: { onCartClose: () => void; isCartOpen: boolean }) => {
   const confirmationRef = useRef<HTMLDivElement | null>(null);
   const dispatch = useAppDispatch();
   const history = useHistory();
+
+  const { isSignedIn } = useIsSignedIn();
 
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   useOutsideClick([cartRef, confirmationRef], onCartClose);
@@ -43,6 +49,16 @@ const Cart = (props: { onCartClose: () => void; isCartOpen: boolean }) => {
     }
 
     return dispatch(decrementQuantity({ id: product.id }));
+  };
+
+  const handleRemoveFromCart = (id: string) => {
+    if (isSignedIn) {
+      return dispatch(removeFromCartThunk(id));
+    }
+
+    dispatch(removeFromCart({ id }));
+
+    return setIsConfirmationOpen(false);
   };
 
   return (
@@ -128,9 +144,7 @@ const Cart = (props: { onCartClose: () => void; isCartOpen: boolean }) => {
                         }}
                         confirmSublabel="This will remove the product from cart"
                         isOpen={isConfirmationOpen}
-                        onConfirmClick={() =>
-                          dispatch(decrementQuantity({ id: product.id }))
-                        }
+                        onConfirmClick={() => handleRemoveFromCart(product.id)}
                         onRequestClose={(e) => {
                           e.stopPropagation();
                           setIsConfirmationOpen(false);
@@ -169,7 +183,6 @@ const Cart = (props: { onCartClose: () => void; isCartOpen: boolean }) => {
               style={{ marginLeft: 0, marginRight: 0 }}
               size={16}
               name="close"
-              // strokeColor="#fff"
               fillColor="#fff"
             />
           </Button>

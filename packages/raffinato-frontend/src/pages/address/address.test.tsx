@@ -1,9 +1,9 @@
 import React from 'react';
-import { render, fireEvent, waitFor } from 'util/test-utils';
+import { Provider } from 'react-redux';
 
+import { render, fireEvent, waitFor } from 'util/test-utils';
 import addAddress from 'api/addAddress';
 import store from 'store/store';
-import { Provider } from 'react-redux';
 import AddressForm from './AddAddress';
 
 jest.mock('api/addAddress');

@@ -4,22 +4,34 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import { Button } from 'design-system';
+import { Button, DotRing } from 'design-system';
 import HeroImage from 'design-system/assets/images/hero@2x.png';
 import HeroImage2 from 'design-system/assets/images/hero2@2x.png';
 import './home.scss';
 // import PropTypes from 'prop-types';
 
+const HERO_IMAGE_TRANSITION_TIME = 20000;
+
 export const heroData = [
   {
     image: HeroImage,
     title: 'For those who live life on their own terms',
-    subtitle: '...AND LOOK DAMN GOOD IN IT • THE PROTAGONISTS',
+    subtitle: (
+      <>
+        ...AND LOOK DAMN GOOD IN IT <br className="rf-hide-desktop" />• THE
+        PROTAGONISTS <span className="rf-hide-desktop">•</span>
+      </>
+    ),
   },
   {
     image: HeroImage2,
     title: 'For those who are spoilt by choices',
-    subtitle: '...AND YET MAKE THE CORRECT ONE • THE PERFECTIONISTS',
+    subtitle: (
+      <>
+        ...AND YET MAKE THE CORRECT ONE <br className="rf-hide-desktop" />• THE
+        PERFECTIONISTS <span className="rf-hide-desktop">•</span>
+      </>
+    ),
   },
 ];
 
@@ -76,7 +88,7 @@ const Home = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       paginate(1);
-    }, 8000);
+    }, HERO_IMAGE_TRANSITION_TIME);
 
     return () => clearInterval(timer);
   }, [paginate]);
@@ -136,10 +148,14 @@ const Home = () => {
               </>
             ))}
           </motion.h1>
-          <p className="rf-text-white rf-margin-b-xxl">
-            ...AND LOOK DAMN GOOD IN IT <br className="rf-hide-desktop" />• THE
-            PROTAGONISTS <span className="rf-hide-desktop">•</span>
-          </p>
+          <motion.p
+            className="rf-text-white rf-margin-b-xxl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {heroData[imageIndex].subtitle}
+          </motion.p>
           <Button
             theme="light"
             responsive={false}
@@ -159,6 +175,7 @@ const Home = () => {
           <div />
         </div>
       </section>
+      <DotRing />
     </motion.div>
   );
 };

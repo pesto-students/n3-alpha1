@@ -1,8 +1,8 @@
 /* We can safely re-assign params in our reducers, as rtk takes care of immutability using immer */
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import type { Address } from 'design-system/components/common/box/AddressBox';
-import { useAppSelector } from 'hooks/useRedux';
 
 const initialState = null as Partial<Address> | null;
 

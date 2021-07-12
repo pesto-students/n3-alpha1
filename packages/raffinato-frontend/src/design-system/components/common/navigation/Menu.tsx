@@ -5,6 +5,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+
 import { Icon } from 'design-system/index';
 import Button from '../form/Button';
 
@@ -31,11 +33,23 @@ const Menu = (props: {
       className="rf-fullscreen-menu"
     >
       <h1 className="rf-italiana rf-opacity-20">Menu</h1>
-      <h1 onClick={() => navigateTo('/shop?gender=men')}>Men</h1>
+      <Link to="/shop?gender=men">
+        <h1>Men</h1>
+      </Link>
+      <Link to="/shop?gender=women">
+        <h1>Women</h1>
+      </Link>
+      <Link to="/about">
+        <h1>About</h1>
+      </Link>
+      <Link to="/contact">
+        <h1>Contact</h1>
+      </Link>
+      {/* <h1 onClick={() => navigateTo('/shop?gender=men')}>Men</h1>
       <h1 onClick={() => navigateTo('/shop?gender=women')}>Women</h1>
       <h1 onClick={() => navigateTo('/about')}>About</h1>
       <h1 onClick={() => navigateTo('/contact')}>Contact</h1>
-      <h1 onClick={() => navigateTo('/search')}>Search</h1>
+      <h1 onClick={() => navigateTo('/search')}>Search</h1> */}
       <Button
         className="rf-fullscreen-menu-close"
         onClick={() => props.onMenuClose()}

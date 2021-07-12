@@ -1,8 +1,8 @@
 import React from 'react';
-
-import { ContainerBox } from 'design-system/index';
 import clsx from 'clsx';
 import { useQuery } from 'react-query';
+
+import { ContainerBox } from 'design-system/index';
 import getOrders from 'api/getOrders';
 
 import OrderTable from 'pages/order/OrderTable';

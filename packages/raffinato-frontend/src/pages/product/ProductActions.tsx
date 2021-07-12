@@ -2,9 +2,17 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useEffect } from 'react';
+
 import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
-import { getItemIndex, removeFromCart, addToCartThunk } from 'store/cartSlice';
+import {
+  getItemIndex,
+  removeFromCart,
+  addToCartThunk,
+  addToCart,
+  removeFromCartThunk,
+} from 'store/cartSlice';
 import { Icon, Button, Counter, Select } from 'design-system/index';
+import useIsSignedIn from 'hooks/useIsSignedIn';
 
 const ProductActions = (props: { id: string; data: any }) => {
   const { id, data } = props;
@@ -19,6 +27,34 @@ const ProductActions = (props: { id: string; data: any }) => {
   const minQuantity = settings?.minQuantity || 1;
   const maxQuantity = settings?.maxQuantity || 5;
   const [quantity, setQuantity] = useState(minQuantity);
+
+  const { isSignedIn } = useIsSignedIn();
+
+  const handleAddToCart = () => {
+    const productInfo = {
+      id: data?.product?.id,
+      images: data?.product?.images,
+      shortDescription: data?.product?.shortDescription,
+      brand: data?.product?.brand,
+      sizeSelected: size,
+      quantity,
+      priceInfo: data?.product?.priceInfo,
+    };
+
+    if (isSignedIn) {
+      return dispatch(addToCartThunk(productInfo));
+    }
+
+    return dispatch(addToCart(productInfo));
+  };
+
+  const handleRemoveFromCart = () => {
+    if (isSignedIn) {
+      return dispatch(removeFromCartThunk(parseInt(id, 10)));
+    }
+
+    return dispatch(removeFromCart({ id: parseInt(id, 10) }));
+  };
 
   // check if product already in cart
   useEffect(() => {
@@ -53,6 +89,7 @@ const ProductActions = (props: { id: string; data: any }) => {
     onIncrement,
     onDecrement,
   };
+
   return (
     <div>
       {inCartProduct ? (
@@ -68,7 +105,7 @@ const ProductActions = (props: { id: string; data: any }) => {
           </div>
           <div
             className="rf-danger-link"
-            onClick={() => dispatch(removeFromCart({ id: parseInt(id, 10) }))}
+            onClick={() => handleRemoveFromCart()}
           >
             remove
           </div>
@@ -97,19 +134,7 @@ const ProductActions = (props: { id: string; data: any }) => {
             variant="primary"
             theme="dark"
             className="rf-margin-t-lg"
-            onClick={() => {
-              dispatch(
-                addToCartThunk({
-                  id: data?.product?.id,
-                  images: data?.product?.images,
-                  shortDescription: data?.product?.shortDescription,
-                  brand: data?.product?.brand,
-                  sizeSelected: size,
-                  quantity,
-                  priceInfo: data?.product?.priceInfo,
-                })
-              );
-            }}
+            onClick={() => handleAddToCart()}
             size="large"
             responsive
           >

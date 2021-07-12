@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Icon } from 'design-system';
 import { motion } from 'framer-motion';
 import React, { useEffect, useState, useRef } from 'react';
+
+import { Icon } from 'design-system';
 
 const ProductGalleryDesktop = (props: { images: string[] }) => {
   const { images } = props;
