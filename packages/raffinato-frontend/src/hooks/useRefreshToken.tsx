@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useUser } from 'reactfire';
 
 function useRefreshToken() {
@@ -6,8 +6,6 @@ function useRefreshToken() {
 
   const setToken = async () => {
     const token = await user?.data?.getIdToken();
-
-    console.log(token);
 
     if (token) {
       localStorage.setItem('@token', token);

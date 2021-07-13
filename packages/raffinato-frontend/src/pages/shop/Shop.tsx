@@ -3,12 +3,12 @@ import { useInfiniteQuery, UseInfiniteQueryResult } from 'react-query';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import React, { useState, useEffect } from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
-import { Skeleton } from 'design-system/index';
-import getProducts from 'api/getProducts';
-import './shop.scss';
 import queryString from 'query-string';
-import { ProductListing } from '../../design-system';
-import Filters from '../../design-system/components/shop/filters/Filters';
+
+import { Skeleton, ProductListing } from 'design-system/index';
+import getProducts from 'api/getProducts';
+import Filters from 'design-system/components/shop/filters/Filters';
+import './shop.scss';
 
 interface Page {
   products: any[];

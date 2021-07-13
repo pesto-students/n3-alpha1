@@ -34,6 +34,7 @@ function BaseModal({
       style={{
         content: { ...contentStyle },
       }}
+      appElement={document.getElementById('root')!}
       overlayClassName="ReactModal__Overlay"
       className="ReactModal__Content"
       closeTimeoutMS={500}

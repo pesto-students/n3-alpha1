@@ -12,7 +12,14 @@
           "warn", { "argsIgnorePattern": "^_"  }
         ],
         "react/require-default-props": "off",
-        "react/button-has-type": "off"
+        "react/button-has-type": "off",
+        "import/order": ["error", {
+          "groups": [
+            ["external", "builtin"],
+            ["index", "internal", "sibling", "parent"]
+          ],
+          "newlines-between": "always-and-inside-groups"
+        }]
     },
     "settings": {
         "import/resolver": {

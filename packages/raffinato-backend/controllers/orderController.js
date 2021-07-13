@@ -32,7 +32,7 @@ exports.createOrder = async (req, res) => {
     id: uuidv4(),
     createdAt: new Date(),
     userId: auth.uid,
-    status: 'created',
+    status: 'PAID',
     items: [],
     totalPrice: 0,
   };
@@ -47,7 +47,7 @@ exports.createOrder = async (req, res) => {
     ) || {};
 
     order.items.push({
-      brand: brand.name,
+      brand: brand?.name,
       shortDescription: upperFirst(shortDescription.split(' ').pop()),
       quantity,
       price: priceInfo.finalPrice,

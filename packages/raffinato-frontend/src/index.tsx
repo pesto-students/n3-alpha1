@@ -6,14 +6,14 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { AnimatePresence } from 'framer-motion';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
-
-import AlertContainer from 'design-system/components/common/alert/AlertContainer';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   useLocation,
 } from 'react-router-dom';
+
+import AlertContainer from 'design-system/components/common/alert/AlertContainer';
 import {
   Home,
   Product,

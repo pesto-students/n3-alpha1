@@ -1,6 +1,7 @@
-import { useAppDispatch } from 'hooks/useRedux';
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+
+import { useAppDispatch } from 'hooks/useRedux';
 
 import { Alert as AlertType, removeAlert } from 'store/alertSlice';
 

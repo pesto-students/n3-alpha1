@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import clsx from 'clsx';
+
 import { ReactComponent as AccountIcon } from 'design-system/assets/icons/account.svg';
 import { ReactComponent as BagIcon } from 'design-system/assets/icons/bag.svg';
 import { useAppSelector } from 'hooks/useRedux';
-import { motion } from 'framer-motion';
 import { ReactComponent as Logo } from 'design-system/assets/images/logo.svg';
 import { ReactComponent as LogoMobile } from 'design-system/assets/images/logo-mobile.svg';
 import { ReactComponent as MenuIcon } from 'design-system/assets/icons/menu.svg';
 import { ReactComponent as SearchIcon } from 'design-system/assets/icons/search.svg';
 import AccountMenu from 'design-system/components/common/navigation/AccountMenu';
-import clsx from 'clsx';
 import useIsSignedIn from 'hooks/useIsSignedIn';
 import Search from './Search';
 import Cart from './Cart';
@@ -26,9 +27,7 @@ type NavbarProps = {
 
 export default function Navbar(props: NavbarProps) {
   // todo: on scroll shrink navbar
-  // todo: search
   // todo: animate cart badge on each increment/decrement (currently only animates for 1st item(s) added or last item(s) removed)
-  const history = useHistory();
   const cart = useAppSelector((state) => state.cart);
   const numOfItemsInCart = cart
     .map((i) => i.quantity)
@@ -63,13 +62,10 @@ export default function Navbar(props: NavbarProps) {
           <MenuIcon />
         </div>
       </div>
-      <div className="rf-navbar-logo">
-        <Logo className="rf-hide-mobile" onClick={() => history.push('/')} />
-        <LogoMobile
-          className="rf-hide-desktop"
-          onClick={() => history.push('/')}
-        />
-      </div>
+      <Link className="rf-navbar-logo" to="/">
+        <Logo className="rf-hide-mobile" />
+        <LogoMobile className="rf-hide-desktop" />
+      </Link>
       <div className="rf-navbar-upfront-menu">
         <div
           className="rf-navbar-upfront-menu-button rf-hide-mobile"

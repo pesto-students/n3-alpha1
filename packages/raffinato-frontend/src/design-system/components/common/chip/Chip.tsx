@@ -1,9 +1,8 @@
 import React from 'react';
+import clsx from 'clsx';
 
 import { Icon } from 'design-system/index';
-
 import './chip.scss';
-import clsx from 'clsx';
 
 type ChipProps = {
   label: string;

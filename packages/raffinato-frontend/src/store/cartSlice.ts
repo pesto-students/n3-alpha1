@@ -2,7 +2,14 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { addToCart as addToCardAPI } from 'api/cart';
+import merge from 'lodash/merge';
+
+import {
+  addToCart as addToCartAPI,
+  removeFromCart as removeFromCartAPI,
+  getCart as getCartAPI,
+  syncCart,
+} from 'api/cart';
 
 // TODO: Change this into actual shape
 type CartItem = Record<any, any>;
@@ -19,7 +26,28 @@ export const getItemIndex = (state: CartItem[], idToFind: ID): number => {
 export const addToCartThunk = createAsyncThunk(
   'addToCart',
   async (item: CartItem) => {
-    const response = await addToCardAPI({ item });
+    const response = await addToCartAPI(item);
+    return response;
+  }
+);
+
+export const removeFromCartThunk = createAsyncThunk(
+  'removeFromCart',
+  async (id: string | number) => {
+    const response = await removeFromCartAPI(id);
+    return response;
+  }
+);
+
+export const getCartThunk = createAsyncThunk(
+  'getCart',
+  async (_, { getState }) => {
+    const response = await getCartAPI();
+    const cartState = (getState() as any).cart;
+
+    if (!response?.items?.length) {
+      await syncCart(cartState);
+    }
     return response;
   }
 );
@@ -74,14 +102,34 @@ const cartSlice = createSlice({
     builder.addCase(
       addToCartThunk.fulfilled,
       (state, action: PayloadAction<CartItem>) => {
-        const { item } = action?.payload;
-        const itemIndex = getItemIndex(state, item.id);
+        const { id, quantity } = action?.payload;
+        const itemIndex = getItemIndex(state, id);
 
         if (itemIndex && itemIndex < 0) {
-          state.push(item);
+          state.push(action?.payload);
         } else {
-          state[itemIndex].quantity += item.quantity;
+          state[itemIndex].quantity += quantity;
         }
+      }
+    );
+
+    builder.addCase(
+      getCartThunk.fulfilled,
+      (state, action: PayloadAction<CartItem>) => {
+        const { items } = action?.payload || {};
+
+        state = merge(state, items);
+
+        return state;
+      }
+    );
+
+    builder.addCase(
+      removeFromCartThunk.fulfilled,
+      (state, action: PayloadAction<CartItem>) => {
+        const { item } = action?.payload || {};
+
+        return state.filter((itemCurrent) => itemCurrent.id !== item?.id);
       }
     );
   },

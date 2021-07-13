@@ -1,17 +1,11 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import clsx from 'clsx';
 
 import { ContainerBox, AddressBox, Button, Icon } from 'design-system/index';
-import clsx from 'clsx';
-import { useQuery } from 'react-query';
-import getOrders from 'api/getOrders';
-
-import './order.scss';
-import Rect from 'design-system/assets/images/rect.png';
-
 import OrderTable from 'pages/order/OrderTable';
-
 import { useAppSelector } from 'hooks/useRedux';
-import { useHistory } from 'react-router-dom';
+import './order.scss';
 
 function ConfirmOrder() {
   const selectedAddress = useAppSelector((state) => state.selectedAddress);

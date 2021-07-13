@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
 import getSettingsAPI from '../api/getSettings';
 
 export const fetchSettings = createAsyncThunk('settings', async () => {

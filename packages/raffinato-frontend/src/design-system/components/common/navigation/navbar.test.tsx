@@ -1,5 +1,6 @@
-import * as useIsSignedIn from 'hooks/useIsSignedIn';
 import React from 'react';
+
+import * as useIsSignedIn from 'hooks/useIsSignedIn';
 import { render, fireEvent, waitFor } from 'util/test-utils';
 
 import Navbar from './Navbar';

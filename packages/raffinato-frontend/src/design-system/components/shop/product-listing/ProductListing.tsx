@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/interactive-supports-focus */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { SyntheticEvent } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import './product-listing.scss';
 
@@ -26,7 +24,6 @@ const ProductListing = (props: any) => {
         className="rf-margin-b-md rf-position-r rf-product-listing-button"
         id="product-listing-img"
         onClick={(e) => {
-          // eslint-disable-next-line prefer-destructuring
           const target = e.target as HTMLElement;
           if (
             target.classList.contains('rf-cutout-img') ||

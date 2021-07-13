@@ -1,8 +1,7 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Icon } from 'design-system';
 import { motion } from 'framer-motion';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState } from 'react';
+
+import { Icon } from 'design-system';
 
 const ProductGalleryDesktop = (props: { images: string[] }) => {
   const { images } = props;
@@ -52,7 +51,7 @@ const ProductGalleryDesktop = (props: { images: string[] }) => {
         dragPropagation
       >
         {images.map((image) => {
-          return <img alt="" src={image} />;
+          return <img alt="" src={image} key={image} />;
         })}
       </motion.div>
       {isControllerVisible ? (
@@ -60,6 +59,9 @@ const ProductGalleryDesktop = (props: { images: string[] }) => {
           {isRightControllerVisible ? (
             <div
               onClick={onRight}
+              onKeyDown={onRight}
+              role="button"
+              tabIndex={0}
               className="rf-gallery-controller rf-controller-right"
             >
               <Icon name="arrow-right" size={48} fillColor="#000" />
@@ -68,6 +70,9 @@ const ProductGalleryDesktop = (props: { images: string[] }) => {
           {isLeftControllerVisible ? (
             <div
               onClick={onLeft}
+              onKeyDown={onLeft}
+              role="button"
+              tabIndex={0}
               className="rf-gallery-controller rf-controller-left"
             >
               <Icon name="arrow-left" size={48} fillColor="#000" />
