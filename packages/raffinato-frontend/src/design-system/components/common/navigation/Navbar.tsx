@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
@@ -28,9 +27,7 @@ type NavbarProps = {
 
 export default function Navbar(props: NavbarProps) {
   // todo: on scroll shrink navbar
-  // todo: search
   // todo: animate cart badge on each increment/decrement (currently only animates for 1st item(s) added or last item(s) removed)
-  const history = useHistory();
   const cart = useAppSelector((state) => state.cart);
   const numOfItemsInCart = cart
     .map((i) => i.quantity)

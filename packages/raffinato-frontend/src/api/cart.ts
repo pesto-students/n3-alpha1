@@ -1,6 +1,22 @@
 import { post, get } from 'lib/fetch';
 
-type CartItem = any;
+type CartItem = {
+  status: number;
+  id: number | string;
+  images: Record<string, string | null>;
+  shortDescription: string;
+  brand: {
+    id: number;
+    name: string;
+  };
+  sizeSelected: {
+    value: string;
+    label: string;
+  };
+  quantity: number;
+  priceInfo: Record<string, any>;
+  userId: string;
+};
 
 type AddToCartMutationResult = {
   status: string | number;

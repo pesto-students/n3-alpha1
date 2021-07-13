@@ -121,14 +121,14 @@ const PaymentForm = () => {
     setIsProcessing(true);
     setError(null);
 
-    const {
-      error: stripeError,
-      ...restPayload
-    } = await stripe.confirmCardPayment(clientSecret!, {
-      payment_method: {
-        card: elements.getElement(CardElement)!,
-      },
-    });
+    const { error: stripeError } = await stripe.confirmCardPayment(
+      clientSecret!,
+      {
+        payment_method: {
+          card: elements.getElement(CardElement)!,
+        },
+      }
+    );
 
     if (stripeError) {
       setError(stripeError.message!);

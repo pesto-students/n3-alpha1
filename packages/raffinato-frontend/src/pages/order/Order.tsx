@@ -4,7 +4,6 @@ import { useQuery } from 'react-query';
 
 import { ContainerBox } from 'design-system/index';
 import getOrders from 'api/getOrders';
-
 import OrderTable from 'pages/order/OrderTable';
 import './order.scss';
 
@@ -13,7 +12,7 @@ const formatter = new Intl.DateTimeFormat('en', {
 });
 
 function Order() {
-  const { data, isLoading } = useQuery('orders', getOrders);
+  const { data } = useQuery('orders', getOrders);
   const orders = data?.orders;
 
   return (

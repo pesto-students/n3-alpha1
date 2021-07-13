@@ -1,4 +1,3 @@
-import { Address } from 'design-system/components/common/box/AddressBox';
 import { post } from 'lib/fetch';
 
 const createPayment = (items: any) => {

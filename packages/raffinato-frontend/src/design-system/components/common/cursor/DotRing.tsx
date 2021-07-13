@@ -1,22 +1,15 @@
-import React, { useState, useEffect, MouseEvent, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 
-import throttle from 'lodash/throttle';
-
 import useMousePosition from 'hooks/useMousePosition';
-
 import './dotring.scss';
-
-type DotRingProps = {
-  cursorType?: string;
-};
 
 const isMobile = () => {
   const ua = navigator.userAgent;
   return /Android|Mobi/i.test(ua);
 };
 
-const DotRing = ({ cursorType }: DotRingProps) => {
+const DotRing = () => {
   const { x, y } = useMousePosition();
   const [clicked, setClicked] = useState(false);
   const [linkHovered, setLinkHovered] = useState(false);
@@ -33,28 +26,6 @@ const DotRing = ({ cursorType }: DotRingProps) => {
     document.addEventListener('mousedown', onMouseDown);
     document.addEventListener('mouseup', onMouseUp);
   };
-
-  const handleMouseOver = (e: MouseEvent) => {
-    if (e?.currentTarget?.tagName?.toLowerCase() === 'a') {
-      setLinkHovered(true);
-    }
-  };
-
-  const handleMouseOverThrottled = useMemo(
-    () => throttle(handleMouseOver, 1000),
-    []
-  );
-
-  const handleMouseOut = (e: MouseEvent) => {
-    if (e?.currentTarget?.tagName?.toLowerCase() === 'a') {
-      setLinkHovered(false);
-    }
-  };
-
-  const handleMouseOutrThrottled = useMemo(
-    () => throttle(handleMouseOut, 1000),
-    []
-  );
 
   const removeEventListeners = () => {
     document.removeEventListener('mouseenter', onMouseEnter);
@@ -86,9 +57,13 @@ const DotRing = ({ cursorType }: DotRingProps) => {
   };
 
   useEffect(() => {
-    addEventListeners();
-    handleLinkHoverEvents();
-    return () => removeEventListeners();
+    if (!isMobile()) {
+      addEventListeners();
+      handleLinkHoverEvents();
+    }
+    return () => {
+      if (!isMobile()) removeEventListeners();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
