@@ -2,6 +2,8 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+import merge from 'lodash/merge';
+
 import {
   addToCart as addToCartAPI,
   removeFromCart as removeFromCartAPI,
@@ -116,7 +118,7 @@ const cartSlice = createSlice({
       (state, action: PayloadAction<CartItem>) => {
         const { items } = action?.payload || {};
 
-        state = items?.length ? items : state;
+        state = merge(state, items);
 
         return state;
       }

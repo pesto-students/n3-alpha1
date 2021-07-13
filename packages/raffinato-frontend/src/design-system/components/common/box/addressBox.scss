@@ -15,6 +15,17 @@
 
 .rf-address-box-wrapper--selected {
   border: 1px solid $brand-color;
+  position: relative;
+
+  .rf-address-box-selected-tick {
+    position: absolute;
+    bottom: 20px;
+    left: 32x;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    background-color: $brand-color;
+  }
 }
 
 .rf-address-box-personal-info {

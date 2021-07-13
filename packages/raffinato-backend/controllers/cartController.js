@@ -1,14 +1,15 @@
 const { v4: uuid } = require('uuid');
 
-exports.addToCart = async (req, res) => {
+exports.addToCart = (req, res) => {
   const { auth } = res.locals;
   const { item } = req.body;
 
   const cartItem = {
     ...item,
-    id: uuid(),
     userId: auth.uid,
   };
+
+  global.cartCollection.push(cartItem);
 
   res.json({
     status: 200,
@@ -16,7 +17,7 @@ exports.addToCart = async (req, res) => {
   });
 };
 
-exports.removeFromCart = async (req, res) => {
+exports.removeFromCart = (req, res) => {
   const { auth } = res.locals;
   const item = req.body;
 
@@ -31,7 +32,7 @@ exports.removeFromCart = async (req, res) => {
   });
 };
 
-exports.getCart = async (req, res) => {
+exports.getCart = (req, res) => {
   const { auth } = res.locals;
 
   const cartByUser = global.cartCollection.filter((item) => item.userId === auth.uid);
@@ -42,7 +43,7 @@ exports.getCart = async (req, res) => {
   });
 };
 
-exports.syncCart = async (req, res) => {
+exports.syncCart = (req, res) => {
   const { auth } = res.locals;
   const { items } = req.body;
 

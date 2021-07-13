@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import './addressBox.scss';
 
-import { Skeleton } from 'design-system/index';
+import { Skeleton, Icon } from 'design-system/index';
 
 type Address = {
   id: string;
@@ -78,6 +78,11 @@ function AddressBox({
         <p className="rf-text-sm">{isLoading ? <Skeleton /> : fullState}</p>
         <p className="rf-text-sm">{isLoading ? <Skeleton /> : pinCode}</p>
       </div>
+      {isSelected && (
+        <div className="rf-address-box-selected-tick">
+          <Icon name="tick" size={20} fillColor="#FFFFFF" />
+        </div>
+      )}
     </button>
   );
 }

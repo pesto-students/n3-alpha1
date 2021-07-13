@@ -53,7 +53,7 @@ const ProductGalleryDesktop = (props: { images: string[] }) => {
         dragPropagation
       >
         {images.map((image) => {
-          return <img alt="" src={image} />;
+          return <img alt="" src={image} key={image} />;
         })}
       </motion.div>
       {isControllerVisible ? (
