@@ -8,6 +8,17 @@
   & > *:not(:last-child) {
     margin-bottom: 32px;
   }
+
+
+  .rf-address-page-action-buttons {
+    @include mobile {
+      flex-direction: column !important;
+
+      & > * {
+        margin-bottom: 10px;
+      }
+    }
+  }
 }
 
 .rf-address-page-action-buttons {

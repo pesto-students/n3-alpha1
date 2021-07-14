@@ -1,14 +1,16 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import clsx from 'clsx';
 
 import { ContainerBox, AddressBox, Button, Icon } from 'design-system/index';
 import OrderTable from 'pages/order/OrderTable';
-import { useAppSelector } from 'hooks/useRedux';
+import { useAppDispatch, useAppSelector } from 'hooks/useRedux';
 import './order.scss';
+import { createAlert } from 'store/alertSlice';
 
 function ConfirmOrder() {
   const selectedAddress = useAppSelector((state) => state.selectedAddress);
+  const dispatch = useAppDispatch();
 
   const history = useHistory();
 
@@ -20,6 +22,16 @@ function ConfirmOrder() {
     .reduce((total, price) => total + price, 0);
 
   const headerItem = <h4>${totalAmount}</h4>;
+
+  if (!cart?.length) {
+    dispatch(
+      createAlert({
+        message: 'Please add an item to cart',
+        type: 'failure',
+      })
+    );
+    return <Redirect to="/" />;
+  }
 
   return (
     <div className={clsx('rf-address-page', 'rf-flex', 'rf-flex-h', 'rf-ju-c')}>

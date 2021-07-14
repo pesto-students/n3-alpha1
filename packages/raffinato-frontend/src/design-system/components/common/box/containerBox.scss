@@ -1,3 +1,5 @@
+@import '../../../scss/util/config.scss';
+
 .rf-container-box-wrapper {
   width: 780px;
   padding: 64px;
@@ -8,6 +10,10 @@
 
   h3 {
     font-weight: normal;
+  }
+
+  @include mobile {
+    padding: 30px;
   }
 }
 

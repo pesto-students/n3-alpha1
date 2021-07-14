@@ -2,6 +2,7 @@
 
 .rf-address-box-wrapper {
   width: 100%;
+  position: relative;
   height: 240px;
   padding: 32px;
   background-color: rgba($brand-color-secondary, 0.1);
@@ -11,20 +12,35 @@
   outline: none;
   border: none;
   text-align: inherit;
+
+  @include mobile {
+    flex-direction: column !important;
+    height: auto;
+  }
 }
 
 .rf-address-box-wrapper--selected {
   border: 1px solid $brand-color;
-  position: relative;
+}
 
-  .rf-address-box-selected-tick {
-    position: absolute;
-    bottom: 20px;
-    left: 32x;
-    padding: 8px 10px;
-    display: flex;
-    align-items: center;
+.rf-address-box-tick {
+  position: absolute;
+  bottom: 20px;
+  left: 32x;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  background-color: $bg-color;
+
+  &--selected {
     background-color: $brand-color;
+  }
+
+  @include mobile {
+    top: 30px;
+    right: 30px;
+    left: auto;
+    bottom: auto;
   }
 }
 
@@ -48,9 +64,14 @@
     width: 1px;
     right: 40px;
     background: $brand-color;
+
+    @include mobile {
+      content: none;
+    }
   }
 }
 
 .rf-address-box-personal-info, .rf-address-box-address-info {
   flex: 1 1 0px;
 }
+

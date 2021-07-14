@@ -23,6 +23,7 @@ import {
   ConfirmOrder,
   Payment,
   Order,
+  About,
 } from 'pages';
 import { SplashScreen } from 'design-system';
 import CommonLayout from 'layout/CommonLayout';
@@ -62,6 +63,9 @@ const App = () => {
         </Route>
         <Route path="/product/:id">
           <Product />
+        </Route>
+        <Route path="/about">
+          <About />
         </Route>
 
         <ProtectedRoute

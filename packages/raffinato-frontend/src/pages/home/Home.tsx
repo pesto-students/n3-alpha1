@@ -1,6 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, Fragment } from 'react';
 import { useHistory } from 'react-router';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -8,7 +8,6 @@ import { Button, DotRing } from 'design-system';
 import HeroImage from 'design-system/assets/images/hero@2x.png';
 import HeroImage2 from 'design-system/assets/images/hero2@2x.png';
 import './home.scss';
-// import PropTypes from 'prop-types';
 
 const HERO_IMAGE_TRANSITION_TIME = 20000;
 
@@ -127,9 +126,8 @@ const Home = () => {
             variants={sentence}
           >
             {heroData[imageIndex].title.split(' ').map((word, index) => (
-              <>
+              <Fragment key={`${word}-${index}`}>
                 <motion.span
-                  key={`${word}-${index}`}
                   variants={sentence}
                   style={{ display: 'inline-block' }}
                 >
@@ -146,7 +144,7 @@ const Home = () => {
                   ))}
                 </motion.span>
                 <span> </span>
-              </>
+              </Fragment>
             ))}
           </motion.h1>
           <motion.p
