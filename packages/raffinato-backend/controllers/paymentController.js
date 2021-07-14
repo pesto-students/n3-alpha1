@@ -21,7 +21,6 @@ exports.createPayment = async (req, res) => {
     amount: calculateOrderAmount(items, auth.uid),
     currency: 'inr',
   });
-  console.log(global.orderCollection);
 
   res.send({
     clientSecret: paymentIntent.client_secret,

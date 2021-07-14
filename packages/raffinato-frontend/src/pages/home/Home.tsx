@@ -110,6 +110,7 @@ const Home = () => {
             variants={variants}
             initial="enter"
             animate="center"
+            alt="slider"
             exit="exit"
             transition={{
               opacity: { duration: 1 },

@@ -57,6 +57,7 @@ export default function Navbar(props: NavbarProps) {
           onClick={() => setIsMenuOpen(true)}
           onKeyDown={() => setIsMenuOpen(true)}
           role="button"
+          aria-label="toggle menu"
           tabIndex={0}
         >
           <MenuIcon />
@@ -72,6 +73,7 @@ export default function Navbar(props: NavbarProps) {
           onClick={() => setIsSearchOpen(true)}
           onKeyDown={() => setIsSearchOpen(true)}
           role="button"
+          aria-label="search"
           tabIndex={0}
         >
           <SearchIcon />

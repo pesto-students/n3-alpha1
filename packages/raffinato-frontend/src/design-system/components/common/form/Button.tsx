@@ -53,7 +53,12 @@ export default function Button(props: {
   );
 
   return (
-    <button className={finalClassName} type={type} onClick={onClick}>
+    <button
+      className={finalClassName}
+      type={type}
+      onClick={onClick}
+      aria-label={children.toString()}
+    >
       <div
         className={clsx('rf-button-inner-wrapper', {
           'rf-button-inner-wrapper--has-icon': leftIcon || righticon,
