@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import ScrollAnimation from 'react-animate-on-scroll';
 import queryString from 'query-string';
 
-import { Skeleton, ProductListing } from 'design-system/index';
+import { ProductListing } from 'design-system/index';
 import getProducts from 'api/getProducts';
 import Filters from 'design-system/components/shop/filters/Filters';
 import './shop.scss';
@@ -15,13 +15,9 @@ interface Page {
 }
 
 const Shop = () => {
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
-  // todo: add placeholder loaders
-  // todo: fix jump-loading of images
   // todo: show a nice infinite scroll loader (placeholder loaders would be much better :))
   // todo: handle scroll end
   // todo: handle browser resize
-  // todo: make filters stick to top
   // todo: add loop animation to educate users that filters are scrollable on mobile
 
   const qs: {
@@ -58,8 +54,6 @@ const Shop = () => {
         lastPage.products.length && pages.length + 1,
     }
   );
-
-  const handleImageLoaded = () => setIsImageLoaded(true);
 
   const { data, isLoading, fetchNextPage, hasNextPage } = res;
 

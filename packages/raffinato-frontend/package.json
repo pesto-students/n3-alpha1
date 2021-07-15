@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.0",
+    "@sentry/browser": "^6.9.0",
+    "@sentry/types": "^6.9.0",
     "@stripe/react-stripe-js": "^1.4.1",
     "@stripe/stripe-js": "^1.15.1",
     "@testing-library/jest-dom": "^5.14.1",

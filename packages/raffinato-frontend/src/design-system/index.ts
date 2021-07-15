@@ -12,3 +12,4 @@ export { default as Skeleton } from './components/common/skeleton/Skeleton';
 export { default as SplashScreen } from './components/common/splash/SplashScreen';
 export { default as Tabs } from './components/shop/tabs/Tabs';
 export { default as TextInput } from './components/common/form/TextInput';
+export { default as ProgressiveImage } from './components/common/image/ProgressiveImage';
