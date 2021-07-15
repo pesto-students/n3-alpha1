@@ -22,6 +22,7 @@ import {
   AddAddress,
   ConfirmOrder,
   Payment,
+  Contact,
   Order,
   About,
 } from 'pages';
@@ -53,7 +54,7 @@ const App = () => {
   useScrollToTop();
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence initial={false} exitBeforeEnter>
       <Switch location={location} key={location.pathname}>
         <Route path="/" exact>
           <Home />
@@ -66,6 +67,9 @@ const App = () => {
         </Route>
         <Route path="/about">
           <About />
+        </Route>
+        <Route path="/contact">
+          <Contact />
         </Route>
 
         <ProtectedRoute

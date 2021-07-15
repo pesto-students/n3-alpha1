@@ -39,12 +39,12 @@ const Shop = () => {
 
   useEffect(() => {
     if (qs.gender) {
-      setFilters({
-        ...filters,
-        gender: qs.gender,
-      });
+      setFilters((prevFilter) => ({
+        ...prevFilter,
+        gender: qs.gender!,
+      }));
     }
-  }, [filters, qs.gender]);
+  }, [qs.gender]);
 
   const count = 20;
   const res: UseInfiniteQueryResult<Page, unknown> = useInfiniteQuery(

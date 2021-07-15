@@ -1,12 +1,14 @@
 import React from 'react';
 import clsx from 'clsx';
-
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import HeroImage from 'design-system/assets/images/hero@2x.png';
 import AboutModel from 'design-system/assets/images/about-model.png';
 
 import './about.scss';
+
+const transition = { duration: 0.6, ease: [0.25, 0.4, 0.3, 0.96] };
 
 function About() {
   return (
@@ -33,10 +35,12 @@ function About() {
             <div />
             <div />
           </div>
-          <div className="rf-about-image-box-decoration" />
+          <div className="rf-about-image-box-decoration">
+            <Link to="/contact">Contact us</Link>
+          </div>
         </div>
       </div>
-      <div
+      <motion.div
         className={clsx(
           'rf-about-page-intro',
           'rf-flex',
@@ -50,8 +54,8 @@ function About() {
             Luxury Clothing Store
           </h2>
         </div>
-      </div>
-      <div
+      </motion.div>
+      <motion.div
         className={clsx(
           'rf-about-page-image-box-bottom',
           'rf-flex',
@@ -59,6 +63,8 @@ function About() {
           'rf-ju-sa',
           'rf-al-e'
         )}
+        exit={{ opacity: 0 }}
+        transition={transition}
       >
         <span>
           For those who live life on their own terms and look damn good in it -
@@ -72,9 +78,13 @@ function About() {
           transition={{ ease: 'easeOut', duration: 0.5 }}
           alt="box"
         />
-      </div>
+      </motion.div>
 
-      <div className={clsx('rf-about-page-blurb')}>
+      <motion.div
+        className={clsx('rf-about-page-blurb')}
+        exit={{ opacity: 0 }}
+        transition={transition}
+      >
         <div className="rf-about-page-blurb-box">
           <h4>Vision</h4>
           <span>
@@ -96,7 +106,7 @@ function About() {
             lasting relationships.
           </span>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

@@ -138,9 +138,9 @@ const Filters = (props: {
 
       {/* the sort bar only renders on desktop */}
       <div className="rf-filters-sort-bar">
-        <p className="rf-text-sm rf-opacity-40" style={{ marginBottom: 0 }}>
+        {/* <p className="rf-text-sm rf-opacity-40" style={{ marginBottom: 0 }}>
           56 Results
-        </p>
+        </p> */}
         {/* <div className="rf-filter-item rf-text-sm" style={{ marginRight: '0' }}>
           <span className="rf-opacity-40">SORT BY:</span>
           <select>

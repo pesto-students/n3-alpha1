@@ -55,6 +55,11 @@ const Search = (props: {
     numOfColumns = 5;
   }
 
+  const onRedirect = () => {
+    onSearchClose?.();
+    setSearchQuery('');
+  };
+
   return (
     <AnimatePresence>
       {isSearchOpen && (
@@ -95,7 +100,7 @@ const Search = (props: {
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </motion.div>
-            {debouncedValue ? (
+            {searchQuery ? (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -130,7 +135,11 @@ const Search = (props: {
                               scrollableParentSelector=".rf-shop-products-grid"
                             >
                               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
-                              <ProductListing theme="light" product={p} />
+                              <ProductListing
+                                onRedirect={onRedirect}
+                                theme="light"
+                                product={p}
+                              />
                             </ScrollAnimation>
                           );
                         });

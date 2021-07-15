@@ -10,6 +10,7 @@ import HeroImage2 from 'design-system/assets/images/hero2@2x.png';
 import './home.scss';
 
 const HERO_IMAGE_TRANSITION_TIME = 20000;
+const transition = { duration: 0.6, ease: [0.25, 0.4, 0.3, 0.96] };
 
 export const heroData = [
   {
@@ -97,6 +98,7 @@ const Home = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      transition={transition}
       className="rf-homepage"
     >
       <section className="rf-hero rf-position-r rf-flex rf-al-c rf-ju-c">
