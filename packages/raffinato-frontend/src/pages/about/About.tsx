@@ -26,7 +26,8 @@ function About() {
           src={HeroImage}
           initial={{ y: 30 }}
           animate={{ y: 0 }}
-          transition={{ ease: 'easeOut', duration: 0.5 }}
+          exit={{ opacity: 0 }}
+          transition={transition}
           alt="box"
         />
         <div className={clsx('rf-flex', 'rf-flex-h', 'rf-al-c')}>

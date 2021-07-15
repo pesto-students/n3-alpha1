@@ -1,5 +1,6 @@
 import React, { Suspense, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import * as Sentry from '@sentry/browser';
 import { Provider as ReduxProvider } from 'react-redux';
 import { FirebaseAppProvider } from 'reactfire';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -37,10 +38,18 @@ import useRefreshToken from 'hooks/useRefreshToken';
 import { fetchSettings } from 'store/settingsSlice';
 import { useAppDispatch } from 'hooks/useRedux';
 import useScrollToTop from 'hooks/useScrollToTop';
+import ErrorBoundary from 'components/ErrorBoundary';
 
 require('dotenv').config();
 
 const persistor = persistStore(store);
+
+const { REACT_APP_ENVIRONMENT, REACT_APP_SENTRY_DSN } = process.env;
+
+Sentry.init({
+  dsn: REACT_APP_SENTRY_DSN,
+  environment: REACT_APP_ENVIRONMENT,
+});
 
 const App = () => {
   // todo: handle global loader
@@ -113,23 +122,25 @@ const queryClient = new QueryClient({
 
 ReactDOM.render(
   <React.StrictMode>
-    <FirebaseAppProvider firebaseConfig={firebaseConfig} suspense>
-      <ReduxProvider store={store}>
-        <PersistGate loading={<SplashScreen />} persistor={persistor}>
-          <QueryClientProvider client={queryClient}>
-            <AlertContainer />
-            <Suspense fallback={<SplashScreen />}>
-              <Router>
-                {/* Global navbar */}
-                <CommonLayout />
-                <App />
-                {/* todo: add footer */}
-              </Router>
-            </Suspense>
-          </QueryClientProvider>
-        </PersistGate>
-      </ReduxProvider>
-    </FirebaseAppProvider>
+    <ErrorBoundary>
+      <FirebaseAppProvider firebaseConfig={firebaseConfig} suspense>
+        <ReduxProvider store={store}>
+          <PersistGate loading={<SplashScreen />} persistor={persistor}>
+            <QueryClientProvider client={queryClient}>
+              <AlertContainer />
+              <Suspense fallback={<SplashScreen />}>
+                <Router>
+                  {/* Global navbar */}
+                  <CommonLayout />
+                  <App />
+                  {/* todo: add footer */}
+                </Router>
+              </Suspense>
+            </QueryClientProvider>
+          </PersistGate>
+        </ReduxProvider>
+      </FirebaseAppProvider>
+    </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -2,6 +2,8 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import './product-listing.scss';
 
+import { ProgressiveImage } from 'design-system';
+
 const ProductListing = (props: any) => {
   // todo: brand name should ellipse in cart
   // todo: short desc should ellipse in cart
@@ -34,9 +36,17 @@ const ProductListing = (props: any) => {
           }
         }}
       >
-        <img className="rf-model-img" src={p?.images?.model} alt="" />
+        <ProgressiveImage
+          className="rf-model-img"
+          src={p?.images?.model}
+          alt=""
+        />
         {!hideCutOutImage ? (
-          <img className="rf-cutout-img" src={p?.images?.cutOut} alt="" />
+          <ProgressiveImage
+            className="rf-cutout-img"
+            src={p?.images?.cutOut}
+            alt=""
+          />
         ) : null}
         <div className="rf-product-listing-counter-slot">{counterSlot}</div>
       </button>

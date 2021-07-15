@@ -97,12 +97,22 @@ function Contact() {
         }}
         transition={transition}
       >
-        <div className="rf-about-page-intro-box">
+        <motion.div
+          initial={{
+            maxWidth: '900px',
+          }}
+          animate={{
+            y: 20,
+            maxWidth: '1200px',
+          }}
+          transition={transition}
+          className="rf-about-page-intro-box"
+        >
           <h1 className="rf-about-page-intro-box-title">Raffinato Apparel</h1>
           <h2 className="rf-about-page-intro-box-subtitle">
             Luxury Clothing Store
           </h2>
-        </div>
+        </motion.div>
       </motion.div>
 
       <motion.div
