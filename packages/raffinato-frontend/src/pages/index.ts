@@ -6,6 +6,8 @@ import AddAddress from './address/AddAddress';
 import Payment from './payment/Payment';
 import Order from './order/Order';
 import ConfirmOrder from './order/ConfirmOrder';
+import About from './about/About';
+import Contact from './contact/Contact';
 
 export {
   Home,
@@ -16,4 +18,6 @@ export {
   Payment,
   Order,
   ConfirmOrder,
+  About,
+  Contact,
 };

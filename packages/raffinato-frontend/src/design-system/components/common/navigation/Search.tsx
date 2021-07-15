@@ -7,6 +7,7 @@ import ScrollAnimation from 'react-animate-on-scroll';
 import getProductsBySearchQuery from 'api/getProductsBySearchQuery';
 import useOutsideClick from 'hooks/useOutsideClick';
 import { Button, Icon, ProductListing, TextInput } from 'design-system';
+import useDebounce from 'hooks/useDebounce';
 import './search.scss';
 
 interface Page {
@@ -20,14 +21,16 @@ const Search = (props: {
   const { isSearchOpen, onSearchClose } = props;
   const [searchQuery, setSearchQuery] = useState('');
 
+  const { debouncedValue } = useDebounce(searchQuery);
+
   const count = 20;
   const res: UseInfiniteQueryResult<Page, unknown> = useInfiniteQuery(
-    ['products', searchQuery],
+    ['products', debouncedValue],
     ({ pageParam = 1 }) => {
       return getProductsBySearchQuery({
         page: pageParam,
         count,
-        query: searchQuery,
+        query: debouncedValue,
       });
     },
     {
@@ -51,6 +54,11 @@ const Search = (props: {
   } else {
     numOfColumns = 5;
   }
+
+  const onRedirect = () => {
+    onSearchClose?.();
+    setSearchQuery('');
+  };
 
   return (
     <AnimatePresence>
@@ -124,10 +132,14 @@ const Search = (props: {
                               key={i}
                               initiallyVisible={j === 0 && i < numOfColumns}
                               delay={100 * (i % numOfColumns)}
-                              scrollableParentSelector="#rf-search-container"
+                              scrollableParentSelector=".rf-shop-products-grid"
                             >
                               {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
-                              <ProductListing theme="light" product={p} />
+                              <ProductListing
+                                onRedirect={onRedirect}
+                                theme="light"
+                                product={p}
+                              />
                             </ScrollAnimation>
                           );
                         });

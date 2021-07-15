@@ -3,11 +3,10 @@ import { useMutation } from 'react-query';
 import clsx from 'clsx';
 import React from 'react';
 
-import { ContainerBox, TextInput, Button } from 'design-system/index';
+import { ContainerBox, TextInput, Button, Icon } from 'design-system/index';
 import { createAlert } from 'store/alertSlice';
 import { useAppDispatch } from 'hooks/useRedux';
 import addAddress from 'api/addAddress';
-import Icon from 'design-system/components/common/icons/Icon';
 import type { Address } from 'design-system/components/common/box/AddressBox';
 import useForm from 'hooks/useForm';
 import './address.scss';
@@ -46,6 +45,8 @@ const validate = (values: Partial<Address>) => {
   return errorObject;
 };
 
+const icon = <Icon name="arrow-right" size={24} />;
+
 const AddAddressPage = () => {
   const dispatch = useAppDispatch();
   const history = useHistory();
@@ -65,8 +66,6 @@ const AddAddressPage = () => {
       },
     }
   );
-
-  const icon = <Icon name="arrow-right" size={24} />;
 
   const handleFormSubmit = async (values: Partial<Address>) => {
     await addAddressMutation.mutate(values);

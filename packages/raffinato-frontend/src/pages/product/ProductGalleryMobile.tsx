@@ -7,11 +7,13 @@ const ProductGalleryMobile = (props: { images: string[] }) => {
 
   return (
     <div className="rf-product-gallery-mobile">
-      {images.map((image) => {
+      {images.map((image, index) => {
         return (
-          <Zoom key={image}>
-            <img alt="" src={image} />
-          </Zoom>
+          index < 4 && (
+            <Zoom key={image}>
+              <img alt="" src={image} />
+            </Zoom>
+          )
         );
       })}
     </div>

@@ -78,9 +78,17 @@ function AddressBox({
         <p className="rf-text-sm">{isLoading ? <Skeleton /> : fullState}</p>
         <p className="rf-text-sm">{isLoading ? <Skeleton /> : pinCode}</p>
       </div>
-      {isSelected && (
-        <div className="rf-address-box-selected-tick">
-          <Icon name="tick" size={20} fillColor="#FFFFFF" />
+      {handleAddressClick && (
+        <div
+          className={clsx('rf-address-box-tick', {
+            'rf-address-box-tick--selected': isSelected,
+          })}
+        >
+          <Icon
+            name="tick"
+            size={20}
+            fillColor={isSelected ? '#FFFFFF' : '#EFE6DD'}
+          />
         </div>
       )}
     </button>

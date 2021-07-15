@@ -1,26 +1,18 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useQuery, UseQueryResult } from 'react-query';
 import { useParams } from 'react-router-dom';
 
 import getProduct from 'api/getProduct';
 import BlendableBackground from 'design-system/assets/images/rect.png';
-import './product.scss';
-import placeholder0 from 'design-system/assets/images/gallery-placeholders/0.png';
-import placeholder1 from 'design-system/assets/images/gallery-placeholders/1.png';
-import placeholder2 from 'design-system/assets/images/gallery-placeholders/2.png';
-import placeholder3 from 'design-system/assets/images/gallery-placeholders/3.png';
 import ProductPageTabs from './ProductPageTabs';
 import ProductHeader from './ProductHeader';
 import ProductActions from './ProductActions';
 import ProductGalleryDesktop from './ProductGalleryDesktop';
 import ProductGalleryMobile from './ProductGalleryMobile';
+import './product.scss';
 
-const CDN_BASE_URL =
-  'https://res.cloudinary.com/pesto-alpha/image/upload/Assets';
+const CDN_BASE_URL = process.env.REACT_APP_CDN_BASE_URL;
 
 const Product = () => {
   // todo: add proper content for info and size
@@ -30,11 +22,23 @@ const Product = () => {
 
   const { id } = useParams<{ id: string }>();
 
-  // get product details from server
   const res: UseQueryResult<any, unknown> = useQuery(`product-${id}`, () => {
     return getProduct({ id });
   });
+
   const { data } = res;
+
+  const { imageCount } = data?.product || {};
+
+  const imagesArray = useMemo(
+    () =>
+      Array(imageCount)
+        .fill(0)
+        .map(
+          (_, index) => `${CDN_BASE_URL}/${data?.product.id}-${index}-hq.jpg`
+        ),
+    [data?.product.id, imageCount]
+  );
 
   return (
     <motion.div
@@ -56,9 +60,7 @@ const Product = () => {
                 />
               </div>
             </div>
-            <ProductGalleryMobile
-              images={[placeholder0, placeholder1, placeholder2, placeholder3]}
-            />
+            <ProductGalleryMobile images={imagesArray} />
             <div className="rf-product-more-images-indicator rf-hide-xs">
               <span>MORE IMAGES</span>
               <div />
@@ -71,9 +73,7 @@ const Product = () => {
             <ProductActions id={id} data={data} />
           </div>
         </div>
-        <ProductGalleryDesktop
-          images={[placeholder0, placeholder1, placeholder2, placeholder3]}
-        />
+        <ProductGalleryDesktop images={imagesArray} />
       </div>
     </motion.div>
   );

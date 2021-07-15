@@ -12,6 +12,10 @@
   background: $bg-color;
   border: 1px solid $brand-color;
 
+  @include mobile {
+    height: 270px;
+  }
+
   .rf-account-menu-links-section,.rf-account-menu-profile-section  {
     padding: 0px 24px;
   }
