@@ -9,6 +9,12 @@ import HeroImage from 'design-system/assets/images/hero@2x.png';
 import HeroImage2 from 'design-system/assets/images/hero2@2x.png';
 import './home.scss';
 
+import InstagramLogo from 'design-system/assets/icons/instagram.svg';
+import TwitterLogo from 'design-system/assets/icons/twitter.svg';
+import FBLogo from 'design-system/assets/icons/facebook.svg';
+import YoutubeLogo from 'design-system/assets/icons/youtube.svg';
+import PinterestLogo from 'design-system/assets/icons/pinterest.svg';
+
 const HERO_IMAGE_TRANSITION_TIME = 20000;
 const transition = { duration: 0.6, ease: [0.25, 0.4, 0.3, 0.96] };
 
@@ -166,9 +172,47 @@ const Home = () => {
           </Button>
         </div>
         {/* todo: decide whether to remove base on whether grid is ready */}
-        <div className="hero-scroll-indicator">
-          <div className="hero-scroll-indicator-line" />
-          <span>scroll for more</span>
+        <div className="rf-hero-social-links">
+          <a
+            href="//pinterest.com"
+            target="_blank"
+            className="rf-social-link"
+            rel="noreferrer"
+          >
+            <img src={PinterestLogo} alt="Pinterest link" />
+          </a>
+          <a
+            href="//instagram.com"
+            target="_blank"
+            className="rf-social-link"
+            rel="noreferrer"
+          >
+            <img src={InstagramLogo} alt="Instagram link" />
+          </a>
+          <a
+            href="//facebook.com"
+            target="_blank"
+            className="rf-social-link"
+            rel="noreferrer"
+          >
+            <img src={FBLogo} alt="Facebook link" />
+          </a>
+          <a
+            href="//twitter.com"
+            target="_blank"
+            className="rf-social-link"
+            rel="noreferrer"
+          >
+            <img src={TwitterLogo} alt="Twitter link" />
+          </a>
+          <a
+            href="//youtube.com"
+            target="_blank"
+            className="rf-social-link"
+            rel="noreferrer"
+          >
+            <img src={YoutubeLogo} alt="Youtube link" />
+          </a>
         </div>
         <div className="hero-diamond-filler">
           <div />

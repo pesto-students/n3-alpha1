@@ -52,6 +52,11 @@ table {
   border-spacing: 0;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 /*********************
 * Colors
 **********************/
@@ -143,7 +148,7 @@ h2 {
 }
 @media screen and (max-width: 959px) {
   h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -261,6 +266,47 @@ h1 {
 
 .rf-text-white {
   color: white;
+}
+
+.rf-text-align-c {
+  text-align: center;
+}
+
+.rf-text-align-j {
+  text-align: justify;
+}
+
+.rf-text-align-l {
+  text-align: left;
+}
+
+.rf-text-align-r {
+  text-align: right;
+}
+
+@media screen and (max-width: 959px) {
+  .rf-mobile-text-align-c {
+    text-align: center;
+  }
+
+  .rf-mobile-text-align-j {
+    text-align: justify;
+  }
+
+  .rf-mobile-text-align-l {
+    text-align: left;
+  }
+
+  .rf-mobile-text-align-r {
+    text-align: right;
+  }
+}
+.rf-line-height-1_75 {
+  line-height: 1.75;
+}
+
+.rf-line-height-2 {
+  line-height: 2;
 }
 
 .rf-margin-t-zr {
@@ -1046,8 +1092,17 @@ h1 {
   justify-content: space-around;
 }
 
+.rf-flex.rf-flex-c {
+  justify-content: center;
+  align-items: center;
+}
+
 .rf-position-r {
   position: relative;
+}
+
+.rf-opacity-0 {
+  opacity: 0;
 }
 
 .rf-opacity-10 {
@@ -1090,6 +1145,31 @@ h1 {
   opacity: 1;
 }
 
+@media screen and (min-width: 960px) {
+  .rf-hide-desktop {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 959px) {
+  .rf-hide-mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .rf-hide-xs {
+    display: none;
+  }
+}
+
+.rf-grid {
+  display: grid;
+}
+.rf-grid.rf-grid-2-col {
+  grid-template-columns: 1fr 1fr;
+}
+
 .rf-button-base {
   border-radius: 0;
   background-color: transparent;
@@ -1098,6 +1178,15 @@ h1 {
   box-sizing: border-box;
   cursor: pointer;
   font-weight: 300;
+}
+.rf-button-base--has-icon > * {
+  margin: 0px 10px;
+}
+.rf-button-base--has-icon * {
+  transition: margin 0.2s ease;
+}
+.rf-button-base--has-icon:hover .rf-button-inner-wrapper * {
+  margin: 0px 11px;
 }
 
 .rf-button-inner-wrapper {
@@ -1111,6 +1200,9 @@ h1 {
 .rf-button-inner-wrapper > * {
   margin: 0px 10px;
 }
+.rf-button-inner-wrapper--has-icon * {
+  transition: margin 0.2s ease;
+}
 
 .rf-button-variant-primary {
   outline: 1px solid;
@@ -1120,6 +1212,9 @@ h1 {
 }
 .rf-button-variant-primary:hover .rf-button-inner-wrapper {
   clip-path: inset(0px 0px 0px 0px);
+}
+.rf-button-variant-primary:hover .rf-button-inner-wrapper--has-icon * {
+  margin: 0px 11px;
 }
 
 .rf-button-variant-secondary {
@@ -1138,15 +1233,24 @@ h1 {
   background-color: #2F1600;
   color: white;
 }
+.rf-button-theme-dark.rf-button-variant-primary svg * {
+  fill: white !important;
+}
 
 .rf-button-theme-dark.rf-button-variant-secondary .rf-button-inner-wrapper {
   background-color: rgba(47, 22, 0, 0.1);
   color: #2F1600;
 }
+.rf-button-theme-dark.rf-button-variant-secondary svg * {
+  fill: #2F1600 !important;
+}
 
 .rf-button-theme-dark.rf-button-variant-tertiary .rf-button-inner-wrapper {
   background-color: transparent;
   color: #2F1600;
+}
+.rf-button-theme-dark.rf-button-variant-tertiary svg * {
+  fill: #2F1600 !important;
 }
 
 .rf-button-theme-light {
@@ -1157,15 +1261,52 @@ h1 {
   background-color: white;
   color: #2F1600;
 }
+.rf-button-theme-light.rf-button-variant-primary svg * {
+  fill: #2F1600 !important;
+}
 
 .rf-button-theme-light.rf-button-variant-secondary .rf-button-inner-wrapper {
   background-color: rgba(255, 255, 255, 0.1);
   color: white;
 }
+.rf-button-theme-light.rf-button-variant-secondary svg * {
+  fill: white !important;
+}
 
 .rf-button-theme-light.rf-button-variant-tertiary .rf-button-inner-wrapper {
   background-color: transparent;
   color: white;
+}
+.rf-button-theme-light.rf-button-variant-tertiary svg * {
+  fill: white !important;
+}
+
+.rf-button-theme-danger {
+  outline-color: #D04F4F;
+}
+
+.rf-button-theme-danger.rf-button-variant-primary .rf-button-inner-wrapper {
+  background-color: #D04F4F;
+  color: white;
+}
+.rf-button-theme-danger.rf-button-variant-primary svg * {
+  fill: white !important;
+}
+
+.rf-button-theme-danger.rf-button-variant-secondary .rf-button-inner-wrapper {
+  background-color: rgba(208, 79, 79, 0.1);
+  color: #D04F4F;
+}
+.rf-button-theme-danger.rf-button-variant-secondary svg * {
+  fill: #D04F4F !important;
+}
+
+.rf-button-theme-danger.rf-button-variant-tertiary .rf-button-inner-wrapper {
+  background-color: transparent;
+  color: #D04F4F;
+}
+.rf-button-theme-danger.rf-button-variant-tertiary svg * {
+  fill: #D04F4F !important;
 }
 
 .rf-button-size-large .rf-button-inner-wrapper {
@@ -1184,6 +1325,34 @@ h1 {
   width: 100%;
 }
 
+.rf-button-theme-dark.rf-button-loading {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.rf-button-theme-dark.rf-button-loading .rf-button-inner-wrapper {
+  background-color: rgba(181, 85, 0, 0.1);
+  background-image: linear-gradient(90deg, rgba(181, 85, 0, 0.1), rgba(181, 85, 0, 0.3), rgba(181, 85, 0, 0.1));
+  animation: skeleton 1.1s ease-in-out infinite;
+}
+
+.rf-button-theme-dark.rf-button-loading {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.rf-button-theme-dark.rf-button-loading .rf-button-inner-wrapper {
+  background-color: rgba(181, 85, 0, 0.1);
+  background-image: linear-gradient(90deg, rgba(181, 85, 0, 0.1), rgba(181, 85, 0, 0.3), rgba(181, 85, 0, 0.1));
+  animation: skeleton 1.1s ease-in-out infinite;
+}
+
+@keyframes skeleton {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: calc(1000px + 100%) 0;
+  }
+}
 .rf-text-input-base input {
   border-radius: 0;
   background-color: transparent;
@@ -1249,17 +1418,24 @@ h1 {
   max-width: 100%;
 }
 
-.rf-input-helper-text {
+.rf-input-helper-text, .rf-input-error-text {
   margin-top: 12px;
   color: rgba(47, 22, 0, 0.4);
-  font-size: 0.875rem;
+  font-size: 0.775rem;
 }
 
-.rf-input-errored .rf-input-helper-text {
-  color: rgba(255, 0, 0, 0.8);
+.rf-input-errored {
+  width: 100%;
+}
+.rf-input-errored .rf-input-error-text {
+  color: rgba(208, 79, 79, 0.8);
 }
 .rf-input-errored .rf-text-input-base {
-  border-color: red;
+  border-color: #d04f4f;
+}
+
+.rf-input-errored--false {
+  width: 100%;
 }
 
 .rf-navbar {
@@ -1274,18 +1450,38 @@ h1 {
   grid-template-columns: 1fr 1fr 1fr;
   align-items: start;
 }
+@media screen and (max-width: 959px) {
+  .rf-navbar {
+    align-items: center;
+    padding: 24px;
+  }
+}
 
 .rf-navbar-logo {
   height: 48px;
   text-align: center;
+  cursor: pointer;
 }
 .rf-navbar-logo svg {
   height: 48px;
+}
+@media screen and (max-width: 959px) {
+  .rf-navbar-logo svg {
+    height: 32px;
+  }
+}
+@media screen and (max-width: 959px) {
+  .rf-navbar-logo {
+    height: 32px;
+  }
 }
 
 .rf-navbar-theme-light {
   color: white;
   background: transparent;
+}
+.rf-navbar-theme-light .rf-navbar-upfront-menu-button--signedin::before {
+  border: 1px solid #FCFAF7;
 }
 .rf-navbar-theme-light svg * {
   fill: white;
@@ -1311,6 +1507,29 @@ h1 {
   height: 24px;
   width: 24px;
   cursor: pointer;
+  position: relative;
+}
+.rf-navbar-upfront-menu-button--signedin {
+  width: 28px;
+  height: 28px;
+  position: relative;
+}
+.rf-navbar-upfront-menu-button--signedin::before {
+  content: "";
+  position: absolute;
+  height: 120%;
+  width: 120%;
+  background: transparent;
+  z-index: -1;
+  border-radius: 50%;
+  top: -4px;
+  border: 1px solid #2F1600;
+  right: -4px;
+}
+.rf-navbar-upfront-menu-button img {
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
 }
 
 .rf-navbar-menu-button {
@@ -1329,14 +1548,24 @@ h1 {
   padding-top: 64px;
   padding-bottom: 64px;
 }
+@media screen and (max-width: 959px) {
+  .rf-fullscreen-menu {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
 
-.rf-fullscreen-menu > h1 {
+.rf-fullscreen-menu > a, h1 {
   text-align: center;
   cursor: pointer;
   color: white;
 }
 
-.rf-fullscreen-menu > h1:hover {
+.rf-fullscreen-menu > a {
+  cursor: pointer;
+}
+
+.rf-fullscreen-menu > a:hover {
   color: #B55500;
 }
 
@@ -1344,6 +1573,12 @@ h1 {
   position: fixed;
   top: 48px;
   left: 48px;
+}
+@media screen and (max-width: 959px) {
+  .rf-fullscreen-menu-close {
+    top: 24px;
+    left: 24px;
+  }
 }
 
 .rf-section-header {
@@ -1356,8 +1591,23 @@ h1 {
 
 .rf-sidebar-close {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 32px;
+  left: -96px;
+}
+@media screen and (max-width: 959px) {
+  .rf-sidebar-close {
+    top: -88px;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.rf-cart-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
+  min-height: calc(100% - 160px);
 }
 
 .rf-cta-placeholder {
@@ -1369,6 +1619,11 @@ h1 {
   bottom: 32px;
   width: calc(100% - 2 * 64px);
 }
+@media screen and (max-width: 959px) {
+  .rf-cta {
+    width: calc(100% - 2 * 24px);
+  }
+}
 
 .rf-backdrop {
   z-index: 991;
@@ -1377,7 +1632,7 @@ h1 {
   left: 0;
   height: 100vh;
   width: 100vw;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .rf-sidebar {
@@ -1386,11 +1641,44 @@ h1 {
   right: 0;
   height: 100vh;
   width: 640px;
-  overflow-y: scroll;
+  overflow: visible;
   background: #FCFAF7;
-  overflow-x: visible;
-  padding: 32px 64px;
   color: #2F1600;
+}
+@media screen and (max-width: 959px) {
+  .rf-sidebar {
+    width: 100vw;
+    height: calc(100vh - 88px);
+    margin-top: 88px;
+  }
+}
+
+.rf-sidebar-inner {
+  overflow-y: scroll;
+  height: 100%;
+  padding: 32px 64px;
+}
+@media screen and (max-width: 959px) {
+  .rf-sidebar-inner {
+    padding: 24px 24px;
+  }
+}
+
+.rf-cart-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  height: 24px;
+  width: 24px;
+  border: 3px solid #FCFAF7;
+  color: white;
+  background: #2F1600;
+  font-weight: 500;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 18px;
+  transform: scale3d(0, 0, 0);
 }
 
 * {
@@ -1424,19 +1712,55 @@ img {
   max-width: 100%;
 }
 
+hr {
+  border: 0;
+  height: 1px;
+  background: #2F1600;
+}
+
 .rf-italiana {
   font-family: Italiana;
 }
 
 .rf-page {
   padding-top: 160px;
+  padding-bottom: 160px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+@media screen and (max-width: 959px) {
+  .rf-page {
+    padding-top: 80px;
+  }
 }
 
 .rf-container {
   padding: 0 48px;
-  max-width: 1440px;
+  max-width: 1920px;
   margin-left: auto;
   margin-right: auto;
+}
+@media screen and (max-width: 959px) {
+  .rf-container {
+    padding: 0 24px;
+  }
+}
+
+.rf-diamond {
+  background-color: #2F1600;
+  height: 0.35em;
+  width: 0.35em;
+  transform: rotateZ(45deg);
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.rf-danger-link {
+  cursor: pointer;
+  color: #D04F4F;
+  border-bottom: 2px solid #D04F4F;
 }
 
 /*# sourceMappingURL=index.css.map */
