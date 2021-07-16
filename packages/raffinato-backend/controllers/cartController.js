@@ -9,7 +9,16 @@ exports.addToCart = (req, res) => {
     userId: auth.uid,
   };
 
-  global.cartCollection.push(cartItem);
+  const presentCartItem = global.cartCollection.find((cartItemSingle) => (
+    cartItemSingle.id === item.id
+    && cartItemSingle.userId === auth.uid
+  ));
+
+  if (presentCartItem) {
+    presentCartItem.quantity += 1;
+  } else {
+    global.cartCollection.push(cartItem);
+  }
 
   res.json({
     status: 200,
