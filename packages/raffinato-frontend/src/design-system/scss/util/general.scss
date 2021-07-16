@@ -14,12 +14,7 @@ body{
 
 html, body, input, textarea, button, select, label{
   font-family: Poppins;
-  font-size: 20px;
-  @include mobile{
-    font-size: 16px;
-}
-
-* {
+  * {
     box-sizing: border-box;
   }
 }

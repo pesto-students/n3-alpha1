@@ -100,3 +100,28 @@ h1{
 .rf-line-height-2{
   line-height: 2;
 }
+
+
+html, body, input, textarea, button, select, label{
+  @include xs{
+    font-size: 16px;
+  }
+  @include sm{
+    font-size: 17px;
+  }
+  @include md{
+    font-size: 15px;
+  }
+  @include lg{
+    font-size: 16px;
+  }
+  @include xl{
+    font-size: 18px;
+  }
+  @include xxl{
+    font-size: 20px;
+  }
+  @include xxxl{
+    font-size: 22px;
+  }
+}
