@@ -11,6 +11,7 @@ import ProductActions from './ProductActions';
 import ProductGalleryDesktop from './ProductGalleryDesktop';
 import ProductGalleryMobile from './ProductGalleryMobile';
 import './product.scss';
+import Footer from 'components/footer/footer';
 
 const CDN_BASE_URL = process.env.REACT_APP_CDN_BASE_URL;
 
@@ -75,6 +76,7 @@ const Product = () => {
         </div>
         <ProductGalleryDesktop images={imagesArray} />
       </div>
+      <Footer />
     </motion.div>
   );
 };

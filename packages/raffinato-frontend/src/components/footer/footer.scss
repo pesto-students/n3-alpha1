@@ -1,0 +1,86 @@
+@import '../../design-system/scss/util/config.scss';
+
+.rf-footer{
+  min-height: 200px;
+  padding-top: 48px;
+  padding-bottom: 32px;
+  color: white;
+  background-size: cover;
+  background-position-x: 0;
+  background-position-y: 0;
+}
+
+.rf-page .rf-footer{
+  margin-top: 48px;
+  margin-bottom: -160px;
+}
+
+.rf-footer-logo{
+  height: 32px;
+  width: 48px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.4;
+  transition-timing-function: ease-out;
+  transition-duration: 0.2s;
+  &:hover{
+    opacity: 1;
+  }
+}
+
+
+.footer-links-container{
+  margin-top: 80px;
+  margin-bottom: 80px;
+  text-align: center;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  a {
+    transition-timing-function: ease-out;
+    transition-duration: 0.2s;
+    text-transform: uppercase;
+    font-size: 1rem;
+    border-bottom: 1px solid #fff;
+    padding-bottom: 0.1rem;
+    margin: 0 24px;
+
+    @include mobile{
+      margin: 0;
+      margin-bottom: 32px;
+    }
+  }
+
+  &:hover a{
+    opacity: 0.2;
+  }
+
+  &:hover a:hover{
+    opacity: 1;
+  }
+
+  @include mobile{
+    margin-top: 64px;
+    margin-bottom: 64px;
+  }
+}
+
+.rf-footer-social-links{
+  text-align: center;
+  .rf-social-link{
+    margin: 0 18px;
+    transform: rotateZ(45deg);
+    img{
+      transform: rotateZ(-45deg);
+    }
+    &:hover{
+      border-color: white;
+      transform: rotateZ(0);
+      img{
+        opacity: 1;
+        transform: rotateZ(0deg);
+      }
+    }
+  }
+}
