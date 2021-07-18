@@ -1,0 +1,93 @@
+@mixin input-transitions {
+  transition-duration: 400ms;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-property: border-color, background-color;
+}
+.rf-text-input-base{
+  input{
+    border-radius: 0;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 400;
+    width: 100%;
+    padding: 20px;
+    @include input-transitions;
+
+    &::placeholder{
+      color: rgba($brand-color, 0.4);
+    }
+    &:focus, &:active{
+      outline: none
+    }
+  }
+}
+
+
+.rf-text-input-base {
+  padding: 4px;
+  border: 1px solid;
+  max-width: calc(320px - 2 * 24px);
+}
+
+// themes
+.rf-text-input-theme-dark{
+  border-color: rgba(#B55500, 0.2);
+  input{
+    background-color: rgba(#B55500, 0.1);
+    color: $brand-color;
+  }
+  &:hover{
+    border-color: rgba(#B55500, 0.5);
+  }
+  &.rf-text-input-focussed{
+    border-color: rgba(#B55500, 1);
+  }
+
+  @include input-transitions;
+}
+
+.rf-text-input-theme-light{
+  border-color: rgba(white, 0.5);
+  input{
+    background-color: rgba(white, 1);
+    color: $brand-color;
+  }
+  &:hover{
+    border-color: rgba(white, 0.75);
+  }
+  &.rf-text-input-focussed{
+    border-color: rgba(white, 1);
+  }
+
+  @include input-transitions;
+}
+
+// responsive
+.rf-text-input-responsive{
+  width: 100%;
+  max-width: 100%;
+}
+
+// errors
+.rf-input-helper-text, .rf-input-error-text{
+  margin-top: 12px;
+  color: rgba($brand-color, 0.4);
+  font-size: 0.775rem;
+}
+.rf-input-errored{
+  width: 100%;
+
+  .rf-input-error-text{
+    color: rgba($danger-color, 0.8);
+  }
+
+  .rf-text-input-base{
+    border-color: rgba($danger-color, 1);
+  }
+}
+
+.rf-input-errored--false {
+  width: 100%
+}

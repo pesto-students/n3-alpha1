@@ -3,20 +3,19 @@
   "version": "0.0.1",
   "scripts": {
     "clean": "lerna clean -y",
-    "bootstrap": "lerna bootstrap --hoist",
+    "bootstrap": "lerna bootstrap -- --legacy-peer-deps",
     "start": "lerna run start",
     "start:web": "lerna run start --scope=raffinato-frontend --stream",
     "build:web": "lerna run build --scope=raffinato-frontend",
     "start:api": "lerna run start --scope=raffinato-backend --stream",
-    "start:crawler": "lerna run start --scope=raffinato-scraper"
+    "start:crawler": "lerna run start --scope=raffinato-scraper",
+    "start:storybook": "lerna run storybook --scope=raffinato-frontend"
   },
-  "dependencies": {},
   "devDependencies": {
-    "eslint-config-node": "^4.1.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "lerna": "^4.0.0",
-    "prettier": "^2.3.1"
+    "lerna": "^4.0.0"
+  },
+  "dependencies": {
+    "@stripe/react-stripe-js": "^1.4.1",
+    "@stripe/stripe-js": "^1.15.1"
   }
 }

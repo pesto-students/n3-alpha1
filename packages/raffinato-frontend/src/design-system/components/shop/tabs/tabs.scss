@@ -1,0 +1,25 @@
+@import '../../../scss/util/config';
+
+.rf-tabs{
+  position: relative;
+  padding: 20px 0px;
+
+  .rf-tabs-container{
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: horizontal;
+    .rf-tab{
+      cursor: pointer;
+      color: rgba($brand-color, 0.4);
+      margin-right: 24px;
+      font-weight: 400;
+      &.rf-tab-current{
+        cursor: normal;
+        color: rgba($brand-color, 1);
+        font-weight: 500;
+        border-bottom: 2px solid $brand-color;
+      }
+    }
+    
+  }
+}

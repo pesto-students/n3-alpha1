@@ -8,3 +8,11 @@
           - home.scss
 4. Point 3 for design system too
 5. React final form integration with form inputs in design system (can be touched when we reach checkout)
+6. Login Flow -> Show loader/spinner while OAuth is being performed
+
+1. designs for:
+  a. footer
+  b. address (mobile)
+  c. order confirmation (mobile)
+  d. breadcrumb
+  e. rest of the homepage

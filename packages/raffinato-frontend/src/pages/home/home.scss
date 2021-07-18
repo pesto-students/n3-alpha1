@@ -1,0 +1,108 @@
+@import '../../design-system/scss/index.scss';
+
+.rf-hero-img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.rf-hero{
+  // @extend .rf-position-r;
+  // @extend .rf-flex;
+  // @extend .rf-flex-al-c;
+  // @extend .rf-flex-al-c;
+  width: 100vw;
+  height: 100vh;
+}
+
+.rf-hero-message{
+  text-align: center;
+  max-width: 800px;
+  @include mobile{
+    max-width: calc(100% - 48px);
+  }
+  button{
+    width: 240px;
+  }
+}
+
+.hero-scroll-indicator{
+  position: absolute;
+  top: auto;
+  bottom: 20px;
+  left: 48px;
+  transform: rotateZ(-90deg);
+  transform-origin: 0 0;
+  .hero-scroll-indicator-line{
+    height: 2px;
+    width: 32px;
+    margin-right: 24px;
+    background-color: white;
+    display: inline-block;
+    vertical-align: middle;
+    @include mobile{
+      transform: rotateZ(90deg);
+      position: absolute;
+      top: 48px;
+      left: 50%;
+      transform-origin: 0 0;
+    }
+  }
+  
+  & > span{
+    text-transform: uppercase;
+    font-size: 12px;
+    color: white;
+    letter-spacing: 2.4px;
+    @include mobile{
+      opacity: 80%;
+    }
+  }
+
+  @include mobile{
+    transform: rotateZ(0deg) translateX(-50%);
+    left: 50%;
+    bottom: 80px;
+  }
+
+}
+
+.hero-diamond-filler{
+  position: absolute;
+  top: auto;
+  bottom: 32px;
+  right: 48px;
+  @include mobile{
+    display: none;
+  }
+}
+
+.hero-diamond-filler--static {
+  position: static;
+}
+
+.hero-diamond-filler > div{
+  display: inline-block;
+  margin-left: 12px;
+  height: 8px;
+  width: 8px;
+  border: 1px solid white;
+  transform: rotateZ(45deg);
+}
+
+.hero-diamond-filler > div:nth-child(2){
+  background: white;
+}
+
+.hero-diamond-filler--static > div {
+  border: none;
+  background: $brand-color;
+}
+
+.hero-diamond-filler--static > div:nth-child(2){
+  background: $brand-color;
+}

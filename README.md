@@ -1,79 +1,124 @@
-# Little Tags - An Online Clothing Store
 
-Pesto Tech is proudly launching its own Online Clothing Store named **Little Tags**. You have been awarded with the project and you need to design and develop this project which should meet the requirements mentioned in the MVP below.
+# RAFFINATO APPAREL
 
-# MVP Requirement
+![""](https://i.imgur.com/eYV4OWb.jpeg)
 
-1. Show Login/Signup popup to user when he/she lands on the site for first time.
-2. User should be able to Login / Signup from the header button.
-3. User should be able to Login/Signup through Google/Facebook or with their mobile numbers
-4. User should be able to search items on the site using Search bar.
-5. User should be able to browse items by categories mentioned on Home Page.
-6. User should be able to see detailed description of an item by clicking on it. (refer design)
-7. User should be able to select Size, Quantity and other parameter(if any) before adding item to the cart.
-   User should be able to add and remove items in the cart.
-8. Only logged in user should be able to add items to the cart.
-9. Only logged in user should be able to place order.
-10. User should be able to access item categories from Hamburger menu (refer design).
+## Requirements
 
-11. Website should be mobile responsive. user should be able to browse/purchase items on their mobile browser.
-12. User should be able to see their order history.
-13. User should be able to set their default shipping address.
+For development, you will only need Node.js installed on your environement.
 
-**Note: Please deploy your application to Netlify(no other platforms allowed at this point) and Add your Application link to website section in About field**
+### Node
 
-# Bonus Requirement
+[Node](http://nodejs.org/) is really easy to install & now include [NPM](https://npmjs.org/).
+You should be able to run the following command after the installation procedure
+below.
 
-1. Integrate Razorpay/Stripe Payment (sandbox environment)
-2. User should be able to set default payment method
-3. User should be able to add items to wishlist
-4. Write Test cases for your components
-5. Add multiple language support for your site. User should be able to change site language from header. all text content should be in selected language. keep `English` as default language.
+    $ node --version
+    v0.10.24
 
-## UI Design mocks
+    $ npm --version
+    1.3.21
 
-UI design mocks are available in `design-mocks` folder
-Please note that UI design mocks are provided only for reference and benchmarking purpose. Design mocks doesn't cover all possible set of features in your application(for example, multiple language support). your application design **should not** be exact replica of provided mocks.
+#### Node installation on OS X
 
-|                                    |                                        |
-| :--------------------------------: | :------------------------------------: |
-|     ![](design-mocks/home.png)     |  ![](design-mocks/home_logged_in.png)  |
-| ![](design-mocks/product_list.png) |     ![](design-mocks/product.png)      |
-|     ![](design-mocks/cart.png)     |     ![](design-mocks/checkout.png)     |
-|    ![](design-mocks/orders.png)    | ![](design-mocks/successful_order.png) |
+You will need to use a Terminal. On OS X, you can find the default terminal in
+`/Applications/Utilities/Terminal.app`.
 
-[Adobe XD design link](https://drive.google.com/file/d/1_e7X57CoN7YhDlapVlLkL14ksVTzAwQh/view?usp=sharing)
+Please install [Homebrew](http://brew.sh/) if it's not already done with the following command.
 
-[Zeplin web link](https://zpl.io/a7j7MJE)
+    $ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 
-# API
+If everything when fine, you should run
 
-Use `https://fakestoreapi.com/products` to fetch products.
-You are allowed to use static data or any other third party api for fetching data.
-## Allowed Tech stack(Language/Library)
+    brew install node
 
-- HTML, CSS, JavaScript
-- Bootstrap
-- ReactJS
+#### Node installation on Linux
+
+    sudo apt-get install python-software-properties
+    sudo add-apt-repository ppa:chris-lea/node.js
+    sudo apt-get update
+    sudo apt-get install nodejs
+
+#### Node installation on Windows
+
+Just go on [official Node.js website](http://nodejs.org/) & grab the installer.
+Also, be sure to have `git` available in your PATH, `npm` might need it.
+
+---
+
+## Install
+
+    $ git clone https://github.com/pesto-students/n3-alpha1
+    $ cd n3-alpha1
+    $ npm install
+
+### Configure app
+
+This project is bootstrapped using [lerna](https://github.com/lerna/lerna), which is a tool for managing monorepos. Here are the packages needed to be configured for Raffinato. 
+
+- backend API
+- frontend app
+- scraping API (optional)
+
+## Bootstrap Lerna
+
+    $ npn run clean // This will remove any *.lock files and residual node_modules
+    $ npm bootstrap // This will install all the packages dependencies
+    $ npm start // This will start both frontend & backend services
+
+**Hint**: to start individual packages, use scoped start i.e `yarn start:web`
+
+## Simple build for production
+
+    $ npm run build:web
+
+---
+
+## Languages & tools
+
+### Frontend
+
+- React
+- Redux ft. [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [React Query](https://react-query.tanstack.com/)
+- Firebase SDK
 - SCSS
-- DOM Testing Library
-- Jest and React Testing Library
-- React Router
+- Jest & React-Testing-Library
+- StoryBook
 
-**NOTE: React Component libraries like Material UI, Antd, Chakra UI are not allowed**
+### Backend
 
+- Node & Express
+- Firebase
+- Stripe SDK
 
-## Implementation from Previous Pesto batches (For Inspiration and reference purpose only)
+### Scraping
 
-
-- https://stoic-bhaskara-ffe50d.netlify.app/
-- https://trendz.fashion/
-- https://little-tags-fe-nishantbisen09.vercel.app/
-- https://little-tags-pesto.netlify.app/
-- https://affectionate-jackson-ba5d1a.netlify.app/
-- https://ecommerce-deep-dive.netlify.app/
-- https://cocky-pare-43b620.netlify.app/#/
-- https://little-tags-nikhil-gobinda.netlify.app/
+- [Puppeteer](https://github.com/puppeteer/puppeteer)
 
 
-Note: Your design for project should not be replica of ☝️ demos. these links are provided for inspiration purpose only.
+## Frequently (and not-so-frequently) Asked Questions
+
+### Q. Why Framer?
+A. To facilitate animation such as this with elegance and ease. (Notice how there was a route transition as well)
+!["](https://s6.gifyu.com/images/screen-capture-2.gif)
+
+### Q. Why SCSS?
+A. SCSS makes writing CSS a breeze, with added nesting, mixins etc. At the same time, it reduces the runtime overhead of a CSS-in-JS library like Styled Components. That being said, there are some pitfalls of using SCSS (global support of variable, ever-increasing classes instead of dynamic props etc.)
+
+### Q. What are the upcoming features beyond MVP?
+A. A robust review/rating system, wishlisting system, adding more authentication options, expanding the design system.
+
+### Q. How is CI/CD being handled in the monorepo?
+A. **Frontend**: The CI/CD is being handled with [render](https://render.com/), which hosts our app as well. It creates a Pull Request Preview for every PR raised, so it becomes really easy to collaborate with peers. The `integration` branch is deployed automatically whenever there's a new commit.
+
+**Backend**: Backend deployment is handled by Heroku, with the help of Github Actions. Similar to frontend, `integration` commits result in a fresh deployment triggered by GH Action & Heroku buildpack.
+
+### Q. How is Task/Issue tracking being handled?
+A. This is being handled by [Linear](https://linear.app), which is a great way to handle Sprints/Issue tracking for projects.
+![""](https://i.imgur.com/IGQ8cDr.png)
+
+### Q. Tell me a bit about the frontend architecture.
+A. All our base components are part of our `design-system`, which can be viewed in Storybook (not all components have stories). They constitute the majority of our building blocks.
+Pages are separated and so are the different kinds of routes (`InternalRoute/ProtectedRote` etc). SCSS global/config files are used to re-use our site-wide theme/layout units.

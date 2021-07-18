@@ -1,7 +1,7 @@
 @use "sass:map";
 
 /*********************
-* Colors 
+* Colors
 **********************/
 
 // brand
@@ -15,22 +15,25 @@ $bg-color-dark-0: $brand-color;
 $bg-color-dark-1: #562B04;
 $bg-color-light-0:#FCFAF7;
 $bg-color-light-1 : rgba(#F0E4D2, 0.4);
+$bg-color-light-1-hex: #EFE6DD;
 $bg-color-light-2 : rgba($brand-color-secondary, 0.1);
+$bg-color-light-2-hex: #EFE0CE;
 
 // feedback
-$danger-color : #FF0000;
+$danger-color : #D04F4F;
 $success-color : #1CB90F;
+$disabled-color: #eae7e3;
 
 
 /*********************
-* Typography 
+* Typography
 **********************/
 
 // scale - desktop
 $font-sizes-desktop: (
   "xxs": 0.6rem,
-  "xs": 0.7rem, 
-  "sm": 0.8rem, 
+  "xs": 0.7rem,
+  "sm": 0.8rem,
   "md": 1rem,
   "lg": 1.2rem,
   "xl": 1.6rem,
@@ -39,8 +42,8 @@ $font-sizes-desktop: (
 
 // scale - mobile
 $font-sizes-mobile: (
-  "xxs": 0.75rem, 
-  "xs": 0.875rem, 
+  "xxs": 0.75rem,
+  "xs": 0.875rem,
   "sm": 1rem,
   "md": 1.25rem,
   "lg": 1.5rem,
@@ -59,24 +62,24 @@ $font-weights-short: ("l": 300, "r": 400, "m": 500);
 **********************/
 
 $spacings-desktop: (
-  "zr": 0rem,  
+  "zr": 0rem,
   "xxxs": 0.2rem,
   "xxs": 0.4rem,
   "xs": 0.6rem,
   "sm": 0.8rem,
-  "md": 1rem,
+  "md": 1rem, // 20px
   "lg": 1.2rem,
   "xl": 1.6rem,
   "xxl": 2.4rem,
   "xxxl": 3.2rem,
 );
 $spacings-mobile: (
-  "zr": 0rem,  
+  "zr": 0rem,
   "xxxs": 0.25rem,
   "xxs": 0.25rem,
   "xs": 0.5rem,
   "sm": 0.75rem,
-  "md": 1rem,
+  "md": 1rem, // 16px
   "lg": 1.25rem,
   "xl": 1.5rem,
   "xxl": 2rem,
@@ -85,19 +88,24 @@ $spacings-mobile: (
 
 
 /*********************
-* Layout 
+* Layout
 **********************/
 
 // media aliases and breakpoints
 $screen-sm-min: 600px;
 $screen-md-min: 960px;
 $screen-lg-min: 1280px;
-$screen-xl-min: 1920px;
+$screen-xl-min: 1440px;
+$screen-xxl-min: 1680px;
+$screen-xxxl-min: 1920px;
+
 $screen-xs-max: 599px;
 $screen-sm-max: 959px;
 $screen-md-max: 1279px;
-$screen-lg-max: 1919px;
-$screen-xl-max: 5000px;
+$screen-lg-max: 1439px;
+$screen-xl-max: 1679px;
+$screen-xxl-max: 1919px;
+$screen-xxxl-max: 5000px;
 
 // precise targets
 @mixin xs {
@@ -130,6 +138,18 @@ $screen-xl-max: 5000px;
   }
 }
 
+@mixin xxl {
+  @media screen and (min-width: #{$screen-xxl-min}) and (max-width: #{$screen-xxl-max}) {
+    @content;
+  }
+}
+
+@mixin xxxl {
+  @media screen and (min-width: #{$screen-xxxl-min}) and (max-width: #{$screen-xxxl-max}) {
+    @content;
+  }
+}
+
 // broad targets
 @mixin mobile {
   @media screen and (max-width: #{$screen-sm-max}) {
@@ -142,3 +162,8 @@ $screen-xl-max: 5000px;
     @content;
   }
 }
+
+// Z-indices
+$z-index-image: 9;
+$z-index-modal: 99;
+$z-index-alert: 999;

@@ -1,0 +1,45 @@
+@import '../../../scss/util/config.scss';
+
+.ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0px;
+  height: 0px;
+  // border-radius: 100%;
+  transform: translate3d(-50%, -90%, 0);
+  transition-duration: 450ms;
+  transition-timing-function: ease-out;
+  // background: $bg-color;
+  z-index: 999;
+  pointer-events: none;
+  will-change: transform;
+  mix-blend-mode: difference;
+  border: 13px solid transparent;
+  border-bottom-color: $bg-color;
+  // top: -50px;
+
+
+  &:after {
+    content: '';
+    will-change: transform;
+    transition-duration: 450ms;
+    transition-timing-function: ease-out;
+    position: absolute;
+    transform: translate(-13px, 13px);
+    width: 0;
+    height: 0;
+    border: 13px solid transparent;
+    border-top-color: $bg-color;
+  }
+
+  &--link-hovered {
+    border-width: 40px;
+
+    &:after {
+      border-width: 40px;
+      transform: translate(-40px, 39px)
+    }
+  }
+}
+

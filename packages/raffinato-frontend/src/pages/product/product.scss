@@ -1,0 +1,210 @@
+@import '../../design-system/scss/util/config.scss';
+
+.rf-product-page-intro{
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: $bg-color-light-1;
+  padding: 64px;
+  gap: 2rem;
+  max-width: 1680px;
+
+  img {
+    width: 480px;
+    height: 640px;
+  }
+
+  @include lg{
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+  @include md{
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+
+  @include sm{
+    grid-template-columns: 0.8fr 1.2fr;
+    padding: 40px 0px;
+    gap: 0rem;
+  }
+
+  @include xs{
+    padding: 0px;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    background: $bg-color-light-0;
+  }
+}
+
+.rf-product-page-main-image-container{
+  position: relative;
+  .rf-product-page-main-image-outer-wrapper{
+    justify-self: center;
+    max-width: 427px;
+    margin-left: auto;
+    margin-right: auto;
+    .rf-product-page-main-image-wrapper{
+      position: relative;
+      padding-bottom: 133.33%;
+      margin: 40px 0px;
+      .rf-product-page-main-image{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-blend-mode: multiply;
+        background-repeat: no-repeat, repeat;
+        background-size: cover;
+      }
+    }
+    @include xs {
+      max-width: 180px;
+    }
+  }
+
+  @include xs {
+    background: $bg-color-light-1;
+    padding: 32px 0;
+    padding-bottom: 64px;
+    width: 100%;
+  }
+}
+
+@include xs{
+  .rf-product-description{
+    margin-left: -32px;
+    margin-right: -32px;
+    text-align: center;
+  
+    .rf-section-header{
+      flex-direction: column;
+      align-items: center !important;
+    }
+  
+    .rf-tabs-container{
+      justify-content: center;
+      .rf-tab:last-child{
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.rf-product-page-gallery{
+  position: relative;
+  .rf-gallery-controller{
+    position: absolute;
+    padding: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    transition: 0.2s;
+    transition-timing-function: ease-out;
+    cursor: pointer;
+    *{
+      cursor: pointer;
+    }
+    
+    &.rf-controller-right{
+      right: -40px;
+    }
+    &.rf-controller-left{
+      left: -40px;
+    }
+
+    .icon{
+      display: block !important;
+    }
+
+    &:hover{
+      background: rgba($brand-color, 0.1);
+    }
+  }
+
+  .rf-gallery-images{
+    white-space: nowrap;
+    margin-top: 48px;
+    img{
+      width: calc(33.33% - 16px);
+      margin-right: 24px;
+      @include sm{
+        width: calc(50% - 8px);
+        margin-right: 16px;
+      }
+      @include xxl{
+        width: calc(25% - 18px);
+        margin-right: 24px;
+      }
+      @include xxxl{
+        width: calc(20% - 19.2px);
+        margin-right: 24px;
+      }
+    }
+  }
+}
+
+
+.rf-product-more-images-indicator{
+  position: absolute;
+  bottom: -84px;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+
+  span{
+    font-size: 20px;
+    opacity: 0.4;
+    margin-bottom: 32px;
+    display: block;
+  }
+
+  div {
+    width: 2px;
+    height: 40px;
+    background: $brand-color;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include md{
+  }
+  @include sm{
+    bottom: -56px;
+    span{
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+  
+    div {
+      width: 2px;
+      height: 32px;
+    }
+  }
+}
+
+
+.rf-product-gallery-mobile{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  bottom: -32px;
+  img{
+    width: 48px;
+    height: auto;
+  }
+
+  @include sm{
+    display: none;
+  }
+
+  @include desktop{
+    display: none;
+  }
+}
+
+.rf-product-page-price{
+  @include xs{
+    font-size: 1.25rem;
+    margin-top: 8px;
+  }
+}

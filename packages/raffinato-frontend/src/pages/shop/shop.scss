@@ -1,0 +1,14 @@
+@import '../../design-system/scss/index.scss';
+
+.rf-shop-products-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 64px;
+  grid-column-gap: 48px;
+  overflow: visible !important;
+
+  @include xs{ grid-template-columns: repeat(1, 1fr); }
+  @include sm{ grid-template-columns: repeat(2, 1fr); }
+  @include xxl{ grid-template-columns: repeat(4, 1fr); }
+  @include xxxl{ grid-template-columns: repeat(5, 1fr); }
+}

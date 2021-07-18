@@ -1,0 +1,96 @@
+@import '../../design-system//scss/util/config.scss';
+
+.rf-about-page-intro-box {
+  max-width: 900px;
+  width: 100%;
+  height: 330px;
+  background: rgba(240, 228, 210, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  margin-top: -20px;
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 102%;
+    height: 105%;
+    border: 1px solid $bg-color-light-2-hex;
+  }
+
+  .rf-about-page-intro-box-title, .rf-about-page-intro-box-subtitle {
+    font-family: Italiana;
+    color: $brand-color;
+  }
+
+  .rf-about-page-intro-box-subtitle {
+    font-size: 2rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+  }
+}
+
+.rf-about-image-box-img {
+  width: 500px;
+  z-index: $z-index-image;
+}
+
+.rf-about-image-box-decoration {
+  max-width: 300px;
+  margin: 10px;
+  width: 100vw;
+  height: auto;
+  padding: 0px 20px;
+}
+
+.rf-about-page-image-box, .rf-about-page-image-box-bottom {
+  max-width: 1300px;
+  margin: auto;
+}
+
+.rf-about-page-image-box-bottom {
+  margin: -70px auto;
+
+  span {
+    max-width: 400px;
+    font-weight: 500;
+    line-height: 42px;
+    font-size: 1.3rem;
+    width: 100vw;
+  }
+
+  .rf-about-image-box-img-model {
+    width: 250px;
+    z-index: $z-index-image;
+  }
+}
+
+.rf-about-page-blurb {
+  margin: 120px auto;
+  max-width: 1200px;
+  width: 100%;
+  padding: 100px;
+  background: rgba(240, 228, 210, 0.4);
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px, 1fr));
+  gap: 50px;
+
+  h4 {
+    position: relative;
+
+    &::before {
+      display: inline-block;
+      position: absolute;
+      content: '';
+      margin-left: 12px;
+      height: 8px;
+      width: 8px;
+      background: $brand-color;
+      transform: rotateZ(45deg);
+      left: -30px;
+      top: 12px;    }
+  }
+}
+

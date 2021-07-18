@@ -1,0 +1,239 @@
+.rf-navbar{
+  position: fixed;
+  z-index: 990;
+  padding: 48px;
+  top: 0;
+  left: 0;
+  height: auto;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: start;
+
+  @include mobile {
+    align-items: center;
+    padding: 24px;
+  }
+}
+
+.rf-navbar-logo{
+  height: 48px;
+  text-align: center;
+  cursor: pointer;
+  svg{
+    height: 48px;
+    @include mobile {
+      height: 32px;
+    }
+  }
+  @include mobile {
+    height: 32px;
+  }
+}
+
+
+.rf-navbar-theme-light{
+  color: white;
+  background: transparent;
+
+  .rf-navbar-upfront-menu-button--signedin::before {
+    border: 1px solid $bg-color;
+  }
+
+  svg *{
+    fill: white;
+  }
+}
+
+.rf-navbar-theme-dark{
+  color: $brand-color;
+  background: $bg-color;
+
+  svg *{
+    fill: $brand-color;
+  }
+}
+
+
+.rf-navbar-upfront-menu{
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.rf-navbar-upfront-menu-button{
+  margin-left: 48px;
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+  position: relative;
+
+  &--signedin {
+    width: 28px;
+    height: 28px;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      height: 120%;
+      width: 120%;
+      background: transparent;
+      z-index: -1;
+      border-radius: 50%;
+      top: -4px;
+      border: 1px solid $brand-color;
+      right: -4px;
+    }
+  }
+
+  img {
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.rf-navbar-menu-button{
+  width: 24px;
+  cursor: pointer;
+}
+
+
+// fullscreen menu
+.rf-fullscreen-menu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: scroll;
+  background: #562B04;
+  padding-top: 64px;
+  padding-bottom: 64px;
+
+  @include mobile{
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+
+.rf-fullscreen-menu > a, h1{
+  text-align: center;
+  cursor: pointer;
+  color: white;
+}
+
+.rf-fullscreen-menu > a{
+  cursor: pointer;
+}
+
+.rf-fullscreen-menu > a:hover{
+  color: #B55500;
+}
+
+.rf-fullscreen-menu-close{
+  position: fixed;
+  top: 48px;
+  left: 48px;
+
+  @include mobile{
+    top: 24px;
+    left: 24px;
+  }
+}
+
+// cart
+.rf-section-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: horizontal;
+  border-bottom: 1px solid #2F1600
+}
+
+.rf-sidebar-close{
+  position: absolute;
+  top: 32px;
+  left: -96px;
+  @include mobile{
+    top: -88px;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.rf-cart-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
+  min-height: calc(100% - 160px);
+}
+
+.rf-cta-placeholder{
+  height: 142px;
+}
+
+.rf-cta{
+  position: fixed;
+  bottom: 32px;
+  width: calc(100% - 2 * 64px);
+  @include mobile{
+    width: calc(100% - 2 * 24px);
+  }
+}
+
+.rf-backdrop{
+  z-index: 991;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(black, 0.6);
+}
+
+.rf-sidebar{
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 640px;
+  overflow: visible;
+  background: $bg-color;
+  color: $brand-color;
+  @include mobile{
+    width: 100vw;
+    height: calc(100vh - 88px);
+    margin-top: 88px;
+  }
+  // todo: prevent body scroll when sidebar is open
+}
+
+.rf-sidebar-inner{
+  overflow-y: scroll;
+  height: 100%;
+  padding: 32px 64px;
+  @include mobile{
+    padding: 24px 24px;
+  }
+}
+
+.rf-cart-badge{
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  height: 24px;
+  width: 24px;
+  border: 3px solid $bg-color;
+  color: white;
+  background: $brand-color;
+  font-weight: 500;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 18px;
+  transform: scale3d(0,0,0);
+}

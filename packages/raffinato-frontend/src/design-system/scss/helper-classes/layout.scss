@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 // flexbox helper classes
 .rf-flex{
   display: flex;
@@ -8,6 +10,8 @@
 
 .rf-flex.rf-flex-h{ flex-direction: row; }
 .rf-flex.rf-flex-v{ flex-direction: column; }
+.rf-flex.rf-flex-hr{ flex-direction: row-reverse; }
+.rf-flex.rf-flex-vr{ flex-direction: column-reverse; }
 
 .rf-flex.rf-al-c{ align-items: center; }
 .rf-flex.rf-al-s{ align-items: flex-start; }
@@ -20,3 +24,41 @@
 .rf-flex.rf-ju-e{ justify-content: flex-end; }
 .rf-flex.rf-ju-sb{ justify-content: space-between; }
 .rf-flex.rf-ju-sa{ justify-content: space-around; }
+
+.rf-flex.rf-flex-c {
+  justify-content: center;
+  align-items: center;
+}
+
+.rf-position-r{ position: relative; }
+
+@each $opacity in 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100{
+  .rf-opacity-#{$opacity}{
+    opacity: #{math.div($opacity, 100)};
+  }
+}
+
+.rf-hide-desktop{
+  @include desktop{
+    display: none;
+  }
+}
+
+.rf-hide-mobile{
+  @include mobile{
+    display: none;
+  }
+}
+
+.rf-hide-xs{
+  @include xs{
+    display: none;
+  }
+}
+
+.rf-grid{
+  display: grid;
+  &.rf-grid-2-col{
+    grid-template-columns: 1fr 1fr;
+  }
+}

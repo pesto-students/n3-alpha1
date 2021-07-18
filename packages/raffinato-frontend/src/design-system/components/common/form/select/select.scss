@@ -1,0 +1,142 @@
+@import '../../../../scss/util/config.scss';
+
+// todo: refactor
+// todo: create 
+
+.rf-select.rf-select-variant-tertiary.rf-select-theme-light{
+  .rf-select__control{
+    cursor: pointer !important;
+    background: transparent ;
+    color: white;
+    border-radius: 0;
+    border: 0;
+    border-bottom: 2px solid white;
+    outline: none !important;
+
+    &--is-focused{
+      outline: none !important;
+      box-shadow: none;
+    }
+
+    @include mobile{
+      border-bottom: 1px solid white;
+    }
+  }
+
+  .rf-select__single-value{
+    color: white;
+    margin-left: 0;
+  }
+
+  .rf-select__indicator-separator {
+    display: none;
+  }
+
+  .rf-select__indicator{
+    padding-right: 0;
+  }
+
+  .rf-select__value-container{
+    padding-left: 0;
+  }
+}
+
+.rf-select.rf-select-variant-secondary.rf-select-theme-dark{
+  .rf-select__control{
+    cursor: pointer !important;
+    background: rgba($brand-color-secondary, 0.1);
+    color: white;
+    border-radius: 0;
+    border: 0;
+    height: 100%;
+    &--is-focused{
+      outline: none !important
+    }
+  }
+
+  .rf-select__single-value{
+    color: $brand-color;
+    margin-left: 0;
+  }
+
+  .rf-select__indicator-separator {
+    display: none;
+  }
+
+  .rf-select__indicator{
+    padding-right: 24px;
+    color: $brand-color;
+  }
+
+  .rf-select__value-container{
+    padding-left: 24px;
+  }
+}
+
+.rf-select__input {
+  color: #ffffff;
+}
+
+.rf-select.rf-select-variant-primary.rf-select-theme-dark{
+  border: 1px solid rgba(181, 85, 0, 0.2);
+  padding: 4px;
+  .rf-select__control{
+    cursor: pointer !important;
+    background: rgba($brand-color-secondary, 0.1);
+    color: white;
+    border-radius: 0;
+    border: 0;
+    height: 100%;
+    &--is-focused{
+      outline: none !important
+    }
+  }
+
+  .rf-select__single-value{
+    color: $brand-color;
+    margin-left: 0;
+  }
+
+  .rf-select__indicator-separator {
+    display: none;
+  }
+
+  .rf-select__indicator{
+    padding-right: 24px;
+    color: $brand-color;
+  }
+
+  .rf-select__value-container{
+    padding-left: 24px;
+  }
+}
+
+.rf-select__menu{
+  border-radius: 0;
+  background: $bg-color;
+  border: 1px solid $brand-color;
+  color: $brand-color;
+  padding: 0;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+.rf-select__menu-list{
+  border-radius: 0;
+  background: $bg-color;
+  border: 1px solid $brand-color;
+  padding: 0;
+}
+
+.rf-select__option{
+  color: $brand-color;
+  cursor: pointer !important;
+}
+
+.rf-select__option--is-selected{
+  color: white;
+  background-color: rgba($brand-color, 0.5) !important;
+}
+
+.rf-select__option--is-focused{
+  background-color: rgba($brand-color, 0.2);
+}
