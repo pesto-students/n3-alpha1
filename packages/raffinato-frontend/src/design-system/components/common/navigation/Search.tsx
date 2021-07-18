@@ -67,8 +67,8 @@ const Search = (props: {
           animate={{
             opacity: isSearchOpen ? 1 : 0,
             backgroundColor: searchQuery
-              ? 'rgba(0, 0, 0, 0.8)'
-              : 'rgba(0, 0, 0, 0.6)',
+              ? 'rgba(0, 0, 0, 0.9)'
+              : 'rgba(0, 0, 0, 0.8)',
           }}
           transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
           initial={{ opacity: 0 }}

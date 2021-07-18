@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import clsx from 'clsx';
 
@@ -25,6 +25,8 @@ type NavbarProps = {
   signInCallback?: () => void;
 };
 
+type LocationState = Record<string, any>;
+
 export default function Navbar(props: NavbarProps) {
   // todo: on scroll shrink navbar
   // todo: animate cart badge on each increment/decrement (currently only animates for 1st item(s) added or last item(s) removed)
@@ -42,6 +44,15 @@ export default function Navbar(props: NavbarProps) {
   const baseClassName = 'rf-navbar';
   const themeClassName = `rf-navbar-theme-${theme}`;
   const finalClassName = [baseClassName, themeClassName].join(' ');
+
+  const { state } = useLocation<LocationState>();
+
+  useEffect(() => {
+    if (state?.signInModalOpen) {
+      signInCallback?.();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false);
 

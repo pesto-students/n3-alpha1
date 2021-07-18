@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 
 import HeroImage from 'design-system/assets/images/hero@2x.png';
 import AboutModel from 'design-system/assets/images/about-model.png';
+import { Button } from 'design-system/index';
 
 import './about.scss';
 
@@ -37,7 +38,9 @@ function About() {
             <div />
           </div>
           <div className="rf-about-image-box-decoration">
-            <Link to="/contact">Contact us</Link>
+            <Link to="/contact">
+              <Button>Contact us</Button>
+            </Link>
           </div>
         </div>
       </div>

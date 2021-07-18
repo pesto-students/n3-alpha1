@@ -168,7 +168,7 @@ const Home = () => {
         {/* todo: decide whether to remove base on whether grid is ready */}
         <div className="hero-scroll-indicator">
           <div className="hero-scroll-indicator-line" />
-          <span>scroll for more</span>
+          <span>Raffinato Apparel Inc.</span>
         </div>
         <div className="hero-diamond-filler">
           <div />

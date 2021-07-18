@@ -25,7 +25,12 @@ function ProtectedRoute({
   const dispatch = useAppDispatch();
 
   if (!data?.uid && status === Status.SIGNED_IN) {
-    history.push('/');
+    history.push({
+      pathname: '/',
+      state: {
+        signInModalOpen: true,
+      },
+    });
     dispatch(
       createAlert({
         type: 'failure',
